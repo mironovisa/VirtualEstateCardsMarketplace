@@ -8,7 +8,7 @@ const Intro = () => {
         <div></div>
       </div>
       <div className="intro-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quas iste, minima, tenetur id dicta consequuntur hic fugit quasi temporibus blanditiis ducimus voluptatum accusamus quam, repellat nobis itaque commodi officia?
+        Lorem ipsum doregdfhsgdfhlor sit amet consectetur adipisicing elit. Tempore quas iste, minima, tenetur id dicta consequuntur hic fugit quasi temporibus blanditiis ducimus voluptatum accusamus quam, repellat nobis itaque commodi officia?
       </div>
     </div>
   );
