@@ -1,0 +1,40 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden; 
+  }
+
+  
+  .full-page-component {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .intro-component {
+    margin-top: 100px;
+    font-size: 34px;
+    padding: 150px;
+    background-color: #f0f0f0; 
+    height: 100vh;
+  }
+  
+  .intro-text{
+  
+    color: #ccc;
+  }
+  
+  .news-component {
+    background-color: var( --jasmine);
+  }
+
+  .news-card {
+    width: 400px;
+    height: 400px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }

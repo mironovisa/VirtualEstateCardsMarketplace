@@ -1,0 +1,96 @@
+:root {
+  --font-family: 'Roboto Condensed', sans-serif;
+  --gap: 20px;
+  --gap-s: 10px;
+  --gap-xs: 5px;
+  --gap-m: 15px;
+  --gradient-green: linear-gradient(to right, var(--sunglow), var(--pear), var(--yellow-green));
+  --gradient-color: linear-gradient(to right, var(--dark-cyan), var(--steel-blue), var(--true-blue), var(--ultra-violet), var(--ultra-violet-2));
+
+/*BLUE*/
+--picton-blue: #00a6fbff;
+--steel-blue: #0582caff;
+--lapis-lazuli: #006494ff;
+--prussian-blue: #003554ff;
+--rich-black: #051923ff;
+--purple: #612081;
+
+/*PINK*/
+--coral-pink: #ff9286ff;
+--melon: #fbb3a5ff;
+--melon-2: #ffc5baff;
+--misty-rose: #ffe5e5ff;
+--orchid-pink: #f4b7c6ff;
+--bakermiller-pink: #ff92b1ff;
+--rose-pompadour: #fe7295ff;
+
+/* CSS GREEN BG*/
+--dark-spring-green: #2c6e49ff;
+--sea-green: #4c956cff;
+--olive: #afa939; 
+--dark-green: #2b580c; 
+
+--pakistan-green: #143601ff;
+--pakistan-green-2: #1a4301ff;
+--dark-moss-green: #245501ff;
+--avocado: #538d22ff;
+--asparagus: #73a942ff;
+--pistachio: #aad576ff;
+--soft-green:#7dd181;
+
+/*PASTEL BLUES*/
+--alice-blue: #edf2fbff;
+--lavender-web: #e2eafcff;
+--lavender-web-2: #d7e3fcff;
+--periwinkle: #ccdbfdff;
+--periwinkle-2: #c1d3feff;
+--periwinkle-3: #b6ccfeff;
+--jordy-blue: #abc4ffff;
+
+/*PASTEL YELLOWS*/
+--naples-yellow: #f9dc5cff;
+--jasmine: #fae588ff;
+--vanilla: #fcefb4ff;
+--cornsilk: #fdf8e1ff;
+--naples-yellow-2: #f9dc5cff;
+
+/* CSS GREEN/PINK */
+--soft-green: #e0ffcd; 
+--soft-yellow: #fdffcd; 
+--soft-salmon: #ffebbb; 
+--light-yellow: #fefee3ff;
+--light-orange: #f4a259;
+--persian-orange: #d68c45ff;
+
+/* SCSS Gradient */
+--gradient-top: linear-gradient(0deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
+--gradient-right: linear-gradient(90deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
+--gradient-bottom: linear-gradient(180deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
+--gradient-left: linear-gradient(270deg, rgba(254, 254, 227, 0.8), rgba(255, 201, 185, 0.8), rgba(214, 140, 69, 0.8));
+--gradient-left-green: linear-gradient(270deg, #2c6e49ff, #4c956cff);
+--gradient-bottom-right: linear-gradient(135deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
+--gradient-top-left: linear-gradient(225deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
+--gradient-bottom-left: linear-gradient(315deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
+--gradient-radial: radial-gradient(#2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
+
+
+/* Fonts */
+--hawai: 'Barrio', cursive;
+--eighies-big: 'Bowlby One', cursive;
+--eighies: 'Caprasimo', cursive;
+--fast: 'Faster One', cursive;
+--button: 'Monofett', monospace;
+--default: 'Comfortaa', cursive;
+
+}
+
+
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: repeat;
+}

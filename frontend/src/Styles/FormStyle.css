@@ -1,0 +1,107 @@
+input {
+    display: flex;
+    padding: var(--gap-s);
+    flex: 1;
+    max-width: 320px;
+    align-self: flex-start;
+    border: 3px solid var(--periwinkle);
+    background-image: var(--misty-rose);
+    outline: none; 
+    border-radius: 25px; 
+    color: var(--prussian-blue);
+}
+
+input:hover,
+input:active,
+input:focus {
+    border: 3px solid var(--jordy-blue);
+}
+
+input:focus {
+    outline: none; 
+}
+
+.formGroup {
+    color:var(--prussian-blue);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap-m);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  
+.formGroup label {
+    align-self: flex-end;
+}
+
+.modalHeader {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modalFooter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnSign {
+    flex-grow: 1;
+    text-align: center;
+    max-height: 65px;
+    min-height: 55px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    background-color: var(--picton-blue);
+    color: var(--melon-2);
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.btnSign:hover {
+    background-color: var(--lapis-lazuli);
+    transform: scale(1.01);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+  
+.btnSign.active{
+    background-color: var(--prussian-blue);
+}
+
+span {
+    color:var(--lapis-lazuli);
+    font-family: var(--fast);
+    font-size: 50px;
+}
+
+.updateTitle{
+    color:var(--lapis-lazuli);
+    font-family: var(--hawai);
+    font-size: 40px;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.errors {
+    color: var(--lapis-lazuli);
+    text-align: center;
+    margin-top: 5px;
+}
+  
+.centered {
+    text-align: center;
+}
+
+label, button {
+    font-family: var(--default);
+    font-size: 16px;
+}
+
+
+::placeholder {
+    font-family: var(--default);
+    font-size: 12px;
+}
