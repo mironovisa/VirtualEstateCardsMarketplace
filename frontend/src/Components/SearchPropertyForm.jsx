@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../CompStyles/SearchPropertyCont.css'
 
 const SearchPropertyContainer = () => {
   const [searchParams, setSearchParams] = useState({
@@ -28,7 +29,7 @@ const SearchPropertyContainer = () => {
   };
 
   return (
-    <div>
+    <div className="search-property-container">
       <h2>Search Properties</h2>
       <form onSubmit={handleSubmit}>
         <div>

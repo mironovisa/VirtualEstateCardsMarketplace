@@ -1,4 +1,5 @@
 import React from 'react';
+import '../CompStyles/WalletCard.css'
 
 const WalletCard = () => {
   return (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../CompStyles/UpdateUserCont.css';
 
 const UpdateUserForm = () => {
   const [userData, setUserData] = useState({
@@ -24,7 +25,7 @@ const UpdateUserForm = () => {
   };
 
   return (
-    <div>
+    <div className='update-user-form-container'>
       <h2>Update User Information</h2>
       <form onSubmit={handleSubmit}>
         <div>

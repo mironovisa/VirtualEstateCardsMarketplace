@@ -1,0 +1,48 @@
+.update-user-form-container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .update-user-form-container h2 {
+    margin-bottom: 15px;
+  }
+  
+  .update-user-form-container form div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .update-user-form-container label {
+    flex-basis: 40%;
+    font-weight: bold;
+  }
+  
+  .update-user-form-container input {
+    flex-basis: 55%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  .update-user-form-container button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .update-user-form-container button:hover {
+    background-color: #555;
+  }
