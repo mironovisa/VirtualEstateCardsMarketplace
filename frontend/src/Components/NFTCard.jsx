@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NFTCard = ({ img, price, cryptoIcon, status }) => {
+export const NFTCard = ({ img, price, cryptoIcon, status }) => {
     return (
         <div className="nft-card">
             <img src={img} alt="NFT" className="nft-image" />
@@ -11,4 +11,3 @@ const NFTCard = ({ img, price, cryptoIcon, status }) => {
     );
 }
 
-export default NFTCard;

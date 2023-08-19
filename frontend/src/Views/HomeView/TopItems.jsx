@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../StylesKit/VerticalList.css';
-import NFTCard from '../../Components/NFTCard';
+import {NFTCard} from '../../Components/NFTCard';
 
 const TopItems = () => {
   const items = Array.from({ length: 6 });
