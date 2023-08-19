@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import '../../StylesKit/VerticalList.css'; 
 
 const TopUsers = () => {
@@ -12,6 +12,36 @@ const TopUsers = () => {
           <p>User details...</p>
         </div>
       ))}
+    </div>
+  );
+};
+
+export default TopUsers;*/
+
+
+
+import React from 'react';
+import UserCard from '../../Components/UserCard'; 
+
+
+const topUsersData = [
+  { id: 1, username: 'user1', imageSrc: 'user1.jpg', ranking: 'Gold' },
+  { id: 2, username: 'user2', imageSrc: 'user2.jpg', ranking: 'Silver' },
+];
+
+const TopUsers = () => {
+  return (
+    <div className="top-users-container">
+      <div className="vertical-list">
+        {topUsersData.map((user) => (
+          <UserCard
+            key={user.id}
+            username={user.username}
+            imageSrc={user.imageSrc}
+            ranking={user.ranking}
+          />
+        ))}
+      </div>
     </div>
   );
 };

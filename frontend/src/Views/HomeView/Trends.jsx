@@ -1,19 +1,24 @@
 import React from 'react';
-import '../../StylesKit/VerticalList.css'; 
+import '../../StylesKit/VerticalList.css';
+import NFTCard from '../../Components/NFTCard'; 
 
-const Trends = () => {
-  const trends = Array.from({ length: 6 }); // Create an array of 6 trends
+const TopItems = () => {
+  const items = Array.from({ length: 6 });
 
   return (
     <div className="vertical-list">
-      {trends.map((trend, index) => (
-        <div key={index} className="trend-card">
-          <h3>Trends Card {index + 1}</h3>
-          <p>Trend details...</p>
+      {items.map((item, index) => (
+        <div key={index} className="item-card">
+          <NFTCard
+            img="https://example.com/nft1.jpg"
+            price="$100"
+            cryptoIcon="https://example.com/ethereum-icon.png"
+            status="Available"
+          />
         </div>
       ))}
     </div>
   );
 };
 
-export default Trends;
+export default TopItems;

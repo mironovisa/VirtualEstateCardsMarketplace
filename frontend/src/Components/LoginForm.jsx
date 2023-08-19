@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/FormStyle.css';
+import '../CompStyles/FormStyle.css';
 
 const Login = ({ showLoginModal }) => {
 

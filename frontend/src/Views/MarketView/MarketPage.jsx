@@ -6,7 +6,7 @@ import SearchProperty from './SearchProperty';
 import MyPropertyList from './MyPropertyList';
 
 const MarketPage = () => {
-    const [activeTab, setActiveTab] = useState('propertyList');
+    const [activeTab, setActiveTab] = useState('PropertyList');
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);
@@ -14,14 +14,16 @@ const MarketPage = () => {
 
     return (
         <div className="market-page">
+            <h1>Market page</h1>
             <div className="tab-buttons">
-                <button onClick={() => handleTabChange('propertyList')}>Property List</button>
-                <button onClick={() => handleTabChange('searchProperty')}>Search Property</button>
-                <button onClick={() => handleTabChange('myPropertyList')}>My Property List</button>
+                <button onClick={() => handleTabChange('PropertyList')}>Property List</button>
+                <button onClick={() => handleTabChange('SearchProperty')}>Search Property</button>
+                <button onClick={() => handleTabChange('MyPropertyList')}>My Property List</button>
+
             </div>
-            {activeTab === 'propertyList' && <PropertyList />}
-            {activeTab === 'searchProperty' && <SearchProperty />}
-            {activeTab === 'myPropertyList' && <MyPropertyList />}
+            {activeTab === 'PropertyList' && <PropertyList />}
+            {activeTab === 'SearchProperty' && <SearchProperty />}
+            {activeTab === 'MyPropertyList' && <MyPropertyList />}
         </div>
     );
 }

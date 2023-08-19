@@ -1,19 +1,35 @@
 import React from 'react';
-import '../../StylesKit/VerticalList.css'; 
+import PropertyCard from '../../Components/PropertyCard'; 
 
-const News = () => {
-    const property = Array.from({ length: 6 }); 
-  
+const PropertyList = ({ properties }) => {
+    // Mock data for testing purposes
+    const mockProperties = [
+        {
+            id: '1',
+            title: 'Sample Property 1',
+            type: 'Apartment',
+            status: 'For Sale',
+            img: 'https://placekitten.com/200/200', // Sample image URL
+            description: 'A beautiful property with all the amenities.',
+            location: 'City Name',
+            rentalPrice: '$1000/month',
+            sellingPrice: '$250000',
+            availableUpgrades: ['Swimming Pool', 'Gym'],
+            doneUpgrades: ['Kitchen Renovation'],
+        },
+        // Add more mock properties as needed
+    ];
+
+    // If properties are not available, use mockProperties for testing
+    const propertiesToRender = properties || mockProperties;
+
     return (
-      <div className="vertical-list">
-        {property.map((property, index) => (
-          <div key={index} className="property-card">
-            <h3>property Card {index + 1}</h3>
-            <p>property details...</p>
-          </div>
-        ))}
-      </div>
+        <div className="property-list">
+            {propertiesToRender.map(property => (
+                <PropertyCard key={property.id} property={property} />
+            ))}
+        </div>
     );
-  };
+}
 
-export default News;
+export default PropertyList;

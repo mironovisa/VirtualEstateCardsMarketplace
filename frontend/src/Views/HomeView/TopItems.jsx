@@ -1,15 +1,21 @@
 import React from 'react';
-import '../../StylesKit/VerticalList.css'; 
+import '../../StylesKit/VerticalList.css';
+import NFTCard from '../../Components/NFTCard';
 
 const TopItems = () => {
-  const items = Array.from({ length: 6 }); 
+  const items = Array.from({ length: 6 });
 
   return (
     <div className="vertical-list">
       {items.map((item, index) => (
         <div key={index} className="item-card">
-          <h3>Top Items Card {index + 1}</h3>
-          <p>Item details...</p>
+          {/* Pass appropriate data as props to the NFTCard component */}
+          <NFTCard
+            img="https://example.com/nft1.jpg"
+            price="$100"
+            cryptoIcon="https://example.com/ethereum-icon.png"
+            status="Available"
+          />
         </div>
       ))}
     </div>

@@ -1,10 +1,11 @@
 import React from 'react';
+import SearchPropertyContainer from '../../Components/SearchPropertyForm'; // Make sure to provide the correct path
 
 const SearchProperty = () => {
     return (
         <div>
             <h2>Search Property</h2>
-            <p>This is the search property view.</p>
+            <SearchPropertyContainer />
         </div>
     );
 }
