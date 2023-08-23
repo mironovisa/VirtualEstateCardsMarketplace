@@ -2,6 +2,18 @@ const DBmongo = require("../services/users.service")
 const users = new DBmongo("NFTMarketPlace", "users");
 const { generatePasswordService } = require("../services/hash.service")
 
+const getUserById = async (req,res) => {
+
+    const userId = "64df24185c9789c11aba1906"
+    const user = await users.getById(userId)
+    res.status(200).send(user);
+
+}
+
+const getAllUsers = async (req,res) => {
+    const allUsers = await users.get()
+    res.status(200).send(allUsers)
+}
 
 const addNewUser = async (req, res) => {
     console.log("addNewUser")
@@ -45,4 +57,8 @@ const addNewUser = async (req, res) => {
     }
 }
 
-addNewUser()
+module.exports = {
+    addNewUser,
+    getUserById,
+    getAllUsers
+}
