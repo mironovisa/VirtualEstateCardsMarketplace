@@ -27,6 +27,21 @@ class DBmongo {
     const resp = await cols.findOne({ username: email });
     return resp
   }
+
+  addNewUserService = async (user, hash) => {
+
+    user.password = hash
+
+    const cols = await run(this.database, this.collection);
+    const resp = await cols.insertOne(user)
+    return resp;
+  }
+
+  findCollectionLengthService = async () => {
+    const cols = await run(this.database, this.collection);
+    const resp = await cols.countDocuments({});
+    return resp
+  }
 }
 
 
