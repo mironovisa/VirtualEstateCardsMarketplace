@@ -1,6 +1,6 @@
 import React from 'react';
 import NewsCard from '../../Components/NewsCard'; // Adjust the import path based on your project structure
-import '../../StylesKit/VerticalList.css';
+import '../../StylesKit/HorizontalList.css';
 
 const News = () => {
   const newsData = [
@@ -9,7 +9,7 @@ const News = () => {
   ];
 
   return (
-    <div className="vertical-list">
+    <div className="horizontal-list">
       {newsData.map((news, index) => (
         <NewsCard key={index} title={news.title} content={news.content} />
       ))}

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../Styles/LandingPage.css'; 
-import'../../StylesKit/VerticalList.css';
+import'../../StylesKit/HorizontalList.css';
 
 import Intro from './Intro'; 
 import News from './News'; 
@@ -11,7 +11,7 @@ const LandingPage = () => {
       <div className="full-page-component intro-component">
         <Intro />
       </div>
-      <div className="vertical-list">
+      <div className="horizontal-list news-component">
         <News />
       </div>
     </div>

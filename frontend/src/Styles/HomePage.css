@@ -1,19 +1,44 @@
 .home-page {
-    padding: 20px;
-    margin-top: 100px;
-  }
-  
-.home-page h2 {
-    margin-top: 30px;
-    color: white; 
-    text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.item-card, .user-card, .trend-card {
+.full-screen-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh; /* Use min-height to allow for content expansion */
+}
+
+h2 {
+  margin-top: 120px;
+  color: white;
+  text-align: center;
+}
+
+/* TopUsers */
+.users-container {
+  background-color: red;
+}
+
+/* TopItems */
+.items-container {
+  background-color: yellow;
+}
+
+/* Trends */
+.trends-container {
+  background-color: green;
+}
+
+/* Item/User/Trend Cards */
+.item-card,
+.user-card,
+.trend-card {
   width: 300px;
   height: 400px;
-  margin: 0 10px;
-  border: 1px solid #ccc;
+  margin: 10px; /* Add some spacing between cards */
   background-color: #fff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }

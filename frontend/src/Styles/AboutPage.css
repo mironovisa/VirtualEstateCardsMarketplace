@@ -1,4 +1,4 @@
-.about-page {
+/*.about-page {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -21,7 +21,7 @@
 
 
   /* ContactUs */
-
+/*
 .contact-us-container {
   background-color: blue;
   width: 100%;
@@ -33,6 +33,40 @@
 
 
 /* faq */
+/*
 .faq{
+  background-color: salmon;
+}*/
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-screen-view, .contact-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh; /* Use min-height to allow for content expansion */
+  background-color: #f5f5f5;
+}
+
+.full-screen-view h2 {
+  margin-bottom: 20px;
+}
+
+.contact-us-container {
+  background-color: blue;
+}
+
+/* TermsView */
+.terms {
+  background-color: #ffd700;
+}
+
+/* FAQView */
+.faq {
   background-color: salmon;
 }

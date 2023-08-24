@@ -27,12 +27,16 @@ import UserCard from '../../Components/UserCard';
 const topUsersData = [
   { id: 1, username: 'user1', imageSrc: 'user1.jpg', ranking: 'Gold' },
   { id: 2, username: 'user2', imageSrc: 'user2.jpg', ranking: 'Silver' },
+  { id: 3, username: 'user2', imageSrc: 'user2.jpg', ranking: 'Silver' },
+  { id: 4, username: 'user2', imageSrc: 'user2.jpg', ranking: 'Silver' },
+  { id: 5, username: 'user2', imageSrc: 'user2.jpg', ranking: 'Silver' },
+  { id: 6, username: 'user2', imageSrc: 'user2.jpg', ranking: 'Silver' },
+  
 ];
 
 const TopUsers = () => {
   return (
-    <div className="top-users-container">
-      <div className="vertical-list">
+      <div className="horizontal-list">
         {topUsersData.map((user) => (
           <UserCard
             key={user.id}
@@ -42,7 +46,6 @@ const TopUsers = () => {
           />
         ))}
       </div>
-    </div>
   );
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import '../../StylesKit/VerticalList.css'; 
+import '../../StylesKit/HorizontalList.css'; 
 
 const MyCardsView = () => {
   const items = Array.from({ length: 6 }); 
 
   return (
-    <div className="vertical-list">
+    <div className="horizontal-list">
       {items.map((user, index) => (
         <div key={index} className="items-card">
           <h3>Card {index + 1}</h3>
