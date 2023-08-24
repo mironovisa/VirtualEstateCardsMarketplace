@@ -24,7 +24,7 @@ class DBmongo {
 
   findUserByEmailService = async (email) => {
     const cols = await run(this.database, this.collection);
-    const resp = await cols.findOne({ username: email });
+    const resp = await cols.findOne({ email: email });
     return resp
   }
 
@@ -40,6 +40,23 @@ class DBmongo {
   findCollectionLengthService = async () => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.countDocuments({});
+    return resp
+  }
+
+  updateUserService = async (userId, user) => {
+    const cols = await run(this.database, this.collection);
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(userId) },
+      {
+          $set: user
+      }
+  )
+  return resp;
+  }
+
+  deleteUserService = async (userId) => {
+    const cols = await run(this.database, this.collection);
+    const resp = await cols.deleteOne({ _id: new ObjectId(userId) });
     return resp
   }
 }

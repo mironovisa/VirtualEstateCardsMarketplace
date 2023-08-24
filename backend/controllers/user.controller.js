@@ -4,7 +4,7 @@ const { generatePasswordService } = require("../services/hash.service")
 
 const getUserById = async (req,res) => {
 
-    const userId = "64df24185c9789c11aba1906"
+    const userId = "64e6fb5ffc3a37f2870ee4ba"
     const user = await users.getById(userId)
     res.status(200).send(user);
 
@@ -15,26 +15,41 @@ const getAllUsers = async (req,res) => {
     res.status(200).send(allUsers)
 }
 
+const updateUser =  async (req,res) => {
+    const userId = "64e6fb5ffc3a37f2870ee4ba"
+    const data = {
+        firstName: "Gidonchanged",
+        lastName: "Tuchchanged",
+        username: "gidskids",
+        email: "sully@gmail.com",
+        password: "new",
+        
+    }
+    const user = await users.findUserByEmailService(data.email)
+    if (user) {
+        return res.status(400).send("Email already exist");
+    }
+    await users.updateUserService(userId, data)
+
+    res.send("success")
+}
+
 const addNewUser = async (req, res) => {
     console.log("addNewUser")
     // const { email, password } = req.body;
 
     // change to be req.body
 
-    const length = await users.findCollectionLengthService()
-
-    console.log(length, 'length');
-    // const email = "gtuch7777@gmail.com"
-    // const password = "testing"
-    // const id = length + 1
-
     const data = {
-        username: "test@gmail.com",
+        firstName: "Gidon",
+        lastName: "Tuch",
+        username: "gidskids",
+        email: "changedsuccesully@gmail.com",
         password: "new",
-        id: length + 1,
+        
     }
 
-    const user = await users.findUserByEmailService(data.username);
+    const user = await users.findUserByEmailService(data.email);
 
     console.log(user);
     if (user) {
@@ -57,8 +72,16 @@ const addNewUser = async (req, res) => {
     }
 }
 
+const deleteUser = async (req,res) => {
+    const userId = "64e6fb5ffc3a37f2870ee4ba"
+    await users.deleteUserService(userId)
+    res.send("User deleted succesfully")
+}
+
 module.exports = {
     addNewUser,
     getUserById,
-    getAllUsers
+    getAllUsers,
+    updateUser,
+    deleteUser
 }
