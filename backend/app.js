@@ -13,6 +13,15 @@ app.use(
 app.use(express.json());
 
 app.use((req, res, next) => {
+
+  if (
+    (req.method === 'POST' && req.url === '/auth/login') ||
+    (req.method === 'POST' && req.url === '/users') ||
+    (req.method === 'POST' && req.url.startsWith('/orders'))
+) {
+    return next();
+}
+
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTI4NjE2MjksImV4cCI6MTY5Mjk0ODAyOX0.Kb1MU-SNQUde8RKDbVXmHG4R3fXd-8KfSaXAd0cW5ks";
   const data = verify(token);
