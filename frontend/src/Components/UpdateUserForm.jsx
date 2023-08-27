@@ -1,28 +1,9 @@
 import React, { useState } from 'react';
 import '../CompStyles/UpdateUserCont.css';
+import { useProfileUpdate } from 'Hooks';
 
 const UpdateUserForm = () => {
-  const [userData, setUserData] = useState({
-    username: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Updated User Data:', userData);
-  };
+  const { updatedUserData, handleChange, handleSubmit } = useProfileUpdate();
 
   return (
     <div className='update-user-form-container'>
@@ -34,7 +15,7 @@ const UpdateUserForm = () => {
             type="text"
             id="username"
             name="username"
-            value={userData.username}
+            value={updatedUserData.username}
             onChange={handleChange}
             placeholder="Enter your username"
             required
@@ -46,7 +27,7 @@ const UpdateUserForm = () => {
             type="text"
             id="firstName"
             name="firstName"
-            value={userData.firstName}
+            value={updatedUserData.firstName}
             onChange={handleChange}
             placeholder="Enter your first name"
             required
@@ -58,7 +39,7 @@ const UpdateUserForm = () => {
             type="text"
             id="lastName"
             name="lastName"
-            value={userData.lastName}
+            value={updatedUserData.lastName}
             onChange={handleChange}
             placeholder="Enter your last name"
             required
@@ -70,7 +51,7 @@ const UpdateUserForm = () => {
             type="email"
             id="email"
             name="email"
-            value={userData.email}
+            value={updatedUserData.email}
             onChange={handleChange}
             placeholder="Enter your email"
             required
@@ -82,7 +63,7 @@ const UpdateUserForm = () => {
             type="password"
             id="password"
             name="password"
-            value={userData.password}
+            value={updatedUserData.password}
             onChange={handleChange}
             placeholder="Enter your new password"
             required
@@ -94,7 +75,7 @@ const UpdateUserForm = () => {
             type="password"
             id="confirmPassword"
             name="confirmPassword"
-            value={userData.confirmPassword}
+            value={updatedUserData.confirmPassword}
             onChange={handleChange}
             placeholder="Confirm your new password"
             required

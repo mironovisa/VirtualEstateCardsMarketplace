@@ -1,7 +1,10 @@
 import React from 'react';
 import '../CompStyles/FormStyle.css';
+import { useSignUp } from 'Hooks';
 
 const Signup = ({ showSignupModal }) => {
+
+  const { handleChange, handleSubmit, signUpData } = useSignUp();
 
   return (
     <div className={showSignupModal ? 'modal-overlay' : 'modal-hidden'}>
@@ -10,15 +13,16 @@ const Signup = ({ showSignupModal }) => {
           <span>Signup</span>
         </div>
         <div className="modalBody">
-          <form /*onSubmit={handleFormSubmit}*/>
+          <form onSubmit={handleSubmit}>
             <div className="formGroup">
               <label htmlFor="firstName">First Name:</label>
               <input 
                 type="text"
                 id="firstName"
+                name="firstName"
                 placeholder="Enter first name"
-                /*value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}*/
+                value={signUpData.firstName}
+                onChange={handleChange}
               />
             </div>
             <div className="formGroup">
@@ -26,39 +30,43 @@ const Signup = ({ showSignupModal }) => {
               <input
                 type="text"
                 id="lastName"
+                name="lastName"
                 placeholder="Enter last name"
-               /* value={lastName}
-                onChange={(e) => setLastName(e.target.value)}*/
+               value={signUpData.lastName}
+                onChange={handleChange}
               />
             </div>
             <div className="formGroup">
-              <label htmlFor="phoneNumber">Username:</label>
+              <label htmlFor="username">Username:</label>
               <input
                 type="text"
-                id="phoneNumber"
+                id="username"
+                name="username"
                 placeholder="your username"
-                /*value={username}
-                onChange={(e) => setUsername(e.target.value)}*/
+                value={signUpData.username}
+                onChange={handleChange}
               />
             </div>
             <div className="formGroup">
-              <label htmlFor="signupEmail">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="signupEmail"
+                name='email'
                 placeholder="Enter email"
-                /*value={email}
-                onChange={(e) => setEmail(e.target.value)}*/
+                value={signUpData.email}
+                onChange={handleChange}
               />
             </div>
             <div className="formGroup">
-              <label htmlFor="signupPassword">Password:</label>
+              <label htmlFor="password">Password:</label>
               <input
                 type="password"
                 id="signupPassword"
+                name="password"
                 placeholder="Enter password"
-                /*value={signupPassword}
-                onChange={(e) => setSignupPassword(e.target.value)}*/
+                value={signUpData.password}
+                onChange={handleChange}
               />
             </div>
             <div className="formGroup">
@@ -66,9 +74,10 @@ const Signup = ({ showSignupModal }) => {
               <input
                 type="password"
                 id="confirmPassword"
+                name="confirmPassword"
                 placeholder="Confirm password"
-                /*value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}*/
+                value={signUpData.confirmPassword}
+                onChange={handleChange}
               />
             </div>
             {/*error && <div className='errors'>{error}</div>*/}

@@ -1,7 +1,10 @@
 import React from 'react';
 import '../CompStyles/FormStyle.css';
+import { useLogin } from 'Hooks';
 
 const Login = ({ showLoginModal }) => {
+
+  const { loginData, handleChange, handleSubmit } = useLogin();
 
   return (
     <div className={showLoginModal ? 'modal-overlay' : 'modal-hidden'}>
@@ -10,25 +13,27 @@ const Login = ({ showLoginModal }) => {
           <span>Login</span>
         </div>
         <div className="modalBody">
-          <form /*onSubmit={handleFormSubmit}*/>
+          <form onSubmit={handleSubmit}>
             <div className="formGroup">
-              <label htmlFor="loginEmail">Email address:</label>
+              <label htmlFor="email">Email address:</label>
               <input
                 type="email"
                 id="loginEmail"
+                name="email"
                 placeholder="Enter email"
-                /*value={email}
-                onChange={(e) => setEmail(e.target.value)}*/
+                value={loginData.email}
+                onChange={handleChange}
               />
             </div>
             <div className="formGroup">
-              <label htmlFor="loginPassword">Password:</label>
+              <label htmlFor="password">Password:</label>
               <input
                 type="password"
                 id="loginPassword"
+                name="password"
                 placeholder="Enter password"
-                /*value={password}
-                onChange={(e) => setPassword(e.target.value)}*/
+                value={loginData.password}
+                onChange={handleChange}
               />
             </div>
             {/*error && <div className="errors">{error}</div>*/}

@@ -5,7 +5,7 @@ const initialState = {
     isLogin: false,
     isAdmin: false,
 }
- export const authSlice = createSlice({
+export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
@@ -16,22 +16,18 @@ const initialState = {
         logUserOut: (state, action) => {
             clearUserCookie(action.payload);
             state.isLogin = false;
-        }
-        ,
+        },
         logAdminIn: (state, action) => {
             setAdminCookie(action.payload);
             state.isAdmin = true;
-        }
-        ,
+        },
         logAdminOut: (state, action) => {
             clearAdminCookie(action.payload);
             state.isAdmin = false;
-        }
-        ,
+        },
     },
 });
 
-export const { logUserIn, logUserOut, logAdminIn, logAdminOut } = authSlice.actions; 
+export const { logUserIn, logUserOut, logAdminIn, logAdminOut } = authSlice.actions;
 
 export default authSlice.reducer;
-    

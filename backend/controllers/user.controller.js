@@ -2,7 +2,7 @@ const DBmongo = require("../services/users.service")
 const users = new DBmongo("NFTMarketPlace", "users");
 const { generatePasswordService } = require("../services/hash.service")
 
-const getUserById = async (req,res) => {
+const getUserById = async (req, res) => {
 
     const userId = "64e6fb5ffc3a37f2870ee4ba"
     const user = await users.getById(userId)
@@ -10,12 +10,12 @@ const getUserById = async (req,res) => {
 
 }
 
-const getAllUsers = async (req,res) => {
+const getAllUsers = async (req, res) => {
     const allUsers = await users.get()
     res.status(200).send(allUsers)
 }
 
-const updateUser =  async (req,res) => {
+const updateUser = async (req, res) => {
     const userId = "64e6fb5ffc3a37f2870ee4ba"
     const data = {
         firstName: "Gidonchanged",
@@ -23,7 +23,7 @@ const updateUser =  async (req,res) => {
         username: "gidskids",
         email: "sully@gmail.com",
         password: "new",
-        
+
     }
     const user = await users.findUserByEmailService(data.email)
     if (user) {
@@ -46,7 +46,7 @@ const addNewUser = async (req, res) => {
         username: "gidskids",
         email: "changedsuccesully@gmail.com",
         password: "new",
-        
+
     }
 
     const user = await users.findUserByEmailService(data.email);
@@ -72,7 +72,7 @@ const addNewUser = async (req, res) => {
     }
 }
 
-const deleteUser = async (req,res) => {
+const deleteUser = async (req, res) => {
     const userId = "64e6fb5ffc3a37f2870ee4ba"
     await users.deleteUserService(userId)
     res.send("User deleted succesfully")

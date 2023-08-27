@@ -5,8 +5,8 @@ const { addNewUser, getUserById, getAllUsers, updateUser, deleteUser } = require
 
 route.get('/', getAllUsers);
 route.get('/:id', getUserById);
-route.post('/', addNewUser)
+route.post('/', addNewUser);
 route.put('/:id', updateUser);
-route.delete('/:id', deleteUser)
+route.delete('/:id', deleteUser);
 
 module.exports = route;

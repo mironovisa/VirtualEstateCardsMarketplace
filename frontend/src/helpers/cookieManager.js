@@ -12,7 +12,7 @@ const setCookie = (name, value, days) => {
 const getCookie = (name) => {
     const cookieName = `${name}=`;
     const cookies = document.cookie.split(';');
-    
+
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i];
         while (cookie.charAt(0) === ' ') {
@@ -22,7 +22,7 @@ const getCookie = (name) => {
             return cookie.substring(cookieName.length, cookie.length);
         }
     }
-    
+
     return null;
 }
 const deleteCookie = (name) => {
@@ -30,27 +30,23 @@ const deleteCookie = (name) => {
 }
 
 
-export const getUserFromCookie = () =>{
-    return getCookie(USER_ID); 
+export const getUserFromCookie = () => {
+    return getCookie(USER_ID);
 }
-export const setUserCookie = (id) =>{ 
+export const setUserCookie = (id) => {
     setCookie(USER_ID, id, 1);
 }
-export const clearUserCookie = () =>{
+export const clearUserCookie = () => {
     deleteCookie(USER_ID);
 }
 
 
-export const getAdminFromCookie = () =>{
+export const getAdminFromCookie = () => {
     return getCookie(ADMIN_ID);
 }
-export const setAdminCookie = (id) =>{ 
+export const setAdminCookie = (id) => {
     setCookie(ADMIN_ID, id, 1);
 }
-export const clearAdminCookie = () =>{
+export const clearAdminCookie = () => {
     deleteCookie(ADMIN_ID);
 }
-
-
-
-
