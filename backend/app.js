@@ -2,8 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { verify } = require('./utils/jwt');
-
+const { verify } = require("./utils/jwt");
 
 app.use(
   cors({
@@ -13,26 +12,24 @@ app.use(
 
 app.use(express.json());
 
-app.use((req,res,next) => {
-
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTI4NjE2MjksImV4cCI6MTY5Mjk0ODAyOX0.Kb1MU-SNQUde8RKDbVXmHG4R3fXd-8KfSaXAd0cW5ks"
+app.use((req, res, next) => {
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTI4NjE2MjksImV4cCI6MTY5Mjk0ODAyOX0.Kb1MU-SNQUde8RKDbVXmHG4R3fXd-8KfSaXAd0cW5ks";
   const data = verify(token);
 
-  
   if (!data) {
-    return res.status(401).send('user not allowed')
+    return res.status(401).send("user not allowed");
   }
 
   console.log(data);
 
-  next()
+  next();
+});
 
-
-})
-
-app.use('/users', require("../backend/routes/users.route"));
-app.use('/auth', require('./routes/auth.route'));
+app.use("/users", require("../backend/routes/users.route"));
+app.use("/auth", require("./routes/auth.route"));
+app.use("/datagen", require("./routes/datagen.route"));
 
 app.listen(3001, () => {
-    console.log('connected on port 3001');
+  console.log("connected on port 3001");
 });
