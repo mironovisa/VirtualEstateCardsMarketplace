@@ -5,13 +5,13 @@ const Signup = ({ showSignupModal }) => {
 
   return (
     <div className={showSignupModal ? 'modal-overlay' : 'modal-hidden'}>
-      <div className="modalContainer">
-        <div className="modalHeader">
+      <div className="modal-container">
+        <div className="modal-header">
           <span>Signup</span>
         </div>
-        <div className="modalBody">
+        <div className="modal-body">
           <form /*onSubmit={handleFormSubmit}*/>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="firstName">First Name:</label>
               <input 
                 type="text"
@@ -21,7 +21,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={(e) => setFirstName(e.target.value)}*/
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="lastName">Last Name:</label>
               <input
                 type="text"
@@ -31,7 +31,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={(e) => setLastName(e.target.value)}*/
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="phoneNumber">Username:</label>
               <input
                 type="text"
@@ -41,7 +41,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={(e) => setUsername(e.target.value)}*/
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="signupEmail">Email</label>
               <input
                 type="email"
@@ -51,7 +51,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={(e) => setEmail(e.target.value)}*/
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="signupPassword">Password:</label>
               <input
                 type="password"
@@ -61,7 +61,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={(e) => setSignupPassword(e.target.value)}*/
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password:</label>
               <input
                 type="password"
@@ -73,7 +73,7 @@ const Signup = ({ showSignupModal }) => {
             </div>
             {/*error && <div className='errors'>{error}</div>*/}
             <div className="modalFooter">
-              <button type="submit" className="btnSign">
+              <button type="submit" className="btn-sign">
                 Signup
               </button>
             </div>

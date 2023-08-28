@@ -21,7 +21,7 @@ input:focus {
     outline: none; 
 }
 
-.formGroup {
+.form-group {
     color:var(--prussian-blue);
     display: flex;
     justify-content: space-between;
@@ -30,21 +30,21 @@ input:focus {
     margin-bottom: 20px;
 }
   
-.formGroup label {
+.form-group label {
     align-self: flex-end;
 }
 
-.modalHeader {
+.modal-header {
     margin-top: 20px;
     text-align: center;
 }
 
-.modalFooter{
+.modal-footer{
     display: flex;
     justify-content: space-between;
 }
 
-.btnSign {
+.btn-sign {
     flex-grow: 1;
     text-align: center;
     max-height: 65px;

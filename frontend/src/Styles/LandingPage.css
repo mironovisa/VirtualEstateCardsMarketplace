@@ -23,18 +23,22 @@
   
   .intro-text{
   
-    color: #ccc;
+    color: black;
   }
   
   .news-component {
     background-color: var( --purple);
   }
+  .news-container,
+.horizontal-list-container {
+  transform: skewX(0);
+}
 
-  .news-card {
+  /*.news-card {
     width: 400px;
     height: 400px;
     margin: 0 10px;
     border: 1px solid #ccc;
     background-color: #fff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  }*/

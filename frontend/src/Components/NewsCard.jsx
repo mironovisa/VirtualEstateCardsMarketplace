@@ -1,4 +1,5 @@
 import React from 'react';
+import '../CompStyles/NewsCard.css'
 
 const NewsCard = ({ title, content }) => {
   return (

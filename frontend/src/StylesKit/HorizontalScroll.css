@@ -1,0 +1,43 @@
+.list-container {
+  display: flex;
+  max-width: 800px;
+  min-width: 350px;
+  height: 500px;
+  margin: 10px;
+  border: 10px solid black;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+}
+
+.list {
+  height: 100%; /* Use 100% height to fill the container vertically */
+  background: #f3f3f3;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.item {
+  display: inline-block;
+  width: auto;
+  height: 100%; /* Use 100% height to match the container's height */
+  outline: 1px dotted gray;
+  padding: 0 15px; /* Adjust padding as needed */
+  box-sizing: border-box;
+}
+
+.paddle {
+  width: 80px;
+  height: 100%; /* Use 100% height to match the container's height */
+  background-color: var(--melon);
+  color: black;
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
+}

@@ -5,13 +5,13 @@ const Login = ({ showLoginModal }) => {
 
   return (
     <div className={showLoginModal ? 'modal-overlay' : 'modal-hidden'}>
-      <div className="modalContainer">
-        <div className="modalHeader">
+      <div className="modal-container">
+        <div className="modal-header">
           <span>Login</span>
         </div>
-        <div className="modalBody">
+        <div className="modal-body">
           <form /*onSubmit={handleFormSubmit}*/>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="loginEmail">Email address:</label>
               <input
                 type="email"
@@ -21,7 +21,7 @@ const Login = ({ showLoginModal }) => {
                 onChange={(e) => setEmail(e.target.value)}*/
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="loginPassword">Password:</label>
               <input
                 type="password"
@@ -32,7 +32,7 @@ const Login = ({ showLoginModal }) => {
               />
             </div>
             {/*error && <div className="errors">{error}</div>*/}
-            <div className="modalFooter">
+            <div className="modal-footer">
               <button type="submit" className="btnSign">
                 Login
               </button>

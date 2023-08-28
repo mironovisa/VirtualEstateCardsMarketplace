@@ -34,11 +34,80 @@ h2 {
 }
 
 /* Item/User/Trend Cards */
-.item-card,
-.user-card,
-.trend-card {
+
+.page-title-1{
+    margin-top:300px;
+}
+
+.page-title{
+  margin-top: 150px;
+}
+
+
+.page-title-1, .page-title{
+    color: #ffffff; 
+    text-align: center;
+    font-size: 45px;
+}
+
+
+.item-card, .user-card, .trend-card {
   width: 300px;
   height: 400px;
   margin: 10px; /* Add some spacing between cards */
   background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.page{
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: blue;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Libre Baskerville';
+  box-shadow: 0 10px 15px #00000060;
+}
+.page a{
+  text-decoration: underline;
+  color: #efefffcc;
+  mix-blend-mode: overlay;
+
+}
+.fs {
+  z-index: 5;
+  background-color: red;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.sc {
+  background-color: yellow;
+  z-index: 4;
+  background-size: cover;
+  background-position: 0% 70%;
+  background-repeat: no-repeat;
+}
+
+.th {
+  background-color: green;
+  z-index: 3;
+  background-size: cover;
+  background-position: 0% 70%;
+  background-repeat: no-repeat;
 }
