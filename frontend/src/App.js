@@ -82,7 +82,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './Views/LandingView/LandingPage';
-import MarketPage from './Views/MarketView/MarketPage';
 import AdminPage from './Views/AdminDashboardView/AdminPage';
 import ProfilePage from './Views/ProfileView/ProfilePage';
 import AboutPage from './Views/AboutView/AboutPage';
@@ -105,7 +104,6 @@ function App() {
                 <NavLink to="/"> LandingPage </NavLink>
                 <NavLink to="/home"> Home </NavLink>
                 <NavLink to="/profile"> Profile </NavLink>
-                <NavLink to="/market"> Market </NavLink>
                 <NavLink to="/about"> About </NavLink>
                 {isLoggedIn && <NavLink to="/dashboard"> Dashboard </NavLink>}
                 
@@ -129,7 +127,6 @@ function App() {
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/market" element={<MarketPage />} />
                     <Route path="/about" element={<AboutPage />} />
                     {isLoggedIn && <Route path="/dashboard" element={<AdminPage />} />}
                    

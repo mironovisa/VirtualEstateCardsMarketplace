@@ -1,23 +1,3 @@
-
-/*import React from 'react';
-import '../Styles/LandingPage.css';
-
-
-const SigninModal = () => {
-    return (
-        <div>
-            <h1>signup</h1>
-        </div>
-    )
-}
-
-export default SigninModal;*/
-
-
-//////////////
-
-
-
 import React, { useState, useEffect } from 'react';
 import Login from '../../Components/LoginForm';
 import Signup from '../../Components/SignupForm';

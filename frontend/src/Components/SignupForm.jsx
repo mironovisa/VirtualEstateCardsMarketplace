@@ -8,13 +8,13 @@ const Signup = ({ showSignupModal }) => {
 
   return (
     <div className={showSignupModal ? 'modal-overlay' : 'modal-hidden'}>
-      <div className="modalContainer">
-        <div className="modalHeader">
+      <div className="modal-container">
+        <div className="modal-header">
           <span>Signup</span>
         </div>
-        <div className="modalBody">
+        <div className="modal-body">
           <form onSubmit={handleSubmit}>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="firstName">First Name:</label>
               <input 
                 type="text"
@@ -25,7 +25,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="lastName">Last Name:</label>
               <input
                 type="text"
@@ -36,7 +36,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input
                 type="text"
@@ -47,7 +47,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -58,7 +58,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="password">Password:</label>
               <input
                 type="password"
@@ -69,7 +69,7 @@ const Signup = ({ showSignupModal }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="formGroup">
+            <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password:</label>
               <input
                 type="password"
@@ -81,8 +81,8 @@ const Signup = ({ showSignupModal }) => {
               />
             </div>
             {/*error && <div className='errors'>{error}</div>*/}
-            <div className="modalFooter">
-              <button type="submit" className="btnSign">
+            <div className="modal-footer">
+              <button type="submit" className="login-btn">
                 Signup
               </button>
             </div>

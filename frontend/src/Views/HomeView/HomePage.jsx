@@ -1,22 +1,20 @@
 import React from 'react';
-import '../../Styles/HomePage.css'; // Import your CSS file for styling
-import TopUsers from './TopUsers';
-import TopItems from './TopItems';
-import Trends from './Trends';
+import CardList from './CardList';
+import SearchNavBar from './SearchNavBar';
+import '../../Styles/HomePage.css';
 
 const HomePage = () => {
-    return (
-      <div className="home-page">
-        <h2>Top Users</h2>
-        <TopUsers />
-        
-        <h2>Top Items</h2>
-        <TopItems />
-  
-        <h2>Trends</h2>
-        <Trends />
+  return (
+    <div className="home-page">
+      <div className="search-nav-bar-container">
+        <SearchNavBar />
       </div>
-    );
-  };
-  
-  export default HomePage;
+      <div className="card-list-container">
+        <h2>List</h2>
+        <CardList />
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
