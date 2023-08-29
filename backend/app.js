@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { verify } = require("./utils/jwt");
+const DBmongo = require("./services/users.service");
+const users = new DBmongo("NFTMarketPlace", "users");
+const dailyConnectionCheck = require("./utils/connection.check");
 
 app.use(
   cors({
@@ -12,8 +15,7 @@ app.use(
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-
+app.use(async (req, res, next) => {
   if (
     (req.method === 'POST' && req.url === '/auth/login') ||
     (req.method === 'POST' && req.url === '/users') ||
@@ -27,17 +29,26 @@ app.use((req, res, next) => {
   console.log(req.body);
 
   console.log(req.headers, 'token');
+
   const data = verify(token);
 
   if (!data) {
     return res.status(401).send("user not allowed");
   }
+  const me = await users.getById(data.id);
+  req.me = me;
 
   console.log(data);
 
 
   next();
 });
+
+app.use(dailyConnectionCheck, (req, res, next) => {
+  next();
+});
+
+
 
 
 app.use("/users", require("../backend/routes/users.route"));

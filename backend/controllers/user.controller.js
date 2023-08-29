@@ -19,7 +19,7 @@ const getAllUsers = async (req, res) => {
 const updateUser = async (req, res) => {
     const userId = req.headers.userid
 
-    const {firstName, lastName, username, email, password} = req.body
+    const { firstName, lastName, username, email, password } = req.body
 
     console.log(req.body, 'req,body');
 
@@ -52,7 +52,7 @@ const updateUser = async (req, res) => {
         console.log(error);
         return res.status(500).send("Something went wrong")
     }
-    
+
 
     res.send("success")
 }
@@ -60,15 +60,9 @@ const updateUser = async (req, res) => {
 const addNewUser = async (req, res) => {
     const { firstName, lastName, username, email, password } = req.body;
 
-    // change to be req.body
 
     const data = {
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        email: email,
-        password: password,
-
+        firstName, lastName, username, email, password,
     }
 
     const user = await users.findUserByEmailService(data.email);
