@@ -1,20 +1,36 @@
 import axios from "axios";
+import { getStorageToken, getStorageUser } from "../../Auth/storage"
+
+const userId = getStorageUser();
+const accessToken = getStorageToken();
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_PORT,
-});
+  baseURL: process.env.REACT_APP_API_PORT
+})
 
-//- implement getting logged user id and set it up to the headers in a function
-
-export const api = {
-  send: async (method, url, payload) => {
-    if (method === 'get' || method === 'delete') {
-      const res = await instance[method](url);
-      return res.data;
-    } else {
-      const res = await instance[method](url, payload);
-      return res.data;
-    }
+const getConfig = () => {
+  return {
+      headers: {
+          userId: userId,
+          accessToken: accessToken,
+      }
   }
 }
 
+export const api = {
+  send: async (method, url, payload) => {
+      if (method === 'get') {
+          const resp = await instance[method](url, { ...getConfig(), params: payload });
+          return resp.data;
+      } else {
+          if (!payload) {
+              const resp = await instance[method](url, getConfig());
+              return resp.data;
+          } else {
+              const resp = await instance[method](url, payload, getConfig());
+              return resp.data;
+          }
+      }
+
+  }
+}

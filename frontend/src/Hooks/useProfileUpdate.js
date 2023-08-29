@@ -1,3 +1,4 @@
+import { getStorageUser } from "Auth/storage";
 import { usersApi } from "helpers/Api";
 import { useState } from "react";
 
@@ -8,7 +9,6 @@ export const useProfileUpdate = () => {
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
   });
 
   const handleChange = (e) => {
@@ -19,9 +19,11 @@ export const useProfileUpdate = () => {
     }));
   };
 
+  console.log(updatedUserData);
+
   //* import loggedUserID form cookies and pass in the function
   const handleProfileUpdate = () => {
-    usersApi.updateUser("loggedUserId", updatedUserData)
+    usersApi.updateUser(getStorageUser(), updatedUserData)
       .then((res) => {
         console.log(res);
       })

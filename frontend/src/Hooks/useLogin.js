@@ -1,5 +1,7 @@
 import { authApi } from "helpers/Api";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { authContext } from "Auth/authContext";
+
 
 export const useLogin = () => {
   const [loginData, setLoginData] = useState({
@@ -7,10 +9,14 @@ export const useLogin = () => {
     password: '',
   });
 
+  const { login } = useContext(authContext);
+
   const handleLogin = () => {
     authApi.login(loginData)
       .then((res) => {
         console.log(res);
+        login(res.userid, res.access_token)
+
       })
       .catch((err) => {
         console.log(err);

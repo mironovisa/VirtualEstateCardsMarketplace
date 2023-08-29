@@ -13,7 +13,7 @@ app.use(
 app.use(express.json());
 
 app.use((req, res, next) => {
-  return next();
+
   if (
     (req.method === 'POST' && req.url === '/auth/login') ||
     (req.method === 'POST' && req.url === '/users') ||
@@ -22,8 +22,11 @@ app.use((req, res, next) => {
     return next();
   }
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTI4NjE2MjksImV4cCI6MTY5Mjk0ODAyOX0.Kb1MU-SNQUde8RKDbVXmHG4R3fXd-8KfSaXAd0cW5ks";
+  const token = req.headers.accesstoken
+
+  console.log(req.body);
+
+  console.log(req.headers, 'token');
   const data = verify(token);
 
   if (!data) {
@@ -32,8 +35,10 @@ app.use((req, res, next) => {
 
   console.log(data);
 
+
   next();
 });
+
 
 app.use("/users", require("../backend/routes/users.route"));
 app.use("/auth", require("./routes/auth.route"));

@@ -87,18 +87,16 @@ import ProfilePage from './Views/ProfileView/ProfilePage';
 import AboutPage from './Views/AboutView/AboutPage';
 import HomePage from './Views/HomeView/HomePage';
 import SignInModal from './Views/LandingView/SignInModal'; 
+import { useContext } from 'react';
+import { authContext } from 'Auth/authContext';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { isLoggedIn, logout } = useContext(authContext);
     const [modalComponent, setModalComponent] = useState(null);
     const userIcon = localStorage.getItem('userIcon');
 
-    const logout = () => {
-       setIsLoggedIn(false)
-    };
 
     return (
-    <Router>
         <div className="app">
             <nav>
                 <NavLink to="/"> LandingPage </NavLink>
@@ -115,7 +113,7 @@ function App() {
                 ) : (
                     <>
                         <div className='rightNav'>
-                            <button className="logout-btn" onClick={logout}></button>
+                            <button className="logout-btn" onClick={logout}>Logout</button>
                             <div className="user-icon">{userIcon}</div>
                         </div>
                     </>
@@ -140,7 +138,6 @@ function App() {
             </section>
           </main>
         </div>
-    </Router>
   );
 };
 
