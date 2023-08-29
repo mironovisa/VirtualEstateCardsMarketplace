@@ -4,6 +4,8 @@ import { getStorageToken, getStorageUser } from "../../Auth/storage"
 const userId = getStorageUser();
 const accessToken = getStorageToken();
 
+console.log(userId, 'api userid');
+
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_PORT
 })
@@ -16,6 +18,7 @@ const getConfig = () => {
       }
   }
 }
+
 
 export const api = {
   send: async (method, url, payload) => {

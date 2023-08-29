@@ -17,7 +17,13 @@ const getAllUsers = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const userId = req.headers.userid
+
+    const userId = req.params.id
+    const test = req.params.id
+
+    console.log(test, 'test');
+
+    console.log(userId, 'useridddd');
 
     const {firstName, lastName, username, email, password} = req.body
 
@@ -31,6 +37,7 @@ const updateUser = async (req, res) => {
         password: password,
 
     }
+
     const user = await users.findUserByEmailService(data.email)
 
     if (user) {
@@ -38,11 +45,10 @@ const updateUser = async (req, res) => {
     }
 
     try {
-        console.log("Arrived here");
         generatePasswordService(data.password, async (hash) => {
-            console.log(hash, 'hash');
             data.password = hash
             console.log(data.password);
+            console.log(userId, 'userid here');
             const resp = await users.updateUserService(userId, data)
 
             res.status(201).send(resp);

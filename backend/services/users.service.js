@@ -45,6 +45,8 @@ class DBmongo {
 
   updateUserService = async (userId, user) => {
     const cols = await run(this.database, this.collection);
+    const find = await cols.findOne({ _id: new ObjectId(userId) });
+    console.log(find, 'finddd');
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
       {
