@@ -86,7 +86,7 @@ import AdminPage from './Views/AdminDashboardView/AdminPage';
 import ProfilePage from './Views/ProfileView/ProfilePage';
 import AboutPage from './Views/AboutView/AboutPage';
 import HomePage from './Views/HomeView/HomePage';
-import SignInModal from './Views/LandingView/SignInModal'; 
+import SignInModal from './Views/SignInModal'; 
 import { useContext } from 'react';
 import { authContext } from 'Auth/authContext';
 

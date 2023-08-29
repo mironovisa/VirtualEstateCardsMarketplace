@@ -1,11 +1,18 @@
-.modal-container {
-  display: grid;
-  place-items: center;
-  height: 100vh; 
+/*.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 15%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  border: 5px solid fuchsia;
 }
 
-.signupModal {
+.signup-modal {
     border: var(--piction-blue) 5px solid;
     background-color: var(--melon);
     display: flex;
@@ -16,30 +23,31 @@
     width: 500px;
     padding: 40px;
     border-radius: 25px;
-    
     transition: max-height 0.1s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    padding-bottom: 20px;
   }
   
-  .signupModal:hover {
+  .signup-modal:hover {
     transform: scale(1.02);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
   }
   
-  .signupModal.loginActive {
+  .signup-modal.loginActive {
     height: 350px;
   }
   
-  .signupModal.popout {
+  .signup-modal.popout {
     transform: scale(1.1);
   }
   
-  .topModal {
+  .top-modal {
     display: flex;
     justify-content: space-between;
   }
   
-  .topModal button, .closeBtn{
+  .top-modal button, .close-btn{
     flex-grow: 1;
     text-align: center;
     padding: 15px;
@@ -50,7 +58,7 @@
     cursor: pointer;
   }
   
-  .topModal button {
+  .top-modal button {
     margin-top: -20px;
     background-color: var(--steel-blue);
     color: var(--melon-2);
@@ -64,16 +72,16 @@
     border-radius: 0 20px 20px 0;
   }
   
-  .topModal button:hover {
+  .top-modal button:hover {
     background-color: var(--lapis-lazuli);
   }
   
-  .topModal button.active {
+  .top-modal button.active {
     background-color: var(---prussian-blue);
     color:var(--coral-pink)
   }
   
-  .closeBtn {
+  .close-btn {
     max-height: 65px;
     min-height: 55px;
     margin-top: 20px;
@@ -83,20 +91,29 @@
     border-radius: 20px;
   }
   
-  .closeBtn:hover {
+  .close-btn:hover {
     background-color: var(--lapis-lazuli);
     color: var(--melon-2);
     transform: scale(1.01);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
   }
   
-  .closeBtn.active {
+  .close-btn.active {
     color: var(---prussian-blue);
     background-color: var(--coral-pink);
   }
+
+  .bottom-modal {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; 
+    padding: 20px; 
+  }
   
   @media (min-width: 370px) and (max-width: 450px) and (min-height: 800px) {
-    .signupModal {
+    .signup-modal {
       border: var(--piction-blue) 3px solid;
       margin-top: 80px;
       min-height: 400px;
@@ -109,17 +126,148 @@
     }
     
     
-    .topModal button, .closeBtn{
+    .top-modal button, .closeBtn{
       padding: 10px;
       margin-left: -10px;
       margin-right: -10px;
     }
     
-    .topModal button {
+    .top-modal button {
       margin-top: -10px;
     }
     
-    .closeBtn {
+    .close-btn {
+      height: 35px;
+      margin-top: 15px;
+      border-radius: 25px;
+    }
+  }*/
+
+  .signup-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+  }
+
+
+
+  .signup-modal {
+    border: var(--piction-blue) 5px solid;
+    background-color: var(--melon);
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+    min-height: 500px;
+    min-width: 500px;
+    padding: 40px;
+    border-radius: 25px;
+    max-height: 100%;
+    transition: max-height 0.1s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .signup-modal:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .signup-modal.login-active {
+    height: 350px;
+  }
+  
+  .signup-modal.popout {
+    transform: scale(1.1);
+  }
+  
+  .top-modal {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .top-modal button, .closeBtn{
+    flex-grow: 1;
+    text-align: center;
+    padding: 15px;
+    margin-left: -20px;
+    margin-right: -20px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .top-modal button {
+    margin-top: -20px;
+    background-color: var(--steel-blue);
+    color: var(--melon-2);
+  }
+  
+  .left{
+    border-radius: 20px 0 0 20px;
+  }
+  
+  .right{
+    border-radius: 0 20px 20px 0;
+  }
+  
+  .top-modal button:hover {
+    background-color: var(--lapis-lazuli);
+  }
+  
+  .top-modal button.active {
+    background-color: var(---prussian-blue);
+    color:var(--coral-pink)
+  }
+  
+  .close-btn {
+    max-height: 65px;
+    min-height: 55px;
+    margin-top: 20px;
+    color: var(--melon-2);
+    background-color: var(--picton-blue);
+    transition: box-shadow 0.2s ease;
+    border-radius: 20px;
+  }
+  
+  .close-btn:hover {
+    background-color: var(--lapis-lazuli);
+    color: var(--melon-2);
+    transform: scale(1.01);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .close-btn.active {
+    color: var(---prussian-blue);
+    background-color: var(--coral-pink);
+  }
+  
+  @media (min-width: 370px) and (max-width: 450px) and (min-height: 800px) {
+    .signup-modal {
+      border: var(--piction-blue) 3px solid;
+      margin-top: 80px;
+      min-height: 400px;
+      max-height: 650px;
+      min-width: 300px;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 25px;
+      max-height: 600px;
+    }
+    
+    
+    .top-modal button, .close-btn{
+      padding: 10px;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    
+    .top-modal button {
+      margin-top: -10px;
+    }
+    
+    .close-btn {
       height: 35px;
       margin-top: 15px;
       border-radius: 25px;

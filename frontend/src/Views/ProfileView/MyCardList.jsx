@@ -61,7 +61,7 @@ const sampleImages = [
   
 ];
 
-const CardList = () => {
+const MyCardList = () => {
   return (
     <div className="card-list">
       {sampleImages.map((image) => (
@@ -71,4 +71,4 @@ const CardList = () => {
   );
 };
 
-export default CardList;
+export default MyCardList;

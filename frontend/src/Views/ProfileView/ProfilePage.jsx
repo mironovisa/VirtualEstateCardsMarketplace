@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import '../../Styles/ProfilePage.css';
-import MyCardsView from './MyCardsView';
+import MyCardList from './MyCardList';
 import ProfileUpdate from './ProfileUpdate';
 import PurchasesHistory from './PurchasesHistory';
 
@@ -22,7 +22,7 @@ const ProfilePage = () => {
                 <button onClick={() => handleTabChange('update')}>Update Profile</button>
             </div>
             {activeTab === 'wallet' && <PurchasesHistory />}
-            {activeTab === 'cards' && <MyCardsView />}
+            {activeTab === 'cards' && <MyCardList />}
             {activeTab === 'update' && <ProfileUpdate />}
         </div>
     );

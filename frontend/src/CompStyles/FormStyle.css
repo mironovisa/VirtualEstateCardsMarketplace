@@ -1,3 +1,9 @@
+.modal-container{
+    border: red 5px solid;
+    width:500px;
+    max-height: 600px;
+}
+
 input {
     display: flex;
     padding: var(--gap-s);
@@ -8,7 +14,7 @@ input {
     background-image: var(--misty-rose);
     outline: none; 
     border-radius: 25px; 
-    color: var(--prussian-blue);
+    color: var(--alice-blue);
 }
 
 input:hover,
@@ -22,7 +28,7 @@ input:focus {
 }
 
 .form-group {
-    color:var(--prussian-blue);
+    color:var(--alice-blue);
     display: flex;
     justify-content: space-between;
     gap: var(--gap-m);
