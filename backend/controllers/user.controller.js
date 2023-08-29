@@ -32,6 +32,7 @@ const updateUser = async (req, res) => {
 
     }
     const user = await users.findUserByEmailService(data.email)
+
     if (user) {
         return res.status(400).send("Email already exist");
     }
@@ -57,16 +58,16 @@ const updateUser = async (req, res) => {
 }
 
 const addNewUser = async (req, res) => {
-    // const { email, password } = req.body;
+    const { firstName, lastName, username, email, password } = req.body;
 
     // change to be req.body
 
     const data = {
-        firstName: "Gidon",
-        lastName: "Tuch",
-        username: "gidskids",
-        email: "changedsuccesully@gmail.com",
-        password: "new",
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
+        email: email,
+        password: password,
 
     }
 
@@ -80,7 +81,6 @@ const addNewUser = async (req, res) => {
 
 
     try {
-        console.log("Arrived here");
         generatePasswordService(data.password, async (hash) => {
             const resp = await users.addNewUserService(data, hash);
 
