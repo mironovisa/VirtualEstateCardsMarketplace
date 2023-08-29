@@ -25,7 +25,7 @@ class DBmongo {
   findUserByEmailService = async (email) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.findOne({ email: email });
-    return resp
+    return resp;
   }
 
   addNewUserService = async (user, hash) => {
@@ -48,10 +48,10 @@ class DBmongo {
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
       {
-          $set: user
+        $set: user
       }
-  )
-  return resp;
+    )
+    return resp;
   }
 
   deleteUserService = async (userId) => {

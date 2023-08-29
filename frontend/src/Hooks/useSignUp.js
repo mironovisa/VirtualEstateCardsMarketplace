@@ -12,6 +12,7 @@ export const useSignUp = () => {
   });
 
   const handleSignUp = () => {
+    delete signUpData.confirmPassword;
     usersApi.addNewUser(signUpData)
       .then((res) => {
         console.log(res);

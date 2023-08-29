@@ -21,6 +21,7 @@ export const useProfileUpdate = () => {
 
   //* import loggedUserID form cookies and pass in the function
   const handleProfileUpdate = () => {
+    delete updatedUserData.confirmPassword;
     usersApi.updateUser("loggedUserId", updatedUserData)
       .then((res) => {
         console.log(res);

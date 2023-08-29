@@ -4,19 +4,18 @@ const bcrypt = require('bcrypt');
 const DBmongo = require("../services/users.service")
 const users = new DBmongo("NFTMarketPlace", "users");
 const { sign } = require('../utils/jwt');
-const { findUserByEmailService } = require('../services/users.service');
 
 route.post('/login', async (req, res) => {
     // const { email, password } = req.body;
 
-    
+
     const data = {
         firstName: "Gidon",
         lastName: "Tuch",
         username: "gidskids",
         email: "changedsuccesully@gmail.com",
         password: "new",
-        
+
     }
 
     const user = await users.findUserByEmailService(data.email);

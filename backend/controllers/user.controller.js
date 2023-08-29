@@ -1,7 +1,8 @@
 const DBmongo = require("../services/users.service")
 const users = new DBmongo("NFTMarketPlace", "users");
-const { generatePasswordService } = require("../services/hash.service")
+const { generatePasswordService } = require("../services/hash.service");
 
+new DBmongo("NFTMarketPlace", "users");
 const getUserById = async (req, res) => {
 
     const userId = "64e6fb5ffc3a37f2870ee4ba"
@@ -35,23 +36,14 @@ const updateUser = async (req, res) => {
 }
 
 const addNewUser = async (req, res) => {
-    console.log("addNewUser")
-    // const { email, password } = req.body;
+    const { email, password, firstName, lastName, username } = req.body;
 
-    // change to be req.body
 
     const data = {
-        firstName: "Gidon",
-        lastName: "Tuch",
-        username: "gidskids",
-        email: "changedsuccesully@gmail.com",
-        password: "new",
-
+        firstName, lastName, username, email, password
     }
-
-    const user = await users.findUserByEmailService(data.email);
-
-    console.log(user);
+    console.log("data:", data);
+    const user = await users.findUserByEmailService(email);
     if (user) {
         console.log("already exists");
         return res.status(400).send("Email already exist")
