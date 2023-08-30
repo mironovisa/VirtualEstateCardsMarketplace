@@ -1,14 +1,12 @@
+.intro-text{
+  color: black;
+}
 
-  .intro-text{
+.news-component {
+  background-color: var( --purple);
+}
 
-    color: black;
-  }
-
-  .news-component {
-    background-color: var( --purple);
-  }
-
-  .news-container,
+.news-container,
 .horizontal-list-container {
   transform: skewX(0);
 }

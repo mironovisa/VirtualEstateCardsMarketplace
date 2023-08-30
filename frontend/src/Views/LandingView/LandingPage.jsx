@@ -59,90 +59,86 @@ const LandingPage = () => {
 
   return (
 
-<div class="skw-pages">
-<div class="skw-page skw-page-1 active">
-  <div class="skw-page__half skw-page__half--left">
-    <div class="skw-page__skewed">
-      <div class="skw-page__content">
+<div className="skw-pages">
+<div className="skw-page skw-page-1 active">
+  <div className="skw-page__half skw-page__half--left">
+    <div className="skw-page__skewed">
+      <div className="skw-page__content">
         <Intro />
       </div>
     </div>
   </div>
-  <div class="skw-page__half skw-page__half--right">
-    <div class="skw-page__skewed">
-      <div class="skw-page__content">
-        <h2 class="skw-page__heading">intro view image or text</h2>
-        <p class="skw-page__description">Just scroll down</p>
+  <div className="skw-page__half skw-page__half--right">
+    <div className="skw-page__skewed">
+      <div className="skw-page__content">
+        <h2 className="skw-page__heading">intro view image or text</h2>
+        <p className="skw-page__description">Just scroll down</p>
       </div>
     </div>
   </div>
 </div>
-<div class="skw-page skw-page-2">
-  <div class="skw-page__half skw-page__half--left">
-    <div class="skw-page__skewed">
-      <div class="skw-page__content">
-        {/* Content for Signup Component */}
+<div className="skw-page skw-page-2">
+  <div className="skw-page__half skw-page__half--left">
+    <div className="skw-page__skewed">
+      <div className="skw-page__content">
         <Signup />
       </div>
     </div>
   </div>
-  <div class="skw-page__half skw-page__half--right">
-    <div class="skw-page__skewed">
-      <div class="skw-page__content">
-        <h2 class="skw-page__heading">still haven't signed up? What are you waiting for</h2>
-        <p class="skw-page__description">Are you already a user? Scroll down for login!</p>
+  <div className="skw-page__half skw-page__half--right">
+    <div className="skw-page__skewed">
+      <div className="skw-page__content">
+        <h2 className="skw-page__heading">still haven't signed up? What are you waiting for</h2>
+        <p className="skw-page__description">Are you already a user? Scroll down for login!</p>
       </div>
     </div>
   </div>
 </div>
-<div class="skw-page skw-page-3">
-  <div class="skw-page__half skw-page__half--left">
-    <div class="skw-page__skewed">
-      <div class="skw-page__content">
-        
-        {/* Content for Login Component */}
+<div className="skw-page skw-page-3">
+  <div className="skw-page__half skw-page__half--left">
+    <div className="skw-page__skewed">
+      <div className="skw-page__content">
         <Login />
       </div>
     </div>
   </div>
-  <div class="skw-page__half skw-page__half--right">
-    <div class="skw-page__skewed">
-      <div class="skw-page__content">
-      <h2 class="skw-page__heading">login now!</h2>
-        <p class="skw-page__description">Come and buy some stuff</p>
-        {/* Content for Right Side */}
+  <div className="skw-page__half skw-page__half--right">
+    <div className="skw-page__skewed">
+      <div className="skw-page__content">
+      <h2 className="skw-page__heading">login now!</h2>
+        <p className="skw-page__description">Come and buy some stuff</p>
       </div>
     </div>
   </div>
 </div>
-  <div class="skw-page skw-page-4">
-    <div class="skw-page__half skw-page__half--left">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">visit us on our social media!</h2>
+  <div className="skw-page skw-page-4">
+    <div className="skw-page__half skw-page__half--left">
+      <div className="skw-page__skewed">
+        <div className="skw-page__content">
+          <h2 className="skw-page__heading">visit us on our social media!</h2>
         </div>
       </div>
     </div>
-    <div class="skw-page__half skw-page__half--right">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">links to insta, git, linkedin...</h2>
+    <div className="skw-page__half skw-page__half--right">
+      <div className="skw-page__skewed">
+        <div className="skw-page__content">
+          <h2 className="skw-page__heading">links to insta, git, linkedin...</h2>
         </div>
       </div>
     </div>
   </div>
-  <div class="skw-page skw-page-5">
-    <div class="skw-page__half skw-page__half--left">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">rotating DALL-E generating images</h2>
+  <div className="skw-page skw-page-5">
+    <div className="skw-page__half skw-page__half--left">
+      <div className="skw-page__skewed">
+        <div className="skw-page__content">
+          <h2 className="skw-page__heading">rotating DALL-E generating images</h2>
         </div>
       </div>
     </div>
-    <div class="skw-page__half skw-page__half--right">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">rotating DALL-E generating images</h2>
+    <div className="skw-page__half skw-page__half--right">
+      <div className="skw-page__skewed">
+        <div className="skw-page__content">
+          <h2 className="skw-page__heading">rotating DALL-E generating images</h2>
         </div>
       </div>
     </div>

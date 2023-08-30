@@ -25,25 +25,11 @@
     background-color: #555;
   }
 
-  .items-card {
-    width: 400px;
-    height: 400px;
-    margin: 0 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    color: black;
-  }
 
   .card-list{
     color: black;
   }
 
-  /*****/
-  .my-property-cont{
-    margin-top: 40px;
-
-  }
 
   /****/
   .purchases-history {

@@ -26,7 +26,7 @@ const SearchContainer = () => {
   };
 
   return (
-    <div className="search-property-container">
+    <div className="search-container">
       <h2>Search Properties</h2>
       <form onSubmit={handleSubmit}>
         <div>

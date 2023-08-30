@@ -1,40 +1,40 @@
-.search-property-container {
-  width: 350px;
-  min-height: 100vh; /* Set minimum height to full viewport height */
+.search-container {
+  width: 340px;
+  min-height: 100vh; 
   margin: 0 auto;
   padding: 20px;
   background-color: #f5f5f5;
   color: #333;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex; /* Use Flexbox to vertically center content */
-  flex-direction: column; /* Arrange content vertically */
-  justify-content: center; /* Center content vertically */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
 }
-.search-property-container h2 {
+.search-container h2 {
   margin-bottom: 15px;
 }
 
-.search-property-container form div {
+.search-container form div {
   display: flex;
-  flex-direction: column; /* Vertical order */
+  flex-direction: column; 
   margin-bottom: 10px;
 }
 
-.search-property-container label {
+.search-container label {
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.search-property-container select,
-.search-property-container input {
+.search-container select,
+.search-container input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
 }
 
-.search-property-container button {
+.search-container button {
   display: block;
   margin: 10px auto 0;
   padding: 10px 20px;
@@ -45,6 +45,27 @@
   cursor: pointer;
 }
 
-.search-property-container button:hover {
+.search-container button:hover {
   background-color: #555;
+}
+
+
+@media (max-width: 1024px) {
+  .search-container {
+    width: 50%; 
+    padding: 10px; 
+  }
+
+  .search-container h2 {
+    font-size: 18px; 
+  }
+
+  .search-container select,
+  .search-container input {
+    padding: 6px; 
+  }
+
+  .search-container button {
+    padding: 8px 16px; 
+  }
 }
