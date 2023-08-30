@@ -86,7 +86,7 @@ import AdminPage from './Views/AdminDashboardView/AdminPage';
 import ProfilePage from './Views/ProfileView/ProfilePage';
 import AboutPage from './Views/AboutView/AboutPage';
 import HomePage from './Views/HomeView/HomePage';
-import SignInModal from './Views/SignInModal'; 
+import SigninModal from './Views/SigninModal'; 
 import { useContext } from 'react';
 import { authContext } from 'Auth/authContext';
 
@@ -128,12 +128,12 @@ function App() {
                     <Route path="/about" element={<AboutPage />} />
                     {isLoggedIn && <Route path="/dashboard" element={<AdminPage />} />}
                    
-                    <Route path="/login" element={<SignInModal  setModalComponent={setModalComponent} />} />
-                    <Route path="/signup" element={<SignInModal  setModalComponent={setModalComponent} />} />
+                    <Route path="/login" element={<SigninModal  setModalComponent={setModalComponent} />} />
+                    <Route path="/signup" element={<SigninModal  setModalComponent={setModalComponent} />} />
                     <Route path="/*" element={<Navigate to={isLoggedIn ? '/home' : '/*'} />} />
                   </Routes>
                   {modalComponent && (
-                    <SignInModal setModalComponent={setModalComponent} />
+                    <SigninModal setModalComponent={setModalComponent} />
                   )}
             </section>
           </main>
