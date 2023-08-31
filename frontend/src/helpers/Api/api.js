@@ -1,10 +1,4 @@
 import axios from "axios";
-import { getStorageToken, getStorageUser } from "../../Auth/storage"
-
-const userId = getStorageUser();
-const accessToken = getStorageToken();
-
-console.log(userId, 'api userid');
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_PORT
@@ -13,8 +7,8 @@ const instance = axios.create({
 const getConfig = () => {
   return {
       headers: {
-          userId: userId,
-          accessToken: accessToken,
+          userId: localStorage.getItem("user-id"),
+          accessToken: localStorage.getItem("access-token"),
       }
   }
 }

@@ -47,15 +47,12 @@ const updateUser = async (req, res) => {
     try {
         generatePasswordService(data.password, async (hash) => {
             data.password = hash
-            console.log(data.password);
-            console.log(userId, 'userid here');
             const resp = await users.updateUserService(userId, data)
 
             res.status(201).send(resp);
         })
 
     } catch (error) {
-        console.log(error);
         return res.status(500).send("Something went wrong")
     }
 
@@ -64,6 +61,7 @@ const updateUser = async (req, res) => {
 }
 
 const addNewUser = async (req, res) => {
+
     const { firstName, lastName, username, email, password } = req.body;
 
 
@@ -73,9 +71,7 @@ const addNewUser = async (req, res) => {
 
     const user = await users.findUserByEmailService(data.email);
 
-    console.log(user);
     if (user) {
-        console.log("already exists");
         return res.status(400).send("Email already exist")
     }
 

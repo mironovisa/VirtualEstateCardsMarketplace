@@ -9,6 +9,8 @@ export const useLogin = () => {
     password: '',
   });
 
+  const [error, setError] = useState([]);
+
   const { login } = useContext(authContext);
 
   const handleLogin = () => {
@@ -19,8 +21,8 @@ export const useLogin = () => {
 
       })
       .catch((err) => {
-        console.log(err);
-      })
+        setError({ msg: err.response.data, error: true });
+      });
   }
 
   const handleChange = (e) => {
@@ -37,7 +39,7 @@ export const useLogin = () => {
   };
 
   const values = {
-    loginData, setLoginData, handleChange, handleSubmit
+    loginData, setLoginData, handleChange, handleSubmit, error
   };
 
   return values;

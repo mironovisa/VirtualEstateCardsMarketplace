@@ -4,7 +4,7 @@ import { useLogin } from 'Hooks';
 
 const Login = ({ showLoginModal }) => {
 
-  const { loginData, handleChange, handleSubmit } = useLogin();
+  const { loginData, handleChange, handleSubmit, error } = useLogin();
 
   return (
     <div className={showLoginModal ? 'modal-overlay' : 'modal-hidden'}>
@@ -36,7 +36,7 @@ const Login = ({ showLoginModal }) => {
                 onChange={handleChange}
               />
             </div>
-            {/*error && <div className="errors">{error}</div>*/}
+            {error && <div className="errors">{error.msg}</div>}
             <div className="modal-footer">
               <button type="submit" className="login-btn">
                 Login

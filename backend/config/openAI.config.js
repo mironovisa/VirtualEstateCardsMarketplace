@@ -1,8 +1,8 @@
-const { OpenAI } = require("openai");
+// const { OpenAI } = require("openai");
 
-require("dotenv").config();
-const { DALLE_API_KEY } = process.env;
+// require("dotenv").config();
+// const { DALLE_API_KEY } = process.env;
 
-const OPENAI = new OpenAI({ apiKey: DALLE_API_KEY });
+// const OPENAI = new OpenAI({ apiKey: DALLE_API_KEY });
 
-module.exports = OPENAI;
+// module.exports = OPENAI;

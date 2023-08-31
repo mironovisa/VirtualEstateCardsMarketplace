@@ -16,6 +16,8 @@ app.use(
 app.use(express.json());
 
 app.use(async (req, res, next) => {
+
+  console.log('made it here');
   if (
     (req.method === 'POST' && req.url === '/auth/login') ||
     (req.method === 'POST' && req.url === '/users') ||
@@ -24,19 +26,16 @@ app.use(async (req, res, next) => {
     return next();
   }
 
+  console.log(req.headers, 'headers', req.body, 'body');
   const token = req.headers.accesstoken
 
-  console.log(req.body);
-
-  console.log(req.headers, 'token');
+  console.log(token, 'token');
 
   const data = verify(token);
 
   if (!data) {
     return res.status(401).send("user not allowed");
   }
-  const me = await users.getById(data.id);
-  req.me = me;
 
   console.log(data);
 
@@ -44,16 +43,14 @@ app.use(async (req, res, next) => {
   next();
 });
 
-app.use(dailyConnectionCheck, (req, res, next) => {
-  next();
-});
-
-
-
 
 app.use("/users", require("../backend/routes/users.route"));
 app.use("/auth", require("./routes/auth.route"));
 app.use("/datagen", require("./routes/datagen.route"));
+
+app.use(dailyConnectionCheck, (req, res, next) => {
+  next();
+});
 
 app.listen(3001, () => {
   console.log("connected on port 3001");
