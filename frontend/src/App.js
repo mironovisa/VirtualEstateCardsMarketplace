@@ -95,6 +95,8 @@ function App() {
     const [modalComponent, setModalComponent] = useState(null);
     const userIcon = localStorage.getItem('userIcon');
 
+    console.log('isLoggedIn:', isLoggedIn);
+
 
     return (
         <div className="app">

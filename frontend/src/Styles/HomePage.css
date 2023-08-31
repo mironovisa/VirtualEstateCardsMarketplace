@@ -80,3 +80,70 @@ h1 {
   cursor: pointer;
 }
 
+
+
+@media (max-width: 1050px) and (min-width: 700px) {
+  h1 {
+    margin-top: 80px;
+   font-size: 28px;
+  }
+  
+  /* Layout */
+  .s-layout {
+    font-size: 15px;
+  }
+  
+  .s-layout__sidebar {
+    width: 250px;
+  }
+  
+  .sidebar-collapsed .s-layout__sidebar {
+    --sidebar-width: 30px; 
+  }
+  
+  .sidebar-expanded .s-layout__sidebar {
+    width: 250px;
+  }
+  
+  .toggle-sidebar-btn {
+    bottom: 15px;
+    left: 15px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) and (min-width: 350px) {
+  h1 {
+    margin-top: 40px;
+   font-size: 22px;
+  }
+  
+  /* Layout */
+  .s-layout {
+    font-size: 12px;
+  }
+  
+  .s-layout__sidebar {
+    max-width: 160px;
+  }
+
+  .search-nav-bar{
+    padding: 0;
+    left: 0;
+  }
+  
+  .sidebar-collapsed .s-layout__sidebar {
+    --sidebar-width: 30px; 
+  }
+  
+  .sidebar-expanded .s-layout__sidebar {
+    width: 160px;
+  }
+  
+  .toggle-sidebar-btn {
+    bottom: 10px;
+    left: 10px;
+    padding: 6px;
+  }
+}
+
