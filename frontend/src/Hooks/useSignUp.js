@@ -1,5 +1,6 @@
 import { usersApi } from "helpers/Api";
 import { useState } from "react";
+import { validateInput } from "../Utils/regexValidation";
 
 export const useSignUp = () => {
   const [signUpData, setSignUpData] = useState({
@@ -10,6 +11,15 @@ export const useSignUp = () => {
     password: '',
     confirmPassword: '',
   });
+
+  const regexPatterns = {
+    firstName: /^[A-Za-z]+$/,
+    lastName: /^[A-Za-z]+$/,
+    username: /^[A-Za-z0-9_]+$/,
+    email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
+    password: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
+    confirmPassword: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
+  };
 
   const [error, setError] = useState([]);
 
@@ -33,7 +43,8 @@ export const useSignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSignUp();
+    const isValid = validateInput(signUpData, regexPatterns);
+    if (isValid) handleSignUp();
   };
 
   const values = {

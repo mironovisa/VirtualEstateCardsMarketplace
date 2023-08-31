@@ -1,6 +1,7 @@
 import { authApi } from "helpers/Api";
 import { useState, useContext } from "react";
 import { authContext } from "Auth/authContext";
+import { validateInput } from "../Utils/regexValidation";
 
 
 export const useLogin = () => {
@@ -8,6 +9,11 @@ export const useLogin = () => {
     email: '',
     password: '',
   });
+
+  const regexPatterns = {
+    email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
+    password: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
+  };
 
   const [error, setError] = useState([]);
 
@@ -35,7 +41,8 @@ export const useLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin();
+    const isValid = validateInput(loginData, regexPatterns);
+    if (isValid) handleLogin();
   };
 
   const values = {
