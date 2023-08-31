@@ -8,6 +8,8 @@ const { findUserByEmailService } = require('../services/users.service');
 
 route.post('/login', async (req, res) => {
     const { email, password } = req.body;
+
+    console.log('here');
     
     const data = {
         email: email,

@@ -11,14 +11,16 @@ export const useSignUp = () => {
     confirmPassword: '',
   });
 
+  const [error, setError] = useState([]);
+
   const handleSignUp = () => {
     usersApi.addNewUser(signUpData)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => {
-        console.log(err);
-      })
+        setError({ msg: err.response.data, error: true });
+      });
   }
 
   const handleChange = (e) => {
@@ -35,7 +37,7 @@ export const useSignUp = () => {
   };
 
   const values = {
-    signUpData, setSignUpData, handleSignUp, handleChange, handleSubmit
+    signUpData, setSignUpData, handleSignUp, handleChange, handleSubmit, error
   }
 
   return values;
