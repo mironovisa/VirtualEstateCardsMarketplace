@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../../Components/DALLECard';
 import '../../StylesKit/CardList.css'
+import { motion, AnimatePresence } from 'framer-motion';
 
 const sampleImages = [
   {
@@ -65,7 +66,14 @@ const CardList = () => {
   return (
     <div className="card-list">
       {sampleImages.map((image) => (
-        <Card key={image.ID} image={image} />
+        <motion.div
+          key={image.ID}
+          initial={{ opacity: 0, y: 50 }} // Initial opacity and y position
+          animate={{ opacity: 1, y: 0 }} // Animation on entering the screen
+          exit={{ opacity: 0, y: -50 }} // Animation on exiting the screen
+        >
+          <Card image={image} />
+        </motion.div>
       ))}
     </div>
   );

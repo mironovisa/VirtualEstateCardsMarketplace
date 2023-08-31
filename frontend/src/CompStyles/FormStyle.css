@@ -14,7 +14,7 @@ input {
     background-image: var(--misty-rose);
     outline: none; 
     border-radius: 25px; 
-    color: var(--alice-blue);
+    color: var(--rich-black);
 }
 
 input:hover,
