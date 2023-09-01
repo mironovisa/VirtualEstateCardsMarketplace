@@ -15,21 +15,25 @@ app.use(
 
 app.use(express.json());
 
-app.use(async (req, res, next) => {
+app.get("/", (req, res) => {
+  res.setHeader("Content-Type", "text/html");
+  res.send("<h1>Hey brother</h1>");
+});
 
-  console.log('made it here');
+app.use(async (req, res, next) => {
+  console.log("made it here");
   if (
-    (req.method === 'POST' && req.url === '/auth/login') ||
-    (req.method === 'POST' && req.url === '/users') ||
-    (req.method === 'POST' && req.url.startsWith('/orders'))
+    (req.method === "POST" && req.url === "/auth/login") ||
+    (req.method === "POST" && req.url === "/users") ||
+    (req.method === "POST" && req.url.startsWith("/orders"))
   ) {
     return next();
   }
 
-  console.log(req.headers, 'headers', req.body, 'body');
-  const token = req.headers.accesstoken
+  console.log(req.headers, "headers", req.body, "body");
+  const token = req.headers.accesstoken;
 
-  console.log(token, 'token');
+  console.log(token, "token");
 
   const data = verify(token);
 
@@ -39,19 +43,23 @@ app.use(async (req, res, next) => {
 
   console.log(data);
 
-
   next();
 });
-
 
 app.use("/users", require("../backend/routes/users.route"));
 app.use("/auth", require("./routes/auth.route"));
 app.use("/datagen", require("./routes/datagen.route"));
 
+app.get("/test", (req, res) => {
+  res.send("Route reached");
+});
+
 app.use(dailyConnectionCheck, (req, res, next) => {
   next();
 });
 
-app.listen(3001, () => {
-  console.log("connected on port 3001");
+const port = process.env.PORT || 3001; // DO NOT CHANGE THIS
+
+app.listen(port, () => {
+  console.log(`Connected on port ${port}`);
 });
