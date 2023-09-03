@@ -1,16 +1,3 @@
-
-
-
-// get all images - all images can see
-
-//getimagebyid - all images can see
-
-// put by id - only admin
-
-// delete by id -only admin
-
-// post new image - only admin 
-
 const DBmongo = require("../services/users.service")
 const images = new DBmongo("NFTMarketPlace", "images");
 

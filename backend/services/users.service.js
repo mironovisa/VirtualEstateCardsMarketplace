@@ -60,6 +60,18 @@ class DBmongo {
   return resp;
   }
 
+  updateUserImagesService = async (userId, imageId) => {
+    const cols = await run(this.database, this.collection);
+    const find = await cols.findOne({ _id: new ObjectId(userId) });
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(userId) },
+    {
+      $push: { imagesOwned: imageId }
+    }
+  )
+  return resp;
+  }
+
   updateImageService = async (userId, user) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(userId) });
