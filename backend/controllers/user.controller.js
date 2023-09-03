@@ -7,8 +7,9 @@ const getUserById = async (req, res) => {
     const userId = req.headers.userid
     const user = await users.getById(userId)
     res.status(200).send(user);
-
 }
+
+
 
 const getAllUsers = async (req, res) => {
 
@@ -100,5 +101,5 @@ module.exports = {
     getUserById,
     getAllUsers,
     updateUser,
-    deleteUser
+    deleteUser,
 }

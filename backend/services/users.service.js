@@ -8,11 +8,9 @@ class DBmongo {
   }
 
   get = async () => {
-    console.log('howsit working');
+
     const cols = await run(this.database, this.collection);
-    console.log("here");
     const resp = await cols.find().toArray();
-    console.log("here2");
     return resp;
   };
 
@@ -37,6 +35,12 @@ class DBmongo {
     return resp;
   }
 
+  addNewImageService = async (user) => {
+    const cols = await run(this.database, this.collection);
+    const resp = await cols.insertOne(user)
+    return resp;
+  }
+
   findCollectionLengthService = async () => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.countDocuments({});
@@ -56,7 +60,26 @@ class DBmongo {
   return resp;
   }
 
+  updateImageService = async (userId, user) => {
+    const cols = await run(this.database, this.collection);
+    const find = await cols.findOne({ _id: new ObjectId(userId) });
+    console.log(find, 'finddd');
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(userId) },
+      {
+          $set: user
+      }
+  )
+  return resp;
+  }
+
   deleteUserService = async (userId) => {
+    const cols = await run(this.database, this.collection);
+    const resp = await cols.deleteOne({ _id: new ObjectId(userId) });
+    return resp
+  }
+
+  deleteImageService = async (userId) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.deleteOne({ _id: new ObjectId(userId) });
     return resp

@@ -47,6 +47,7 @@ app.use(async (req, res, next) => {
 });
 
 app.use("/users", require("../backend/routes/users.route"));
+app.use("/images", require("../backend/routes/images.route"));
 app.use("/auth", require("./routes/auth.route"));
 app.use("/datagen", require("./routes/datagen.route"));
 
