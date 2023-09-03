@@ -96,10 +96,25 @@ const deleteUser = async (req, res) => {
     res.send("User deleted succesfully")
 }
 
+const userBoughtImage = async (req, res) => {
+    // const {uri, description, isSold, title, isInCart} = req.body
+
+    const userId = "64f4556a595a542ed038888f"
+    const ImageId = "64f4589da54828bc9f9df846"
+
+    const resp = await users.updateUserImagesService(userId, ImageId);
+
+    res.status(201).send(resp);
+
+}
+
+
+
 module.exports = {
     addNewUser,
     getUserById,
     getAllUsers,
     updateUser,
     deleteUser,
+    userBoughtImage
 }

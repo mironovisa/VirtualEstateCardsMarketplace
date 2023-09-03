@@ -29,7 +29,7 @@ export const useSignUp = () => {
         console.log(res);
       })
       .catch((err) => {
-        setError({ msg: err.response.data, error: true });
+        setError(err.response.data);
       });
   }
 

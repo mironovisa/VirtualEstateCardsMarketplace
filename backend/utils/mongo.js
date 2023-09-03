@@ -18,10 +18,8 @@ async function run(db, col) {
     await client.connect();
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
-
     const database = client.db(db);
     const collection = database.collection(col);
-
     console.log('mongo connected');
 
     return collection;
