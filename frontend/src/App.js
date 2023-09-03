@@ -6,7 +6,7 @@ import AdminPage from './Views/AdminDashboardView/AdminPage';
 import ProfilePage from './Views/ProfileView/ProfilePage';
 import AboutPage from './Views/AboutView/AboutPage';
 import HomePage from './Views/HomeView/HomePage';
-import SigninModal from './Views/SigninModal'; 
+import SigninModal from './Views/SignInModal'; 
 import { useContext } from 'react';
 import { authContext } from 'Auth/authContext';
 
@@ -23,7 +23,7 @@ function App() {
             <nav className='links-container'>
                 <li><NavLink to="/" className="nav-link underline-effect" activeClassName="active"> Home </NavLink></li>
                 <li><NavLink to="/home" className="nav-link underline-effect" activeClassName="active"> Search </NavLink></li>
-                <li><NavLink to="/profile" className="nav-link underline-effect" activeClassName="active"> Profile </NavLink></li>
+                {isLoggedIn && (<li><NavLink to="/profile" className="nav-link underline-effect" activeClassName="active"> Profile </NavLink></li>)}
                 <li><NavLink to="/about" className="nav-link underline-effect" activeClassName="active"> About </NavLink></li>
                 {isLoggedIn && (
                     <li><NavLink to="/dashboard" className="nav-link underline-effect" activeClassName="active"> Dashboard </NavLink></li>
