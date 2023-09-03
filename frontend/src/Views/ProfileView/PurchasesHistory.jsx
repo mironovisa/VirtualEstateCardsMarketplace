@@ -9,6 +9,27 @@ const PurchasesHistory = () => {
       imageID: 'image001',
       timestamp: '2023-08-30 10:00 AM',
     },
+    {
+      //used as example only
+      orderID: '12345',
+      userID: 'user123',
+      imageID: 'image001',
+      timestamp: '2023-08-30 10:00 AM',
+    },
+    {
+      //used as example only
+      orderID: '12345',
+      userID: 'user123',
+      imageID: 'image001',
+      timestamp: '2023-08-30 10:00 AM',
+    },
+    {
+      //used as example only
+      orderID: '12345',
+      userID: 'user123',
+      imageID: 'image001',
+      timestamp: '2023-08-30 10:00 AM',
+    },
   ];
 
   return (

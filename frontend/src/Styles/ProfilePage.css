@@ -2,38 +2,97 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
-    color: white;
+    margin-top: 80px;
+    color: var(--rich-black);
   }
   
   .tab-buttons {
+    --_gap: 2rem;
     display: flex;
-    gap: 20px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: sticky;
+  }
+
+  .tab-buttons a {
+    color: inherit;
+    opacity: 0.7;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 25px;
   }
   
-  .tab-buttons button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
+  .tab-buttons a.active {
+    color: var(--naples-yellow-2);
+    opacity: 1;
+  }
+  
+  .tab-buttons a:hover,
+  .tab-buttons a:focus-visible {
     cursor: pointer;
+    opacity: 1;
   }
   
-  .tab-buttons button:hover {
-    background-color: #555;
+  .tab-buttons li {
+    overflow: hidden;
+    position: relative;
+    padding: calc(var(--_gap) / 2);
+    min-inline-size: 3rem;
   }
+  
+  .tab-buttons li::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 3px;
+    background-color: var(--naples-yellow-2);
+  
+    translate: var(--_translate, 0);
+    scale: var(--_scale, 0) 1;
+    transition:
+      scale 100ms var(--_scale-delay, 0ms), 
+      translate 200ms;
+  }
+  
+  .tab-buttons li:hover ~ li {
+    --_translate: -100%;
+    --_scale-delay: 200ms;
+  }
+  
+  .profile-page:hover li {
+    --_translate: 100%;
+    --_scale-delay: 200ms;
+  }
+  
+  .tab-buttons li:hover {
+    --_scale: 1;
+    --_translate: 0;
+    --_scale-delay: 0ms;
+  }
+  
 
-
+  
+/*cardList*/
   .card-list{
+    margin-top: 40px;
     color: black;
   }
 
 
-  /****/
+  /*purchases history*/
   .purchases-history {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  /*profile-update*/
+  .profile-update{
+    margin-top: 40px;
   }

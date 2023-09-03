@@ -1,5 +1,4 @@
 .modal-container{
-    border: red 5px solid;
     width:500px;
     max-height: 600px;
 }
@@ -11,16 +10,16 @@ input {
     max-width: 320px;
     align-self: flex-start;
     border: 3px solid var(--periwinkle);
-    background-image: var(--misty-rose);
+    background-image: var(--vanilla);
     outline: none; 
-    border-radius: 25px; 
+    border-radius: 5px; 
     color: var(--rich-black);
 }
 
 input:hover,
 input:active,
 input:focus {
-    border: 3px solid var(--jordy-blue);
+    border: 3px solid var(--jasmine);
 }
 
 input:focus {
@@ -28,7 +27,7 @@ input:focus {
 }
 
 .form-group {
-    color:var(--alice-blue);
+    color:var(--naples-yellow-2);
     display: flex;
     justify-content: space-between;
     gap: var(--gap-m);
@@ -57,10 +56,8 @@ input:focus {
     min-height: 55px;
     padding: 15px;
     margin-top: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
-    background-color: var(--picton-blue);
-    color: var(--melon-2);
+    background-color: var(--naples-yellow);
+    color: var(--rich-black);
     transition: background-color 0.3s ease;
     border: none;
     cursor: pointer;
@@ -68,18 +65,18 @@ input:focus {
 }
 
 .login-btn:hover {
-    background-color: var(--lapis-lazuli);
+    background-color: var(--jasmine);
     transform: scale(1.01);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
   
 .login-btn.active{
-    background-color: var(--prussian-blue);
+    background-color: var(--naples-yellow-2);
 }
 
 span {
-    color:var(--lapis-lazuli);
-    font-family: var(--fast);
+    color:var(--jasmine);
+    font-family: var(--default);
     font-size: 50px;
 }
 
@@ -104,4 +101,66 @@ label, button {
 ::placeholder {
     font-family: var(--default);
     font-size: 12px;
+}
+
+
+
+@media (max-width: 1050px) and (min-width: 700px) {
+    .modal-container{
+        max-width:450px;
+    }
+
+    input {
+        max-width: 230px;
+    }
+    
+    .login-btn {
+        max-height: 55px;
+        min-height: 45px;
+        padding: 13px;
+        margin-top: 20px;
+    }
+
+}
+    
+@media (max-width: 480px) and (min-width: 350px) {
+    .modal-container{
+        max-width:250px;
+        max-height: 500px;
+    }
+    
+    input {
+        max-width: 120px;
+    }
+    
+    
+    .form-group {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    .modal-header {
+        margin-top: 12px;
+    }
+    
+    
+    .login-btn {
+        height: 35px;
+        padding: 12px;
+        margin-top: 12px;
+    }
+
+    span {
+
+        font-size: 35px;
+    }
+    
+    label, button {
+        font-size: 14px;
+    }
+    
+    
+    ::placeholder {
+        font-size: 10px;
+    }
 }
