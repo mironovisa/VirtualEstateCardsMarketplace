@@ -4,21 +4,19 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: var(--jasmine);
 }
 
-
-
 .signup-modal {
-    border: var(--piction-blue) 5px solid;
-    background-color: var(--melon);
+    border: var(--rich-black) 5px solid;
+    background-color: var(--davys-gray);
     display: flex;
     flex-direction: column;
     margin-top: 120px;
     min-height: 500px;
     min-width: 500px;
     padding: 40px;
-    border-radius: 25px;
+    border-radius: 5px;
     max-height: 100%;
     transition: max-height 0.1s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
@@ -36,13 +34,76 @@
 .signup-modal.popout {
     transform: scale(1.1);
 }
-  
+
 .top-modal {
-    display: flex;
-    justify-content: space-between;
+  --_gap: 2rem;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: 25%;
 }
-  
-  .top-modal button, .closeBtn{
+
+.top-modal a {
+  color: var(--jasmine);
+  opacity: 0.7;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.top-modal a.active {
+  color: var(--naples-yellow-2);
+  opacity: 1;
+}
+
+.top-modal a:hover,
+.top-modal a:focus-visible {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.top-modal li {
+  overflow: hidden;
+  position: relative;
+  padding: calc(var(--_gap) / 2);
+  min-inline-size: 3rem;
+}
+
+.top-modal li::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 3px;
+  background-color: var(--naples-yellow-2);
+
+  translate: var(--_translate, 0);
+  scale: var(--_scale, 0) 1;
+  transition:
+    scale 100ms var(--_scale-delay, 0ms), 
+    translate 200ms;
+}
+
+.top-modal li:hover ~ li {
+  --_translate: -100%;
+  --_scale-delay: 200ms;
+}
+
+.signup-modal-container:hover li {
+  --_translate: 100%;
+  --_scale-delay: 200ms;
+}
+
+.top-modal li:hover {
+  --_scale: 1;
+  --_translate: 0;
+  --_scale-delay: 0ms;
+}
+
+
+.closeBtn{
     flex-grow: 1;
     text-align: center;
     padding: 15px;
@@ -51,80 +112,98 @@
     transition: background-color 0.3s ease;
     border: none;
     cursor: pointer;
-  }
+}
   
-  .top-modal button {
-    margin-top: -20px;
-    background-color: var(--steel-blue);
-    color: var(--melon-2);
-  }
-  
-  .left{
-    border-radius: 20px 0 0 20px;
-  }
-  
-  .right{
-    border-radius: 0 20px 20px 0;
-  }
-  
-  .top-modal button:hover {
-    background-color: var(--lapis-lazuli);
-  }
-  
-  .top-modal button.active {
-    background-color: var(---prussian-blue);
-    color:var(--coral-pink)
-  }
   
   .close-btn {
     max-height: 65px;
     min-height: 55px;
     margin-top: 20px;
-    color: var(--melon-2);
-    background-color: var(--picton-blue);
+    color: var(--naples-yellow);
+    background-color: var(--black);
     transition: box-shadow 0.2s ease;
     border-radius: 20px;
   }
   
   .close-btn:hover {
-    background-color: var(--lapis-lazuli);
-    color: var(--melon-2);
+    background-color: var(--rose-quartz);
     transform: scale(1.01);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
   }
   
   .close-btn.active {
-    color: var(---prussian-blue);
-    background-color: var(--coral-pink);
+    color: var(--seasalt);
+    background-color: var(--naples-yellow-2);
   }
   
-  @media (min-width: 370px) and (max-width: 450px) and (min-height: 800px) {
-    .signup-modal {
-      border: var(--piction-blue) 3px solid;
-      margin-top: 80px;
-      min-height: 400px;
-      max-height: 650px;
-      min-width: 300px;
-      max-width: 400px;
-      padding: 20px;
-      border-radius: 25px;
-      max-height: 600px;
-    }
-    
-    
-    .top-modal button, .close-btn{
-      padding: 10px;
-      margin-left: -10px;
-      margin-right: -10px;
-    }
-    
-    .top-modal button {
-      margin-top: -10px;
-    }
-    
-    .close-btn {
-      height: 35px;
-      margin-top: 15px;
-      border-radius: 25px;
-    }
+
+
+
+  
+@media (max-width: 1050px) and (min-width: 700px) {
+.signup-modal {
+    border: var(--rich-black) 4px solid;
+    margin-top: 80px;
+    min-height: 500px;
+    min-width: 500px;
+    max-height: 600px;
+    max-width: 500px;
+    padding: 30px;
+}
+.top-modal {
+  margin-left: 18%;
+}
+  
+  
+.signup-modal.login-active {
+    height: 350px;
+}
+
+.closeBtn{
+    padding: 12px;
+    margin-left: -12px;
+    margin-right: -12px;
+}
+  
+  
+  .close-btn {
+    max-height: 45px;
+    min-height: 45px;
+    margin-top: 18px;
   }
+  
+}
+  
+@media (max-width: 480px) and (min-width: 350px) {
+  .signup-modal {
+    border: var(--rich-black) 3px solid;
+    margin-top: 60px;
+    min-height: 500px;
+    min-width: 250px;
+    max-width: 300px;
+    max-height: 600px;
+    padding: 20px;
+}
+
+.top-modal {
+  margin-left: 0;
+}
+  
+  
+.signup-modal.login-active {
+    height: 350px;
+}
+
+.closeBtn{
+    padding: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    width: 150px;
+}
+  
+  
+  .close-btn {
+    height: 35px;
+    margin-top: 18px;
+  }
+}

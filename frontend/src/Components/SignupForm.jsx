@@ -80,12 +80,11 @@ const Signup = ({ showSignupModal }) => {
                 onChange={handleChange}
               />
             </div>
-            {/*error && <div className='errors'>{error}</div>*/}
             <div className="modal-footer">
+              {error && <div className="error-msg">{error.msg}</div>}
               <button type="submit" className="login-btn">
                 Signup
               </button>
-              {error && <div className="errors">{error.msg}</div>}
             </div>
           </form>
         </div>

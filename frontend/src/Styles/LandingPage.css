@@ -1,12 +1,242 @@
+/*layout*/
+:root {
+  --scale: 0.1;
+  --space: 10vmin;
+  --font-primary: 'Lato', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+}
+
+@media (prefers-reduced-motion) {
+  :root {
+    --scale: 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+  height: 20vh;
+  background-color: var(--naples-yellow);
+  color:var(--rich-black)
+}
+
+.section {
+  transform-origin: center top;
+  transform: scaleY(calc(1 - 10px));
+}
+
+.section > * {
+  transform-origin: center top;
+  transform: scaleY(calc(1 / (1 - 10px)));
+}
+
+
+.content {
+  position: relative;
+  margin: -50vh auto 0;
+  padding: var(--space);
+  max-width: 600px;
+  width: calc(100% - var(--space));
+  background: hsla(5, 15%, 5%, 0.9);
+}
+
+.image-container {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+
+.image-container  img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.image-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    hsla(5, 15%, 5%, 0) 0%,
+    hsla(5, 15%, 5%, 0.013) 8.1%,
+    hsla(5, 15%, 5%, 0.049) 15.5%,
+    hsla(5, 15%, 5%, 0.104) 22.5%,
+    hsla(5, 15%, 5%, 0.175) 29%,
+    hsla(5, 15%, 5%, 0.259) 35.3%,
+    hsla(5, 15%, 5%, 0.352) 41.2%,
+    hsla(5, 15%, 5%, 0.45) 47.1%,
+    hsla(5, 15%, 5%, 0.55) 52.9%,
+    hsla(5, 15%, 5%, 0.648) 58.8%,
+    hsla(5, 15%, 5%, 0.741) 64.7%,
+    hsla(5, 15%, 5%, 0.825) 71%,
+    hsla(5, 15%, 5%, 0.896) 77.5%,
+    hsla(5, 15%, 5%, 0.951) 84.5%,
+    hsla(5, 15%, 5%, 0.987) 91.9%,
+    hsl(5, 15%, 5%) 100%
+  );
+}
+
+@keyframes fadein {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*intro page*/
 .intro-text{
-  color: black;
+  font-size: 30px;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--jasmine);
 }
 
-.news-component {
-  background-color: var( --purple);
+
+/*signup page*/
+.signup-page{
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+  color: white;
 }
 
-.news-container,
-.horizontal-list-container {
-  transform: skewX(0);
+.signup-text span{
+  margin-top: 40px;
+  font-size: 36px;
 }
+
+.signup-page p{
+  margin-top: 40px;
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+.signup-form{
+  padding: 30px;
+  border: solid 5px var(--jasmine);
+}
+
+
+/* we are page*/
+.we-are-page p{
+  color: var(--jasmine);
+  margin-top: 40px;
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+.we-are-page h2{
+  color: var(--naples-yellow);
+  font-size: 40px;
+  text-align: center;
+}
+
+
+@media (max-width: 1050px) and (min-width: 700px) {
+.content {
+    margin: -35vh auto 0;
+    max-width: 450px;
+  }
+  
+  
+  /*intro page*/
+  .intro-text{
+    font-size: 25px;
+  }
+  
+  /*signup page*/
+  .signup-page{
+    gap: 40px;
+  }
+  
+  .signup-text span{
+    margin-top: 30px;
+    font-size: 30px;
+  }
+  
+  .signup-page p{
+    margin-top: 30px;
+    font-size: 25px;
+  }
+  
+  .signup-form{
+    padding: 22px;
+    border: solid 5px var(--jasmine);
+  }
+  
+  
+  /* we are page*/
+  .we-are-page p{
+    margin-top: 30px;
+    font-size: 25px;
+  }
+  
+  .we-are-page h2{
+    font-size: 32px;
+  }
+  
+}
+
+@media (max-width: 480px) and (min-width: 350px) {
+  .content {
+    margin: -25vh auto 0;
+    max-width: 280px;
+  }
+  
+  
+  /*intro page*/
+  .intro-text{
+    font-size: 14px;
+  }
+  
+  /*signup page*/
+  .signup-page{
+    gap: 25px;
+  }
+  
+  .signup-text span{
+    margin-top: 18px;
+    font-size: 14px;
+  }
+  
+  .signup-page p{
+    margin-top: 18px;
+    font-size: 18px;
+  }
+  
+  .signup-form{
+    padding: 15px;
+    border: solid 3px var(--jasmine);
+  }
+  
+  
+  /* we are page*/
+  .we-are-page p{
+    margin-top: 18px;
+    font-size: 14px;
+  }
+  
+  .we-are-page h2{
+    font-size: 20px;
+  }
+}
+
+

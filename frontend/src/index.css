@@ -62,6 +62,20 @@
 --light-orange: #f4a259;
 --persian-orange: #d68c45ff;
 
+/*REDS*/
+--cardinal: hsla(354, 71%, 45%, 1);
+--madder: hsla(351, 71%, 38%, 1);
+--auburn: hsla(354, 53%, 43%, 1);
+--burgundy: hsla(353, 73%, 26%, 1);
+--chocolate-cosmos: hsla(345, 76%, 20%, 1);
+
+/*BLACKS*/
+--black: #08090aff;
+--rose-quartz: #a7a2a9ff;
+--seasalt: #f4f7f5ff;
+--davys-gray: #575a5eff;
+--eerie-black: #222823ff;
+
 /* SCSS Gradient */
 --gradient-top: linear-gradient(0deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);
 --gradient-right: linear-gradient(90deg, #2c6e49ff, #4c956cff, #fefee3ff, #ffc9b9ff, #d68c45ff);

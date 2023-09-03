@@ -5,7 +5,7 @@
   }
   $openSans: 'Open Sans', Helvetica, Arial, sans-serif;
   body {
-    background: #15181A;
+   /* background: #15181A;*/
     font-family: $openSans;
   }
 
@@ -118,15 +118,15 @@
         background: lighten(white, 5%);
       }
       .skw-page__half--right .skw-page__content {
-        background: lighten(#1C1C1C, 5%);
+        background-image: url(../Assets/MockImages/red-yellow-light.png);
       }
     }
     &-2 {
       .skw-page__half--left .skw-page__content {
-        background: lighten(#1C1C1C, 5%);
+        background-image: url(../Assets/MockImages/white-yellow-light.png);
       }
       .skw-page__half--right .skw-page__content {
-        background: lighten(white, 5%);
+        background: lighten(black, 5%);
       }
     }
     &-3 {
@@ -134,23 +134,25 @@
         background: lighten(white, 5%);
       }
       .skw-page__half--right .skw-page__content {
-        background: lighten(#1C1C1C, 5%);
+        background-image: url(../Assets/MockImages/green-medium.png);
       }
     }
     &-4 {
       .skw-page__half--left .skw-page__content {
-        background: lighten(#1C1C1C, 5%);
+        background-image: url(../Assets/MockImages/b-w-face.png);
       }
       .skw-page__half--right .skw-page__content {
-        background: lighten(white, 5%);
+        background-image: url(../Assets/MockImages/colorful.png);
       }
     }
     &-5 {
       .skw-page__half--left .skw-page__content {
-        background: lighten(white, 5%);
+        background-image: url(../Assets/MockImages/green-yellow-dark.png);
+
       }
       .skw-page__half--right .skw-page__content {
-        background: lighten(#1C1C1C, 5%);
+        background-image: url(../Assets/MockImages/blue-green-light.png);
+
       }
     }
   }

@@ -3,9 +3,8 @@ import UpdateUserForm from '../../Components/UpdateUserForm';
 
 const ProfileUpdate = () => {
     return (
-        <div>
-            <h2>Update Profile</h2>
-            <UpdateUserForm />
+        <div className='profile-update'>
+           <UpdateUserForm />
         </div>
     );
 }

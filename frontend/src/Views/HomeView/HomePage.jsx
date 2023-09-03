@@ -23,17 +23,17 @@ const HomePage = () => {
   };
 
   return (
-    <div className={`s-layout ${sidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
-      <div className="s-layout__sidebar">
+    <div className={`sb-layout ${sidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
+      <div className="sb-layout__sidebar">
         <SearchNavBar />
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
           {sidebarExpanded ? 'Collapse Sidebar' : 'Expand Sidebar'}
         </button>
       </div>
-      <main className="s-layout__content">
+      <main className="sb-layout__content">
         <div className="scroll-content">
           <div className='content-title'>
-            <h1>CARD LIST!</h1>
+            <h1 className='title-text'>CARD LIST!</h1>
           </div>
           <div className='content-list'>
             <AnimatedTabContent active={true}>

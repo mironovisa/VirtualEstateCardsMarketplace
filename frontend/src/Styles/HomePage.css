@@ -1,26 +1,21 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-h1 {
+.title-text {
   margin-top: 100px;
- font-size: 35px;
- color: aliceblue;
+  margin-bottom: 25px;
+  font-size: 40px;
+  color: var(--rich-black);
+  font-weight: 600;
 }
 
 /* Layout */
-.s-layout {
+.sb-layout {
   font-family: var(--default);
   font-size: 18px;
   display: flex;
   align-items: start;
-  /*width: 100%;
-  min-height: 100vh;*/
 }
 
-.s-layout__sidebar {
+.sb-layout__sidebar {
   width: 350px;
-  border: solid 5px red;
   flex: 0 0 var(--sidebar-width, 350px); 
   transition: flex 0.3s ease; 
   overflow: hidden;
@@ -30,16 +25,15 @@ h1 {
   
 }
 
-.sidebar-collapsed .s-layout__sidebar {
-  --sidebar-width: 50px; 
+.sidebar-collapsed .sb-layout__sidebar {
+  --sidebar-width: 25px; 
 }
 
-.s-layout__content {
+.sb-layout__content {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
-  border: solid 5px green;
   margin-left: 0px; 
   overflow: hidden; 
 }
@@ -50,21 +44,15 @@ h1 {
 }
 
 .content-title{
-  border: solid 3px gray;
   width: 100%;
   text-align: center;
 }
 
-.content-list{
-  border: solid 3px blue;
-}
-
-
-.sidebar-expanded .s-layout__sidebar {
+.sidebar-expanded .sb-layout__sidebar {
   width: 350px;
 }
 
-.sidebar-collapsed .s-layout__sidebar {
+.sidebar-collapsed .sb-layout__sidebar {
   width: 0;
   overflow: hidden;
 }
@@ -74,8 +62,8 @@ h1 {
   bottom: 20px;
   left: 20px;
   padding: 10px;
-  background-color: var(--picton-blue);
-  color: white;
+  background-color: var(--naples-yellow-2);
+  color: var(--rich-black);
   border: none;
   cursor: pointer;
 }
@@ -89,19 +77,20 @@ h1 {
   }
   
   /* Layout */
-  .s-layout {
+  .sb-layout {
     font-size: 15px;
   }
   
-  .s-layout__sidebar {
+  .sb-layout__sidebar {
     width: 250px;
   }
-  
-  .sidebar-collapsed .s-layout__sidebar {
-    --sidebar-width: 30px; 
+
+  .sidebar-collapsed .sb-layout__sidebar {
+    --sidebar-width: 20px; 
   }
   
-  .sidebar-expanded .s-layout__sidebar {
+  
+  .sidebar-expanded .sb-layout__sidebar {
     width: 250px;
   }
   
@@ -119,12 +108,16 @@ h1 {
   }
   
   /* Layout */
-  .s-layout {
+  .sb-layout {
     font-size: 12px;
   }
   
-  .s-layout__sidebar {
+  .sb-layout__sidebar {
     max-width: 160px;
+  }
+
+  .sidebar-collapsed .sb-layout__sidebar {
+    --sidebar-width: 10px; 
   }
 
   .search-nav-bar{
@@ -132,12 +125,9 @@ h1 {
     left: 0;
   }
   
-  .sidebar-collapsed .s-layout__sidebar {
-    --sidebar-width: 30px; 
-  }
   
-  .sidebar-expanded .s-layout__sidebar {
-    width: 160px;
+  .sidebar-expanded .sb-layout__sidebar {
+    width: 140px;
   }
   
   .toggle-sidebar-btn {
