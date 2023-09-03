@@ -33,8 +33,8 @@ const deleteCookie = (name) => {
 export const getUserFromCookie = () => {
     return getCookie(USER_ID);
 }
-export const setUserCookie = (id) => {
-    setCookie(USER_ID, id, 1);
+export const setUserCookie = (token) => {
+    setCookie(USER_ID, token, 1);
 }
 export const clearUserCookie = () => {
     deleteCookie(USER_ID);
@@ -44,9 +44,9 @@ export const clearUserCookie = () => {
 export const getAdminFromCookie = () => {
     return getCookie(ADMIN_ID);
 }
-export const setAdminCookie = (id) => {
-    setCookie(ADMIN_ID, id, 1);
-}
+/* export const setAdminCookie = (token) => {
+    setCookie(ADMIN_ID, token, 1);
+} */
 export const clearAdminCookie = () => {
     deleteCookie(ADMIN_ID);
 }
