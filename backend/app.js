@@ -1,8 +1,8 @@
 require("dotenv").config();
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const { verify } = require("./utils/jwt");
+const express = require("express"); //done
+const app = express(); //done
+const cors = require("cors"); //done
+const { verify } = require("./utils/jwt"); //done
 const DBmongo = require("./services/users.service");
 const users = new DBmongo("NFTMarketPlace", "users");
 const dailyConnectionCheck = require("./utils/connection.check");
@@ -54,9 +54,9 @@ app.get("/test", (req, res) => {
   res.send("Route reached");
 });
 
-app.use(dailyConnectionCheck, (req, res, next) => {
-  next();
-});
+// app.use(dailyConnectionCheck, (req, res, next) => {
+//   next();
+// });
 
 const port = process.env.PORT || 3001; // DO NOT CHANGE THIS
 
