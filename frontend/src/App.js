@@ -11,7 +11,7 @@ import { useContext } from 'react';
 import { authContext } from 'Auth/authContext';
 
 function App() {
-    const { isLoggedIn, logout } = useContext(authContext);
+    const { isLoggedIn, logoutUser } = useContext(authContext);
     const [modalComponent, setModalComponent] = useState(null);
     const userIcon = localStorage.getItem('userIcon');
     const location = useLocation();
@@ -37,8 +37,8 @@ function App() {
                     </>
                 ) : (
                     <>
-                        <div className='right-nav'>
-                            <button className="nav-link underline-effect" onClick={logout}>Logout</button>
+                        <div className='right-nav'> 
+                           <button className="nav-link underline-effect" onClick={logout}>Logout</button>
                         </div>
                     </>
                 )}

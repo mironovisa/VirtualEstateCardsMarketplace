@@ -2,6 +2,7 @@ import { authApi } from "helpers/Api";
 import { useState, useContext } from "react";
 import { authContext } from "Auth/authContext";
 import { validateInput } from "../Utils/regexValidation";
+const { loginUser, loginAdmin } = useContext(authContext);
 
 
 export const useLogin = () => {
@@ -17,14 +18,13 @@ export const useLogin = () => {
 
   const [error, setError] = useState([]);
 
-  const { login } = useContext(authContext);
 
   const handleLogin = () => {
     authApi.login(loginData)
       .then((res) => {
         console.log(res);
-        login(res.userid, res.access_token)
-
+        loginUser(res.access_token)
+        checkIfUserIsAdmin();
       })
       .catch((err) => {
         setError({ msg: err.response.data, error: true });
@@ -44,6 +44,11 @@ export const useLogin = () => {
     const isValid = validateInput(loginData, regexPatterns);
     if (isValid) handleLogin();
   };
+
+  const checkIfUserIsAdmin = async () => {
+        // Add a backend route to check if user is admin or not and return a boolean value to set the state of isAdmin to true or false.
+        loginAdmin();
+  }
 
   const values = {
     loginData, setLoginData, handleChange, handleSubmit, error

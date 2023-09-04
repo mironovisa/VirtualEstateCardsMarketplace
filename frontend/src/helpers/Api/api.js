@@ -1,4 +1,6 @@
 import axios from "axios";
+import { getUserFromCookie } from '../../helpers/cookieManager';
+
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_PORT
@@ -7,8 +9,8 @@ const instance = axios.create({
 const getConfig = () => {
   return {
       headers: {
-          userId: localStorage.getItem("user-id"),
-          accessToken: localStorage.getItem("access-token"),
+          userId: getUserFromCookie(),
+          accessToken: getUserFromCookie(),
       }
   }
 }

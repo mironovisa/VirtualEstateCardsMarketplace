@@ -1,4 +1,4 @@
-import { getStorageUser } from "Auth/storage";
+import { getUserFromCookie } from '../helpers/cookieManager';
 import { usersApi } from "helpers/Api";
 import { useState } from "react";
 import { validateInput } from "../Utils/regexValidation";
@@ -31,7 +31,7 @@ export const useProfileUpdate = () => {
 
   //* import loggedUserID form cookies and pass in the function
   const handleProfileUpdate = () => {
-    usersApi.updateUser(getStorageUser(), updatedUserData)
+    usersApi.updateUser(getUserFromCookie(), updatedUserData)
       .then((res) => {
         console.log(res);
       })
