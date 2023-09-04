@@ -38,8 +38,7 @@ function App() {
                 ) : (
                     <>
                         <div className='right-nav'>
-                            <button className="logout-btn nav-link underline-effect" onClick={logout}>Logout</button>
-                            <div className="user-icon">{userIcon}</div>
+                            <button className="nav-link underline-effect" onClick={logout}>Logout</button>
                         </div>
                     </>
                 )}
