@@ -13,11 +13,11 @@ const Card = ({ image }) => {
       whileTap={{ scale: 0.9 }} // Scale when tapped (optional)
     >
     
-      <img src={image.URL} alt={image.Title} />
-      <h2>{image.Title}</h2>
-      <p>{image.Description}</p>
-      <p>Category: {image.Category}</p>
-      <p>Price: ${image.Price}</p>
+      <img src={image.uri} alt={image.title} />
+      <h2>{image.title}</h2>
+      <p>{image.description}</p>
+      <p>Category: {image.category}</p>
+      <p>Price: ${image.price}</p>
       {image.Sold ? <p>Sold</p> : <p>Available</p>}
     
     </motion.div>

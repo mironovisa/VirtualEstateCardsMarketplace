@@ -6,11 +6,28 @@ const getImageById = async (req, res) => {
     imageId = "64f4589da54828bc9f9df846"
     const image = await images.getById(imageId)
     res.status(200).send(image);
-
 }
 
 const getAllImages = async (req, res) => {
-    const allImages = await images.get()
+
+        // Extract filter parameters from the query string
+        const minPrice = parseFloat(req.query.minPrice);
+        const maxPrice = parseFloat(req.query.maxPrice);
+        const category = req.query.category;
+    
+        // Create a filter object based on the provided parameters
+        const filter = {};
+        if (!isNaN(minPrice)) {
+          filter.price = { $gte: minPrice };
+        }
+        if (!isNaN(maxPrice)) {
+          filter.price = { ...filter.price, $lte: maxPrice };
+        }
+        if (category) {
+          filter.category = category;
+        }
+
+    const allImages = await images.get(filter)
     res.status(200).send(allImages)
 }
 
@@ -35,10 +52,12 @@ const addNewImage = async (req, res) => {
     // const {uri, description, isSold, title, isInCart} = req.body
 
     const data = {
-        uri: "https://st.hzcdn.com/simgs/pictures/facades-de-maisons/random-picture-of-houses-sold-by-us-regine-villedieu-immobilier-img~986136b80204f124_9-9327-1-d1acfe3.jpg",
-        description: "A bveaitufl peice of art",
+        uri: "https://www.livehome3d.com/assets/img/articles/design-house/how-to-design-a-house.jpg",
+        description: "A golden odldie",
         isSold: true,
-        title: "Image 2",
+        title: "Paradise",
+        price: 125,
+        category: "Semi Detached",
         isInCart: []
     }
 

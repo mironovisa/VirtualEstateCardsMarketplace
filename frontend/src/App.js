@@ -21,18 +21,18 @@ function App() {
     return (
         <div className="app">
             <nav className='links-container'>
-                <li><NavLink to="/" className="nav-link underline-effect" activeClassName="active"> Home </NavLink></li>
-                <li><NavLink to="/home" className="nav-link underline-effect" activeClassName="active"> Search </NavLink></li>
-                {isLoggedIn && (<li><NavLink to="/profile" className="nav-link underline-effect" activeClassName="active"> Profile </NavLink></li>)}
-                <li><NavLink to="/about" className="nav-link underline-effect" activeClassName="active"> About </NavLink></li>
+                <li><NavLink to="/" className="nav-link underline-effect" activeclassname="active"> Home </NavLink></li>
+                <li><NavLink to="/home" className="nav-link underline-effect" activeclassname="active"> Search </NavLink></li>
+                {isLoggedIn && (<li><NavLink to="/profile" className="nav-link underline-effect" activeclassname="active"> Profile </NavLink></li>)}
+                <li><NavLink to="/about" className="nav-link underline-effect" activeclassname="active"> About </NavLink></li>
                 {isLoggedIn && (
-                    <li><NavLink to="/dashboard" className="nav-link underline-effect" activeClassName="active"> Dashboard </NavLink></li>
+                    <li><NavLink to="/dashboard" className="nav-link underline-effect" activeclassname="active"> Dashboard </NavLink></li>
                 )}
                 
                 {!isLoggedIn ? (
                     <>
                     <li className='right-nav'>
-                        <NavLink to="/login" className="nav-link underline-effect" activeClassName="active"> Login </NavLink>
+                        <NavLink to="/login" className="nav-link underline-effect" activeclassname="active"> Login </NavLink>
                     </li>
                     </>
                 ) : (

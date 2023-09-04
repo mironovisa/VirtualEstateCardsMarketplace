@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-const run = require("../utils/mongo")
+const run = require("../utils/mongo");
 
 class DBmongo {
   constructor(database, collection) {
@@ -7,12 +7,12 @@ class DBmongo {
     this.collection = collection;
   }
 
-  get = async () => {
-
+  get = async (filter) => {
     const cols = await run(this.database, this.collection);
-    const resp = await cols.find().toArray();
+    const resp = await cols.find(filter).toArray();
     return resp;
   };
+
 
   getById = async (userId) => {
     const cols = await run(this.database, this.collection);
@@ -23,80 +23,86 @@ class DBmongo {
   findUserByEmailService = async (email) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.findOne({ email: email });
-    return resp
-  }
+    return resp;
+  };
 
   addNewUserService = async (user, hash) => {
-
-    user.password = hash
+    user.password = hash;
 
     const cols = await run(this.database, this.collection);
-    const resp = await cols.insertOne(user)
+    const resp = await cols.insertOne(user);
     return resp;
-  }
+  };
 
   addNewImageService = async (user) => {
     const cols = await run(this.database, this.collection);
-    const resp = await cols.insertOne(user)
+    const resp = await cols.insertOne(user);
     return resp;
-  }
+  };
 
   findCollectionLengthService = async () => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.countDocuments({});
-    return resp
-  }
+    return resp;
+  };
 
   updateUserService = async (userId, user) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(userId) });
-    console.log(find, 'finddd');
+    console.log(find, "finddd");
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
       {
-          $set: user
+        $set: user,
       }
-  )
-  return resp;
-  }
+    );
+    return resp;
+  };
+
+  getAllById = async (imageIds) => {
+    const cols = await run(this.database, this.collection);
+    // Convert each string ID to ObjectId
+    const objectIdArray = imageIds.map((imageId) => new ObjectId(imageId));
+    const resp = await cols.find({ _id: { $in: objectIdArray } }).toArray();
+    return resp;
+  };
 
   updateUserImagesService = async (userId, imageId) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(userId) });
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
-    {
-      $push: { imagesOwned: imageId }
-    }
-  )
-  return resp;
-  }
+      {
+        $push: { imagesOwned: imageId },
+      }
+    );
+    return resp;
+  };
 
   updateImageService = async (userId, user) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(userId) });
-    console.log(find, 'finddd');
+    console.log(find, "finddd");
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
       {
-          $set: user
+        $set: user,
       }
-  )
-  return resp;
-  }
+    );
+    return resp;
+  };
 
   deleteUserService = async (userId) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.deleteOne({ _id: new ObjectId(userId) });
-    return resp
-  }
+    return resp;
+  };
 
   deleteImageService = async (userId) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.deleteOne({ _id: new ObjectId(userId) });
-    return resp
-  }
+    return resp;
+  };
 }
-
 
 module.exports = DBmongo;

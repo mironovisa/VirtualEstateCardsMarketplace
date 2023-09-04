@@ -10,6 +10,7 @@ export const useProfileUpdate = () => {
     lastName: '',
     email: '',
     password: '',
+    confirmPassword: ''
   });
   const regexPatterns = {
     firstName: /^[A-Za-z]+$/,
@@ -17,6 +18,7 @@ export const useProfileUpdate = () => {
     username: /^[A-Za-z0-9_]+$/,
     email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
     password: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
+    confirmPassword: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
   };
 
   const handleChange = (e) => {
@@ -31,7 +33,7 @@ export const useProfileUpdate = () => {
 
   //* import loggedUserID form cookies and pass in the function
   const handleProfileUpdate = () => {
-    usersApi.updateUser(getUserFromCookie(), updatedUserData)
+    usersApi.updateUser(updatedUserData)
       .then((res) => {
         console.log(res);
       })

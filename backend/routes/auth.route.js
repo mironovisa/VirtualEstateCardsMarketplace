@@ -26,7 +26,7 @@ route.post('/login', async (req, res) => {
     bcrypt.compare(data.password, user.password, function (err, valid) {
         // result == true
         if (valid) {
-            const data = { id: user.id };
+            const data = { id: user._id };
             const token = sign(data);
 
             res.send({ access_token: token, userid: user._id });
