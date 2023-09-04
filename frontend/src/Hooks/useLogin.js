@@ -2,10 +2,10 @@ import { authApi } from "helpers/Api";
 import { useState, useContext } from "react";
 import { authContext } from "Auth/authContext";
 import { validateInput } from "../Utils/regexValidation";
-const { loginUser, loginAdmin } = useContext(authContext);
 
 
 export const useLogin = () => {
+  const { loginUser, loginAdmin } = useContext(authContext);
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',

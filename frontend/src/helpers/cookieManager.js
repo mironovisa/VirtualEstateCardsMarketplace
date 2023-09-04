@@ -44,9 +44,9 @@ export const clearUserCookie = () => {
 export const getAdminFromCookie = () => {
     return getCookie(ADMIN_ID);
 }
-/* export const setAdminCookie = (token) => {
+export const setAdminCookie = (token) => {
     setCookie(ADMIN_ID, token, 1);
-} */
+}
 export const clearAdminCookie = () => {
     deleteCookie(ADMIN_ID);
 }
