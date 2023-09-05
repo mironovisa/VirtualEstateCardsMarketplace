@@ -46,7 +46,6 @@ app.post("/generate-image", async (req, res) => {
 
 
 app.use(async (req, res, next) => {
-  return next();
   console.log("made it here");
   if (
     (req.method === "POST" && req.url === "/auth/login") ||
