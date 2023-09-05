@@ -64,13 +64,17 @@ nav a,
 	padding: 0;
 	list-style: none;
 }
-
+.cart-btn {
+  background-color: rgb(93, 77, 31);
+  margin-right: 6px;
+}
 .underline-effect {
 	color: var(--naples-yellow);
 	opacity: 0.8;
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 600;
+  cursor: pointer;
 }
 
 .underline-effect:hover,
