@@ -17,6 +17,14 @@ const AnimatedTabContent = ({ active, children }) => (
 
 const HomePage = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
+  const [searchParams, setSearchParams] = useState({
+    category: '',
+    status: '',
+    location: '',
+    minPrice: '',
+    maxPrice: '',
+  
+  });
 
   const toggleSidebar = () => {
     setSidebarExpanded(!sidebarExpanded);
@@ -25,7 +33,7 @@ const HomePage = () => {
   return (
     <div className={`sb-layout ${sidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
       <div className="sb-layout__sidebar">
-        <SearchNavBar />
+        <SearchNavBar searchParams={searchParams} setSearchParams={setSearchParams} />
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
           {sidebarExpanded ? 'Collapse Sidebar' : 'Expand Sidebar'}
         </button>
@@ -37,7 +45,7 @@ const HomePage = () => {
           </div>
           <div className='content-list'>
             <AnimatedTabContent active={true}>
-              <CardList />
+              <CardList searchParams={searchParams} setSearchParams={setSearchParams} />
             </AnimatedTabContent>
           </div>
         </div>

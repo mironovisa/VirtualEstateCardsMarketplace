@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import '../CompStyles/SearchContainer.css'
 
-const SearchContainer = () => {
-  const [searchParams, setSearchParams] = useState({
-    category: '',
-    status: '',
-    location: '',
-    minPrice: '',
-    maxPrice: '',
-  
-  });
+const SearchContainer = ({ searchParams, setSearchParams }) => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -31,13 +23,13 @@ const SearchContainer = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Category:</label>
-          <select name="type" onChange={handleInputChange}>
+          <select name="category" onChange={handleInputChange}>
             <option value="">Select</option>
-            <option value="apartment">Apartment</option>
-            <option value="house">House</option>
-            <option value="building">Building</option>
-            <option value="store">Store</option>
-            <option value="parking_space">Parking Space</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Building">Building</option>
+            <option value="Store">Store</option>
+            <option value="Parking_space">Parking Space</option>
           </select>
         </div>
         <div>
@@ -53,14 +45,20 @@ const SearchContainer = () => {
           <label>Price Range:</label>
           <select name="minPrice" onChange={handleInputChange}>
             <option value="">Min Price</option>
-            <option value="100000">$10</option>
-            <option value="200000">$20</option>
+            <option value="135">$135</option>
+            <option value="140">$140</option>
+            <option value="145">$145</option>
+            <option value="150">$150</option>
+            <option value="155">$155</option>
             {/* Add more options as needed */}
           </select>
           <select name="maxPrice" onChange={handleInputChange}>
             <option value="">Max Price</option>
-            <option value="500000">$500,000</option>
-            <option value="1000000">$1,000,000</option>
+            <option value="135">$135</option>
+            <option value="140">$140</option>
+            <option value="145">$145</option>
+            <option value="150">$150</option>
+            <option value="155">$155</option>
             {/* Add more options as needed */}
           </select>
         </div>

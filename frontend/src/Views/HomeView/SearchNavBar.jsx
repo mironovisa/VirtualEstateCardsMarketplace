@@ -1,10 +1,10 @@
 import React from 'react';
 import SearchContainer from '../../Components/SearchContainer';
 
-const SearchNavBar = () => {
+const SearchNavBar = ({ searchParams, setSearchParams }) => {
   return (
     <div className="search-nav-bar">
-      <SearchContainer />
+      <SearchContainer searchParams={searchParams} setSearchParams={setSearchParams} />
     </div>
   );
 };
