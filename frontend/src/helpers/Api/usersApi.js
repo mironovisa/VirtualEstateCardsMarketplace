@@ -18,8 +18,8 @@ export const usersApi = {
     return api.send('post', '/users', payload)
   },
 
-  updateUser: async (itemId, payload) => {
-    return api.send('put', `/users/${itemId}`, payload)
+  updateUser: async (payload) => {
+    return api.send('put', `/users/`, payload)
   },
 
   deleteUser: async (itemId) => {

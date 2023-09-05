@@ -9,7 +9,6 @@ const getImageById = async (req, res) => {
 }
 
 const getAllImages = async (req, res) => {
-    console.log(req.query);
 
         // Extract filter parameters from the query string
         const minPrice = parseFloat(req.query.minPrice);

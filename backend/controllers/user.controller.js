@@ -11,7 +11,7 @@ const getUserById = async (req, res) => {
 }
 
 const getCardsByUser = async (req , res) => {
-    const userId = req.params.id
+    const userId = req.me
     
     const user = await users.getById(userId)
     const imagesOwned = user.imagesOwned
@@ -29,16 +29,9 @@ const getAllUsers = async (req, res) => {
 
 const updateUser = async (req, res) => {
 
-    const userId = req.params.id
-    const test = req.params.id
-
-    console.log(test, 'test');
-
-    console.log(userId, 'useridddd');
+    const userId = req.me
 
     const { firstName, lastName, username, email, password } = req.body
-
-    console.log(req.body, 'req,body');
 
     const data = {
         firstName: firstName,
