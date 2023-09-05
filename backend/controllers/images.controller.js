@@ -10,22 +10,22 @@ const getImageById = async (req, res) => {
 
 const getAllImages = async (req, res) => {
 
-        // Extract filter parameters from the query string
-        const minPrice = parseFloat(req.query.minPrice);
-        const maxPrice = parseFloat(req.query.maxPrice);
-        const category = req.query.category;
-    
-        // Create a filter object based on the provided parameters
-        const filter = {};
-        if (!isNaN(minPrice)) {
-          filter.price = { $gte: minPrice };
-        }
-        if (!isNaN(maxPrice)) {
-          filter.price = { ...filter.price, $lte: maxPrice };
-        }
-        if (category) {
-          filter.category = category;
-        }
+    // Extract filter parameters from the query string
+    const minPrice = parseFloat(req.query.minPrice);
+    const maxPrice = parseFloat(req.query.maxPrice);
+    const category = req.query.category;
+
+    // Create a filter object based on the provided parameters
+    const filter = {};
+    if (!isNaN(minPrice)) {
+        filter.price = { $gte: minPrice };
+    }
+    if (!isNaN(maxPrice)) {
+        filter.price = { ...filter.price, $lte: maxPrice };
+    }
+    if (category) {
+        filter.category = category;
+    }
 
     const allImages = await images.get(filter)
     res.status(200).send(allImages)

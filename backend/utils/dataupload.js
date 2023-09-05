@@ -1,12 +1,12 @@
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
-  cloud_name: "doqkfgbhz",
-  api_key: "541349771793653",
-  api_secret: "E5_PjlK_ijRlkJsF_UxbWe8ZQwY",
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-async function uploadImageToCloudinary(imageUrl) {
+async function getCloudinaryUrl(imageUrl) {
   try {
     const cloudinaryResponse = await cloudinary.uploader.upload(imageUrl);
     return cloudinaryResponse.secure_url;
@@ -17,5 +17,5 @@ async function uploadImageToCloudinary(imageUrl) {
 }
 
 module.exports = {
-  uploadImageToCloudinary,
+  getCloudinaryUrl,
 };

@@ -9,6 +9,8 @@ const dailyConnectionCheck = require("./utils/connection.check");
 const { OpenAI } = require("openai");
 const { createImage } = require("./utils/datagen.js");
 
+
+
 const prompt =
   "Generate an image featuring the interior of a modest, newly built apartment's living room, ideal for an NFT card on a virtual real estate NFT marketplace. The central focus should be a comfortable yet budget-friendly sofa, surrounded by simple furnishings and decor. The living room should exude a cozy and approachable atmosphere, showcasing practicality and comfort. Consider elements like basic lighting, affordable decorations, and a color palette that conveys simplicity. Capture the essence of an affordable yet inviting living space, highlighting its value and suitability for budget-conscious buyers.";
 
@@ -33,6 +35,7 @@ app.post("/generate-image", async (req, res) => {
   try {
     const generatedImageUrl = await createImage(prompt); // Use the predefined prompt
 
+    console.log("Image generated:", generatedImageUrl);
     // Return the generated image URL to the client
     res.json({ imageUrl: generatedImageUrl });
   } catch (error) {
@@ -43,6 +46,7 @@ app.post("/generate-image", async (req, res) => {
 
 
 app.use(async (req, res, next) => {
+  return next();
   console.log("made it here");
   if (
     (req.method === "POST" && req.url === "/auth/login") ||
@@ -77,9 +81,9 @@ app.get("/test", (req, res) => {
   res.send("Route reached");
 });
 
-// app.use(dailyConnectionCheck, (req, res, next) => {
-//   next();
-// });
+app.use(dailyConnectionCheck, (req, res, next) => {
+  next();
+});
 
 const port = process.env.PORT || 3001; // DO NOT CHANGE THIS
 
