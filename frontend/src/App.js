@@ -16,7 +16,7 @@ import { authContext } from 'Auth/authContext';
 function App() {
     const { isLoggedIn, logoutUser } = useContext(authContext);
     const [modalComponent, setModalComponent] = useState(null);
-    const [cart, setCart] = useState(false);
+    const userIcon = localStorage.getItem('userIcon');
     const location = useLocation();
     
     console.log('isLoggedIn:', isLoggedIn);
