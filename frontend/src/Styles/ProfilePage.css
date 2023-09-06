@@ -96,3 +96,39 @@
   .profile-update{
     margin-top: 40px;
   }
+
+
+  @media (max-width: 1050px) and (min-width: 700px) {
+
+    }
+      
+    @media (max-width: 480px) and (min-width: 350px) {
+      .profile-page {
+        margin-top: 60px;
+      }
+      
+    
+      .tab-buttons a {
+        margin-left:20px;
+        font-size: 18px;
+      }
+      
+      
+    /*cardList*/
+      .card-list{
+        margin-top: 20px;
+        color: var(--black);
+      }
+    
+    
+      /*purchases history*/
+      .purchases-history {
+        margin-top: 20px;
+      }
+    
+      /*profile-update*/
+      .profile-update{
+        margin-top: 20px;
+      }
+    
+    }

@@ -1,26 +1,67 @@
-import React from 'react';
-import '../CompStyles/DALLECard.css'
+import React, { useState } from 'react';
+import '../CompStyles/DALLECard.css';
+import { motion, AnimatePresence } from 'framer-motion';
 
-import { motion } from 'framer-motion'; // Import motion from Framer Motion
+const Card = ({ image, isOwnedByUser, isAdminView }) => {
+  const [isClicked, setIsClicked] = useState(false);
 
+  const handleClick = () => {
+    setIsClicked(true);
+  };
 
-const Card = ({ image }) => {
+  const closeModal = () => {
+    setIsClicked(false);
+  };
+
   return (
-    <motion.div
-      className="card"
-      initial={{ scale: 1 }} // Initial scale
-      whileHover={{ scale: 1.1 }} // Scale on hover
-      whileTap={{ scale: 0.9 }} // Scale when tapped (optional)
-    >
-    
-      <img src={image.uri} alt={image.title} />
-      <h2>{image.title}</h2>
-      <p>{image.description}</p>
-      <p>Category: {image.category}</p>
-      <p>Price: ${image.price}</p>
-      {image.Sold ? <p>Sold</p> : <p>Available</p>}
-    
-    </motion.div>
+    <div className="card-container">
+      <motion.div
+        className={`card ${isClicked ? 'modal-open' : ''}`}
+        initial={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={handleClick}
+      >
+        <img src={image.uri} alt={image.title} />
+        <h2>{image.title}</h2>
+        <p>Price: ${image.price}</p>
+        {image.Sold ? <p className="sold">Sold</p> : <p>Available</p>}
+      </motion.div>
+
+      <AnimatePresence>
+        {isClicked && (
+          <motion.div
+            className="modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="modal-content">
+              <span className="close-modal" onClick={closeModal}>
+                &times;
+              </span>
+              <img src={image.uri} alt={image.title} />
+              <h2>{image.title}</h2>
+              <p>{image.description}</p>
+              <p>Category: {image.category}</p>
+              <p>Price: ${image.price}</p>
+
+              {isAdminView && (
+                <button className="delete-button">Delete</button>
+              )}
+
+              {isOwnedByUser && (
+                <button className="download-button">Download</button>
+              )}
+
+              {!isAdminView && !isOwnedByUser && !image.Sold && (
+                <button className="buy-button">Add to Cart</button>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

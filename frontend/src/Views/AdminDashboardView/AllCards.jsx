@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { imagesApi } from 'helpers/Api/imagesApi';
 
 
-const CardList = ({ searchParams, setSearchParams }) => {
+const AllCards = ({ searchParams, setSearchParams }) => {
 
   const [images, setImages] = useState([])
 
@@ -41,4 +41,4 @@ const CardList = ({ searchParams, setSearchParams }) => {
   );
 };
 
-export default CardList;
+export default AllCards;

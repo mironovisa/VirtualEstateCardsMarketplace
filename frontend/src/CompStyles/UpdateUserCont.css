@@ -47,3 +47,41 @@
   .update-user-form-container button:hover {
     background-color: #555;
   }
+
+
+  @media (max-width: 1050px) and (min-width: 700px) {
+    
+  }
+  
+  @media (max-width: 480px) and (min-width: 350px) {
+    .update-user-form-container {
+      width: 280px;
+      padding: 20px;
+    }
+    
+    .update-user-form-container h2 {
+      margin-bottom: 15px;
+    }
+    
+    .update-user-form-container form div {
+      margin-bottom: 15px;
+    }
+
+    
+    .update-user-form-container input {
+
+      padding: 5px;
+      border-radius: 5px;
+    }
+    
+    .update-user-form-container button {
+      padding: 7px 14px;
+    }
+    
+  }
+  
+
+
+
+
+  

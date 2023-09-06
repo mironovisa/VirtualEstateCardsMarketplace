@@ -74,18 +74,16 @@ input:focus {
     background-color: var(--naples-yellow-2);
 }
 
-span {
+.signup-title {
     color:var(--jasmine);
-    font-family: var(--default);
+    font-family: var(--title);
     font-size: 50px;
 }
 
-
-
-.errors {
-    color: var(--lapis-lazuli);
-    text-align: center;
-    margin-top: 5px;
+.error-msg{
+    color:var(--jasmine);
+    font-family: var(--default);
+    font-size: 20px;
 }
   
 .centered {

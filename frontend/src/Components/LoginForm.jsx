@@ -10,7 +10,7 @@ const Login = ({ showLoginModal }) => {
     <div className={showLoginModal ? 'modal-overlay' : 'modal-hidden'}>
       <div className="modal-container">
         <div className="modal-header">
-          <span>Login</span>
+          <span className='signup-title'>Login</span>
         </div>
         <div className="modal-body">
           <form onSubmit={handleSubmit}>

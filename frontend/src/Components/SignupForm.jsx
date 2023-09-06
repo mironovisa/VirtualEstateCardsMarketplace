@@ -10,7 +10,7 @@ const Signup = ({ showSignupModal }) => {
     <div className={showSignupModal ? 'modal-overlay' : 'modal-hidden'}>
       <div className="modal-container">
         <div className="modal-header">
-          <span>Signup</span>
+          <span className='signup-title'>Signup</span>
         </div>
         <div className="modal-body">
           <form onSubmit={handleSubmit}>

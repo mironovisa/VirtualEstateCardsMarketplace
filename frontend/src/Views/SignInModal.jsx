@@ -18,10 +18,9 @@ const SigninModal = ({ activeComponent, setModalComponent }) => {
       setShowSignup(false);
       setShowLogin(true);
     } else {
-      // If neither 'signup' nor 'login' is specified, default to 'login'
       setShowSignup(false);
       setShowLogin(true);
-      setModalComponent('login'); // Update the parent component
+      setModalComponent('login'); 
     }
   }, [activeComponent, setModalComponent]);
 

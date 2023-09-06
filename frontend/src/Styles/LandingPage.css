@@ -1,9 +1,9 @@
 /*layout*/
 :root {
   --scale: 0.1;
-  --space: 10vmin;
-  --font-primary: 'Lato', sans-serif;
-  --font-heading: 'Playfair Display', serif;
+  --space: 3vmin;
+  --font-primary: var(--default);
+  --font-heading: var(--title);
 }
 
 @media (prefers-reduced-motion) {
@@ -18,10 +18,11 @@
 
 .footer {
   display: grid;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
   height: 20vh;
-  background-color: var(--naples-yellow);
-  color:var(--rich-black)
+  color:var(--jasmine)
 }
 
 .section {
@@ -36,12 +37,28 @@
 
 
 .content {
+  font-family: var(--default);
   position: relative;
   margin: -50vh auto 0;
   padding: var(--space);
-  max-width: 600px;
+  max-width: 650px;
   width: calc(100% - var(--space));
   background: hsla(5, 15%, 5%, 0.9);
+}
+
+.frame{
+  width: 100%;
+  height: 100%;
+  padding: 7vmin;
+  border: solid 2px var(--naples-yellow-2);
+}
+
+.c1 {
+  margin: -50vh auto 0;
+}
+
+.c2 {
+  margin: 50vh auto 0;
 }
 
 .image-container {
@@ -61,7 +78,6 @@
   height: 100%;
   object-fit: cover;
 }
-
 
 .image-container::after {
   content: '';
@@ -99,13 +115,36 @@
 }
 
 /*intro page*/
-.intro-text{
-  font-size: 30px;
+.intro-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.intro-title, .intro-text{
+  text-align: center;
   letter-spacing: 1px;
   word-spacing: 3px;
-  text-align: center;
-  line-height: 1.5;
-  color: var(--jasmine);
+}
+
+.intro-title{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 40px;
+  font-family: var(--title);
+  color: var(--naples-yellow);
+}
+
+.intro-text{
+  margin-top: 15px;
+  font-size: 30px;
+  color: var(--vanilla);
+}
+
+.intro-img {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  height: auto;
 }
 
 
@@ -118,42 +157,45 @@
   color: white;
 }
 
-.signup-text span{
-  margin-top: 40px;
-  font-size: 36px;
-}
 
-.signup-page p{
-  margin-top: 40px;
-  font-size: 30px;
-  opacity: 0.8;
-}
-
-.signup-form{
-  padding: 30px;
-  border: solid 5px var(--jasmine);
-}
-
-
-/* we are page*/
-.we-are-page p{
-  color: var(--jasmine);
-  margin-top: 40px;
-  font-size: 30px;
-  opacity: 0.8;
-}
-
-.we-are-page h2{
-  color: var(--naples-yellow);
-  font-size: 40px;
+/*topimages*/
+.top-images-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  gap: 20px;
+}
+
+.top-images-page img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 
+/*tablet*/
 @media (max-width: 1050px) and (min-width: 700px) {
-.content {
-    margin: -35vh auto 0;
-    max-width: 450px;
+
+  .content {
+    font-family: var(--default);
+    margin: -50vh auto 0;
+  }
+  
+  .c1 {
+    margin: -50vh auto 0;
+  }
+  
+  .c2 {
+    margin: 50vh auto 0;
+  }
+
+  .frame{
+    width: 90%;
+    height: 90%;
+    padding: 7vmin;
+    border: solid 2px var(--naples-yellow-2);
   }
   
   
@@ -166,16 +208,7 @@
   .signup-page{
     gap: 40px;
   }
-  
-  .signup-text span{
-    margin-top: 30px;
-    font-size: 30px;
-  }
-  
-  .signup-page p{
-    margin-top: 30px;
-    font-size: 25px;
-  }
+
   
   .signup-form{
     padding: 22px;
@@ -195,48 +228,53 @@
   
 }
 
+/*cellphone*/
 @media (max-width: 480px) and (min-width: 350px) {
-  .content {
-    margin: -25vh auto 0;
-    max-width: 280px;
-  }
-  
-  
-  /*intro page*/
-  .intro-text{
-    font-size: 14px;
-  }
-  
-  /*signup page*/
-  .signup-page{
-    gap: 25px;
-  }
-  
-  .signup-text span{
-    margin-top: 18px;
-    font-size: 14px;
-  }
-  
-  .signup-page p{
-    margin-top: 18px;
-    font-size: 18px;
-  }
-  
-  .signup-form{
-    padding: 15px;
-    border: solid 3px var(--jasmine);
-  }
-  
-  
-  /* we are page*/
-  .we-are-page p{
-    margin-top: 18px;
-    font-size: 14px;
-  }
-  
-  .we-are-page h2{
-    font-size: 20px;
-  }
+  /*layout*/
+.footer {
+  font-size: 30px;
+}
+
+.content {
+  max-width: 280px;
+}
+
+.frame{
+  padding: 7vmin;
+  border: solid 2px var(--naples-yellow-2);
+}
+
+/*intro page*/
+.intro-title{
+  margin-top: 7px;
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+
+.intro-text{
+  margin-top: 7px;
+  font-size: 14px;
+}
+
+.intro-img {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+/*signup page*/
+.signup-page{
+  gap: 20px;
+}
+
+/*topimages*/
+.top-images-page {
+  gap: 12px;
+}
+
+.top-images-page img {
+  margin-bottom: 12px;
+}
+
 }
 
 
