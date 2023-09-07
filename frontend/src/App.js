@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, NavLink, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import LandingPage from './Views/LandingView/LandingPage';
 import AdminPage from './Views/AdminDashboardView/AdminPage';
 import ProfilePage from './Views/ProfileView/ProfilePage';
@@ -28,27 +26,28 @@ function App() {
     return (
         <div className="app">
             <nav className='links-container'>
-                <li><NavLink to="/" className="nav-link underline-effect" activeclassname="active"> Home <img className='nav-icon' src={require('./Icons/Home.png')} alt='Home'></img></NavLink></li>
-                <li><NavLink to="/home" className="nav-link underline-effect" activeclassname="active"> Search <img className='nav-icon' src={require('./Icons/Search.png')} alt='Search'></img></NavLink></li>
-                {isLoggedIn && (<li><NavLink to="/profile" className="nav-link underline-effect" activeclassname="active"> Profile <img className='nav-icon' src={require('./Icons/Profile.png')} alt='Profile'></img></NavLink></li>)}
-                <li><NavLink to="/about" className="nav-link underline-effect" activeclassname="active"> About <img className='nav-icon' src={require('./Icons/AboutIcon.png')} alt='About'></img></NavLink></li>
-                {isLoggedIn && (
-                    <li><NavLink to="/dashboard" className="nav-link underline-effect" activeclassname="active"> Dashboard <img className='nav-icon' src={require('./Icons/Dashboard.png')} alt='Dashboard'></img></NavLink></li>
-                )}
-                
+                <div className='left-side'>
+                    <li><NavLink to="/" className="nav-link underline-effect" activeclassname="active"> Home <img className='nav-icon' src={require('./Icons/Home.png')} alt='Home'></img></NavLink></li>
+                    <li><NavLink to="/home" className="nav-link underline-effect" activeclassname="active"> Search <img className='nav-icon' src={require('./Icons/Search.png')} alt='Search'></img></NavLink></li>
+                    {isLoggedIn && (<li><NavLink to="/profile" className="nav-link underline-effect" activeclassname="active"> Profile <img className='nav-icon' src={require('./Icons/Profile.png')} alt='Profile'></img></NavLink></li>)}
+                    <li><NavLink to="/about" className="nav-link underline-effect" activeclassname="active"> About <img className='nav-icon' src={require('./Icons/AboutIcon.png')} alt='About'></img></NavLink></li>
+                    {isLoggedIn && (
+                        <li><NavLink to="/dashboard" className="nav-link underline-effect" activeclassname="active"> Dashboard <img className='nav-icon' src={require('./Icons/Dashboard.png')} alt='Dashboard'></img></NavLink></li>
+                    )}
+                </div>
                 {!isLoggedIn ? (
-                    <>
-                    <li className='right-nav'>
-                        <NavLink to="/login" className="nav-link underline-effect" activeclassname="active"> Login <img className='nav-icon' src={require('./Icons/login.png')} alt='logout'></img></NavLink>
-                    </li>
-                    </>
+                <>
+                <div className='right-side'>
+                    <li><NavLink to="/login" className="nav-link underline-effect nav-right" activeclassname="active"> Login <img className='nav-icon' src={require('./Icons/login.png')} alt='logout'></img></NavLink></li>
+                </div>
+                </>
                 ) : (
-                    <>                        
-                    <li className='right-nav'>
-                        <NavLink className="nav-link underline-effect" onClick={handleCart}>Cart<img className='nav-icon' src={require('./Icons/shoppingCart.png')} alt='cart'></img></NavLink>
-                        <NavLink className="nav-link underline-effect nav-logout" onClick={logoutUser}>Logout<img className='nav-icon' src={require('./Icons/Logout.png')} alt='logout'></img></NavLink>
-                    </li>
-                    </>
+                <>  
+                <div className='right-side'>                     
+                    <li><NavLink className="nav-link underline-effect" onClick={handleCart}>Cart<img className='nav-icon' src={require('./Icons/shoppingCart.png')} alt='cart'></img></NavLink></li>
+                    <li><NavLink className="nav-link underline-effect nav-right" onClick={logoutUser}>Logout<img className='nav-icon' src={require('./Icons/Logout.png')} alt='logout'></img></NavLink></li>
+                </div> 
+                </>
                 )}
             </nav>
             <main>

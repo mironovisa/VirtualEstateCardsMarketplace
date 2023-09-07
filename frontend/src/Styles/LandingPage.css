@@ -17,12 +17,24 @@
 }
 
 .footer {
+  position:sticky;
   display: grid;
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  height: 20vh;
-  color:var(--jasmine)
+  height: 15vh;
+  color:var(--jasmine);
+  bottom: 0;
+  overflow: hidden; 
+}
+
+.bg-container-2 {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  z-index: -1; 
+  overflow: hidden; 
+  bottom: 0;
 }
 
 .section {
@@ -177,56 +189,44 @@
 
 /*tablet*/
 @media (max-width: 1050px) and (min-width: 700px) {
-
+  .footer {
+    font-size: 30px;
+    height: 10vh;
+  }
+  
   .content {
-    font-family: var(--default);
-    margin: -50vh auto 0;
+    min-width: 450px;
+    max-width: 500px;
   }
   
-  .c1 {
-    margin: -50vh auto 0;
-  }
-  
-  .c2 {
-    margin: 50vh auto 0;
-  }
-
   .frame{
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     padding: 7vmin;
     border: solid 2px var(--naples-yellow-2);
   }
   
+  .intro-title{
+    font-size: 32px;
+  }
   
-  /*intro page*/
   .intro-text{
-    font-size: 25px;
+    font-size: 26px;
   }
   
   /*signup page*/
   .signup-page{
-    gap: 40px;
-  }
-
-  
-  .signup-form{
-    padding: 22px;
-    border: solid 5px var(--jasmine);
+    gap: 50px;
   }
   
   
-  /* we are page*/
-  .we-are-page p{
-    margin-top: 30px;
-    font-size: 25px;
+  /*topimages*/
+  .top-images-page {
+    gap: 17px;
   }
-  
-  .we-are-page h2{
-    font-size: 32px;
-  }
-  
 }
+
+
 
 /*cellphone*/
 @media (max-width: 480px) and (min-width: 350px) {

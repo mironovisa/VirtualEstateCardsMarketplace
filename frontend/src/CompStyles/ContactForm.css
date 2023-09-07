@@ -81,13 +81,6 @@
 }
 
 
-
-/*tablet*/
-@media (max-width: 1050px) and (min-width: 700px) {
-    
-}
-
-
 /*cellphone*/
 @media (max-width: 480px) and (min-width: 350px) {
 .contact-form {
@@ -96,8 +89,6 @@
   min-height: 350px;
   max-height: 500px;
 }
-
-
 
 .contact-form h2 {
   font-size: 24px;
@@ -123,6 +114,4 @@
   height: 28px; 
 }
 
-
-  
 }

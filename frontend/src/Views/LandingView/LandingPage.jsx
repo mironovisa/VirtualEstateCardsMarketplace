@@ -6,12 +6,15 @@ import Intro from './Intro';
 import SignupPage from './SignupPage';
 import WeArePage from './WeArePage';
 import { authContext } from 'Auth/authContext';
+import { motion, useAnimation } from 'framer-motion';
 import Intro2 from './Intro2';
 import TopImages from './TopImages';
 import WhyPage from './WhyPage';
+import ParticleBackground from 'Backgrounds/ParticleBackground';
 
 const LandingPage = () => {
   const { isLoggedIn} = useContext(authContext);
+  const controls = useAnimation(); 
 
   const imageSrc1 = require('../../Assets/MockImages/BWAbstract.png');
   const imageSrc2 = require('../../Assets/MockImages/white-yellow-light.png');
@@ -64,7 +67,10 @@ const LandingPage = () => {
       </main>
 
       <div className='footer-container'>
-        <footer className="footer">Fin.</footer>
+      <motion.div className="bg-container-2" animate={controls} transition={{ duration: 0.4, ease: 'easeOut' }}>
+          <ParticleBackground />
+          <footer className="footer">Fin.</footer>
+        </motion.div>
       </div>
     </div>
   );

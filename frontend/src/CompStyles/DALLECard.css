@@ -117,6 +117,32 @@
   background-color: var(--cardinal);
 }
 
+@media (max-width: 1050px) and (min-width: 700px) {
+  .card-container {
+    font-size: 22px;
+  }
+  
+  .card {
+    font-size: 28px;
+    margin: 20px;
+    width: 260px;
+    height: 340px;
+  }
+  
+  .card img {
+    max-height: 260px;
+  }
+  
+  .card h2 {
+    font-size: 22px;
+  }
+  
+  .card p {
+    font-size: 18px;
+  }
+}
+
+/*cellphones*/
     @media (max-width: 480px) and (min-width: 350px) {
       .card {
         border: 1px solid #ccc;
