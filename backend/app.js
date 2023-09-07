@@ -61,6 +61,7 @@ app.use(async (req, res, next) => {
   console.log(token, "token");
 
   const data = verify(token);
+  req.me = data.id
 
   if (!data) {
     return res.status(401).send("user not allowed");
