@@ -6,17 +6,17 @@ const { verify } = require("./utils/jwt"); //done
 const DBmongo = require("./services/users.service");
 const users = new DBmongo("NFTMarketPlace", "users");
 const dailyConnectionCheck = require("./utils/connection.check");
-const { OpenAI } = require("openai");
-const { createImage } = require("./utils/datagen.js");
+// const { OpenAI } = require("openai");
+// const { createImage } = require("./utils/datagen.js");
 
 
 
-const prompt =
-  "Generate an image featuring the interior of a modest, newly built apartment's living room, ideal for an NFT card on a virtual real estate NFT marketplace. The central focus should be a comfortable yet budget-friendly sofa, surrounded by simple furnishings and decor. The living room should exude a cozy and approachable atmosphere, showcasing practicality and comfort. Consider elements like basic lighting, affordable decorations, and a color palette that conveys simplicity. Capture the essence of an affordable yet inviting living space, highlighting its value and suitability for budget-conscious buyers.";
+// const prompt =
+//   "Generate an image featuring the interior of a modest, newly built apartment's living room, ideal for an NFT card on a virtual real estate NFT marketplace. The central focus should be a comfortable yet budget-friendly sofa, surrounded by simple furnishings and decor. The living room should exude a cozy and approachable atmosphere, showcasing practicality and comfort. Consider elements like basic lighting, affordable decorations, and a color palette that conveys simplicity. Capture the essence of an affordable yet inviting living space, highlighting its value and suitability for budget-conscious buyers.";
 
-const openai = new OpenAI({
-  apiKey: process.env.DALLE_API_KEY,
-});
+// const openai = new OpenAI({
+//   apiKey: process.env.DALLE_API_KEY,
+// });
 
 app.use(
   cors({
@@ -52,7 +52,7 @@ app.use(async (req, res, next) => {
     (req.method === "POST" && req.url === "/users") ||
     (req.method === "POST" && req.url.startsWith("/orders"))
   ) {
-    return next();
+    next();
   }
 
   console.log(req.headers, "headers", req.body, "body");
@@ -62,6 +62,7 @@ app.use(async (req, res, next) => {
 
   const data = verify(token);
   req.me = data.id
+  console.log(req.me);
 
   if (!data) {
     return res.status(401).send("user not allowed");
