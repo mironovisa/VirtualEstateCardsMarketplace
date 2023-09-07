@@ -10,6 +10,7 @@ const getImageById = async (req, res) => {
 
 const getAllImages = async (req, res) => {
 
+    const userId = req.me
     // Extract filter parameters from the query string
     const minPrice = parseFloat(req.query.minPrice);
     const maxPrice = parseFloat(req.query.maxPrice);
@@ -27,7 +28,7 @@ const getAllImages = async (req, res) => {
         filter.category = category;
     }
 
-    const allImages = await images.get(filter)
+    const allImages = await images.get(userId, filter)
     res.status(200).send(allImages)
 }
 

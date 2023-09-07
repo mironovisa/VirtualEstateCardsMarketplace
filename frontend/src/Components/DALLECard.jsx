@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../CompStyles/DALLECard.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Card = ({ image, isOwnedByUser, isAdminView }) => {
+const Card = ({ image, isOwnedByUser, isAdminView, handleAddToCart }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -12,6 +12,7 @@ const Card = ({ image, isOwnedByUser, isAdminView }) => {
   const closeModal = () => {
     setIsClicked(false);
   };
+
 
   return (
     <div className="card-container">
@@ -54,8 +55,8 @@ const Card = ({ image, isOwnedByUser, isAdminView }) => {
                 <button className="download-button">Download</button>
               )}
 
-              {!isAdminView && !isOwnedByUser && !image.Sold && (
-                <button className="buy-button">Add to Cart</button>
+              {!isAdminView && !isOwnedByUser && !image.Sold && !image.inCart && (
+                <button onClick={handleAddToCart} className="buy-button">Add to Cart</button>
               )}
             </div>
           </motion.div>

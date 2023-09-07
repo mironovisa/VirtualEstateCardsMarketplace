@@ -22,6 +22,14 @@ export const usersApi = {
     return api.send('put', `/users/`, payload)
   },
 
+  updateUserCart: async (payload) => {
+    return api.send('put', `/users/cart/`, payload)
+  },
+
+  removeUserCart: async (payload) => {
+    return api.send('put', `/users/cart/remove`, payload)
+  },
+
   deleteUser: async (itemId) => {
     return api.send('delete', `/users/${itemId}`)
   },

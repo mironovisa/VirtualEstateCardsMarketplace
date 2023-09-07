@@ -7,9 +7,15 @@ class DBmongo {
     this.collection = collection;
   }
 
-  get = async (filter) => {
+  get = async (userId, filter) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.find(filter).toArray();
+    const updatedItems = resp.map((item) => {
+      const isInCart = item.inCart.includes(userId);
+      item.inCart = isInCart;
+      return item;
+    });
+    console.log(updatedItems);
     return resp;
   };
 
@@ -62,6 +68,7 @@ class DBmongo {
   getAllById = async (imageIds) => {
     const cols = await run(this.database, this.collection);
     // Convert each string ID to ObjectId
+    console.log('here2');
     const objectIdArray = imageIds.map((imageId) => new ObjectId(imageId));
     const resp = await cols.find({ _id: { $in: objectIdArray } }).toArray();
     return resp;
@@ -79,10 +86,61 @@ class DBmongo {
     return resp;
   };
 
+  updateUserCartService = async (userId, imageId) => {
+    const cols = await run(this.database, this.collection);
+    const find = await cols.findOne({ _id: new ObjectId(userId) });
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(userId) },
+      {
+        $push: { inCart: imageId },
+      }
+    );
+    return resp;
+  };
+
+  updateImageCartService = async (userId, imageId) => {
+    const cols = await run(this.database, this.collection);
+    const find = await cols.findOne({ _id: new ObjectId(imageId) });
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(imageId) },
+      {
+        $push: { inCart: userId },
+      }
+    );
+    return resp;
+  };
+
+  removeUserCartService = async (userId, imageId) => {
+    const cols = await run(this.database, this.collection);
+    const find = await cols.findOne({ _id: new ObjectId(userId) });
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(userId) },
+      {
+        $pull: { inCart: imageId },
+      }
+    );
+  
+    return resp;
+  };
+
+  
+  removeImageCartService = async (userId, imageId) => {
+    const cols = await run(this.database, this.collection);
+    const find = await cols.findOne({ _id: new ObjectId(imageId) });
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(imageId) },
+      {
+        $pull: { inCart: userId },
+      }
+    );
+
+    return resp;
+  };
+
+
   updateImageService = async (userId, user) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(userId) });
-    console.log(find, "finddd");
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
       {

@@ -12,8 +12,9 @@ const getUserById = async (req, res) => {
 
 const getCardsByUser = async (req , res) => {
     const userId = req.me
-    
+    console.log('here', userId);
     const user = await users.getById(userId)
+    console.log(user, 'user');
     const imagesOwned = user.imagesOwned
     const cards = await images.getAllById(imagesOwned)
     res.status(200).send(cards)
@@ -111,6 +112,27 @@ const userBoughtImage = async (req, res) => {
 
 }
 
+const userAddedImageToCart = async (req, res) => {
+    // const {uri, description, isSold, title, isInCart} = req.body
+
+    const userId = req.me
+    const ImageId = req.body.id
+
+    const resp = await users.updateUserCartService(userId, ImageId);
+    const resp2 = await images.updateImageCartService(userId, ImageId);
+    res.status(201).send(resp);
+
+}
+
+const removeFromUserCart = async (req,res) => {
+    const userId = req.me
+    const ImageId = req.body.id
+
+    const resp = await users.removeUserCartService(userId, ImageId);
+    const resp2 = await images.removeImageCartService(userId, ImageId);
+    res.status(201).send(resp);
+}
+
 
 
 module.exports = {
@@ -120,5 +142,7 @@ module.exports = {
     updateUser,
     deleteUser,
     userBoughtImage,
-    getCardsByUser
+    getCardsByUser,
+    userAddedImageToCart,
+    removeFromUserCart
 }
