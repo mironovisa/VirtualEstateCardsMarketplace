@@ -1,11 +1,22 @@
+.bg-container {
+  position: fixed;
+  top: 0;
+  max-width: 500px;
+  min-width: 400px;
+  z-index: -1; 
+  overflow: hidden; 
+}
+
 .cart {
-    width: 500px;
-    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 4fr 2fr;
+    height: 100vh;
     position: fixed;
+    max-width: 500px;
+    min-width: 400px;
     top: 0;
-    right: -300px;
-    background-color: #57554d;
-    transition: right 0.3s ease-in-out;
+    border: solid var(--naples-yellow) 5px;
+    transition: transform 0.5s ease;
     z-index: 1000;
     overflow-y: auto;
     box-shadow: -5px 0 10px rgba(42, 41, 23, 0.2);
@@ -15,49 +26,91 @@
     right: 0;
   }
   
-  .cart-header {
+  .cart-header-cont {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding: 20px;
-    border-bottom: 1px solid #ddd;
-    background-color: #333;
-    color: #fff;
+    border-bottom: 1px solid var(--vanilla);
   }
-  
-  .close-button {
+
+  .close-button-cart{
+    align-self: flex-end;
     background: none;
     border: none;
-    font-size: 24px;
-    color: #fff;
+    font-size: 35px;
+    margin-left: 20px;
+    color: var(--naples-yellow-2);
     cursor: pointer;
+  }
+
+  .cart-header{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    text-align: center;
+    color: var(--naples-yellow-2);
+    font-family: var(--title);
+    font-size: 30px;
+    letter-spacing: 4px;
+    line-height: 1.5;
   }
   
   .cart-items {
-    padding: 20px;
+    padding: 40px 20px 40px 20px;
     list-style-type: none;
-    margin: 0;
-  }
+    margin-top: 20px;
+    font-family:var(--default);
+}
+
+
+.cart-item-title{
+  color: var(--naples-yellow);
+  font-size: 22px;
+}
+
+.cart-item-price{
+  color: var(--cornsilk);
+  font-size: 20px;
+}
+
+.remove-btn{
+  font-family:var(--title);
+  font-size: 18px;
+  padding: 3px 14px 3px 14px;
+  border: none;
+  background-color: var(--cardinal);
+  color: var(--jasmine);
+}
+  
   
   .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
   }
   
-  .cart-item-controls button {
-    background-color: #eee;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
   button{
     cursor: pointer;
   }
   
   .cart-total {
+    font-family:var(--title);
+    color: var(--naples-yellow-2);
+    font-size: 30px;
     padding: 20px;
     text-align: right;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--vanilla);
+  }
+
+  .checkout-btn{
+    font-size: 22px;
+    font-family: var(--default);
+    padding: 10px;
+    border: none;
+    background-color: var(--jasmine);
+    color: var(--black);
+    margin-top: 30px;
   }
   

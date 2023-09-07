@@ -45,7 +45,7 @@ function App() {
                 ) : (
                     <>                        
                     <li className='right-nav'>
-                        <NavLink className="cart-btn nav-link underline-effect" onClick={handleCart}><FontAwesomeIcon icon={faCartShopping} /></NavLink>
+                        <NavLink className="nav-link underline-effect" onClick={handleCart}>Cart<img className='nav-icon' src={require('./Icons/shoppingCart.png')} alt='cart'></img></NavLink>
                         <NavLink className="nav-link underline-effect nav-logout" onClick={logoutUser}>Logout<img className='nav-icon' src={require('./Icons/Logout.png')} alt='logout'></img></NavLink>
                     </li>
                     </>
