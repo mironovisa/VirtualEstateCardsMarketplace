@@ -3,6 +3,7 @@
   margin-bottom: 25px;
   font-size: 40px;
   color: var(--rich-black);
+  font-family: var(--title);
   font-weight: 600;
 }
 
@@ -71,33 +72,32 @@
 
 
 @media (max-width: 1050px) and (min-width: 700px) {
-  h1 {
-    margin-top: 80px;
-   font-size: 28px;
+  .title-text {
+    margin-top: 90px;
+    margin-bottom: 20px;
+    font-size: 36px;
   }
   
   /* Layout */
   .sb-layout {
-    font-size: 15px;
+    font-size: 16px;
   }
   
   .sb-layout__sidebar {
     width: 250px;
   }
-
-  .sidebar-collapsed .sb-layout__sidebar {
-    --sidebar-width: 20px; 
-  }
   
+  .sidebar-collapsed .sb-layout__sidebar {
+    --sidebar-width: 25px; 
+  }
   
   .sidebar-expanded .sb-layout__sidebar {
     width: 250px;
   }
   
-  .toggle-sidebar-btn {
-    bottom: 15px;
-    left: 15px;
-    padding: 8px;
+  .search-nav-bar{
+    padding: 0;
+    left: 0;
   }
 }
 

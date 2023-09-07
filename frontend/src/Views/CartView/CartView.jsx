@@ -3,15 +3,15 @@ import './CartView.css';
 import ParticleBackground from '../../Backgrounds/ParticleBackground';
 import { imagesApi } from 'helpers/Api/imagesApi';
 import { usersApi } from 'helpers/Api';
-
-// Import framer-motion components
 import { motion, useAnimation } from 'framer-motion';
+import PaymentModal from '../../Components/PaymentModal';
 
 export const CartView = ({ state, onChange }) => {
   const [images, setImages] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [isOpen, setIsOpen] = useState(state);
-  const controls = useAnimation(); // Initialize animation controls
+  const [showModal, setShowModal] = useState(false); 
+  const controls = useAnimation(); 
 
   const getAllImages = () => {
     imagesApi
@@ -61,12 +61,14 @@ export const CartView = ({ state, onChange }) => {
   const handleCheckout = () => {
     console.log('Checking out');
     const total = calculateTotal().toFixed(2);
+    setShowModal(true);
+    console.log('showModal:', showModal); // Add this line
     console.log('items', cartItems);
     console.log('total', total);
   };
 
   useEffect(() => {
-    controls.start({ x: isOpen ? 0 : '100%' }); // Slide from the right
+    controls.start({ x: isOpen ? 0 : '100%' }); 
   }, [isOpen, controls]);
 
   return (
@@ -84,9 +86,9 @@ export const CartView = ({ state, onChange }) => {
             &times;
           </button>
           <div className='cart-header'>
-            <span>Take Art</span> 
-            <span> To The</span>
-            <span>Infinite</span>
+            <span>Bring Art</span> 
+            <span> To </span>
+            <span>Infinity</span>
           </div>
         </div>
         <ul className="cart-items">
@@ -107,6 +109,9 @@ export const CartView = ({ state, onChange }) => {
           </div>
         </div>
       </motion.div>
+      {showModal && (
+  <PaymentModal isOpen={showModal} onClose={() => setShowModal(false)} />
+)}
     </>
   );
 };
