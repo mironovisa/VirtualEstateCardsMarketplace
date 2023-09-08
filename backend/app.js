@@ -26,10 +26,6 @@ app.use(
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.setHeader("Content-Type", "text/html");
-  res.send("<h1>Hey brother</h1>");
-});
 
 app.post("/generate-image", async (req, res) => {
   try {
@@ -49,26 +45,21 @@ app.use(async (req, res, next) => {
   console.log("made it here");
   if (
     (req.method === "POST" && req.url === "/auth/login") ||
-    (req.method === "POST" && req.url === "/users") ||
-    (req.method === "POST" && req.url.startsWith("/orders"))
-  ) {
-    next();
+    (req.method === "POST" && req.url === "/users")
+    ) {
+    return next();
   }
 
-  console.log(req.headers, "headers", req.body, "body");
   const token = req.headers.accesstoken;
 
-  console.log(token, "token");
-
   const data = verify(token);
-  req.me = data.id
-  console.log(req.me);
 
   if (!data) {
     return res.status(401).send("user not allowed");
   }
 
   console.log(data);
+  req.me = data.id
 
   next();
 });

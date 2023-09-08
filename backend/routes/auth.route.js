@@ -8,8 +8,6 @@ const { findUserByEmailService } = require('../services/users.service');
 
 route.post('/login', async (req, res) => {
     const { email, password } = req.body;
-
-    console.log('here');
     
     const data = {
         email: email,
@@ -17,7 +15,6 @@ route.post('/login', async (req, res) => {
     }
 
     const user = await users.findUserByEmailService(data.email);
-    console.log(user);
 
     if (!user) {
         return res.status(400).send('user not exist or non valid password');
