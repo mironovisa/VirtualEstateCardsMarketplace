@@ -2,9 +2,14 @@ import { authApi } from "helpers/Api";
 import { useState, useContext } from "react";
 import { authContext } from "Auth/authContext";
 import { validateInput } from "../Utils/regexValidation";
-
+//////pop up message test/////
+import { usePopupMessage } from '../Context/PopupMessageContext';
+//////
 
 export const useLogin = () => {
+//////pop up message test/////
+const { showPopupMessage } = usePopupMessage();
+///////
   const { loginUser, loginAdmin } = useContext(authContext);
   const [loginData, setLoginData] = useState({
     email: '',
@@ -25,6 +30,7 @@ export const useLogin = () => {
         console.log(res);
         loginUser(res.access_token)
         checkIfUserIsAdmin();
+        showPopupMessage(`You successfully loged in!`);
       })
       .catch((err) => {
         setError({ msg: err.response.data, error: true });
@@ -46,8 +52,8 @@ export const useLogin = () => {
   };
 
   const checkIfUserIsAdmin = async () => {
-        // Add a backend route to check if user is admin or not and return a boolean value to set the state of isAdmin to true or false.
-        loginAdmin();
+      // Add a backend route to check if user is admin or not and return a boolean value to set the state of isAdmin to true or false.
+      loginAdmin();
   }
 
   const values = {

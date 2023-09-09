@@ -62,7 +62,7 @@ export const CartView = ({ state, onChange }) => {
     console.log('Checking out');
     const total = calculateTotal().toFixed(2);
     setShowModal(true);
-    console.log('showModal:', showModal); // Add this line
+    console.log('showModal:', showModal); 
     console.log('items', cartItems);
     console.log('total', total);
   };

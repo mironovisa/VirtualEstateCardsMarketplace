@@ -10,6 +10,10 @@ import SigninModal from './Views/SignInModal';
 import { CartView } from 'Views/CartView/CartView'; 
 import { useContext } from 'react';
 import { authContext } from 'Auth/authContext';
+import PopupMessage from './Components/PopupMessage';
+import { PopupMessageProvider } from './Context/PopupMessageContext';
+
+
 
 function App() {
     const { isLoggedIn, logoutUser } = useContext(authContext);
@@ -24,6 +28,7 @@ function App() {
     }
     
     return (
+        <PopupMessageProvider>
         <div className="app">
             <nav className='links-container'>
                 <div className='left-side'>
@@ -68,9 +73,11 @@ function App() {
                         <SigninModal setModalComponent={setModalComponent} />
                     )}
                     {cart && <CartView state={cart} onChange={setCart} />}
+                    <PopupMessage />
                 </section>
             </main>
         </div>
+        </PopupMessageProvider>
     );
 }
 

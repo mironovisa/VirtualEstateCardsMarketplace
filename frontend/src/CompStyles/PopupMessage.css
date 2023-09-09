@@ -1,0 +1,25 @@
+.popupMessage {
+  position: fixed;
+  width: 200px;
+  height: auto;
+  max-width: 80%;
+  top: 80px;
+  right: 50px;
+  background-color: var(--misty-rose);
+  color: var(--rich-black);
+  font-size: 18px;
+  padding: 20px;
+  border-radius: 25px 0 25px 25px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  transform-origin: top right;
+}
+
+.popupMessage.active {
+  opacity: 1;
+}

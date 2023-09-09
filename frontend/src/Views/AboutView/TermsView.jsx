@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
+
 const TermsView = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -13,6 +14,9 @@ const TermsView = () => {
   };
 
   return (
+    <div className='terms-big-container'>
+      
+
     <div className="full-screen-view terms-view">
       <h2>Terms and Conditions</h2>
       <h3>1. Acceptance of Terms</h3>
@@ -30,7 +34,6 @@ const TermsView = () => {
         All images and content on this website are protected by copyright and other intellectual property rights. You may only use the images in accordance with the licensing terms provided.
       </p>
       <p onClick={openModal} className="terms-link">View Full Terms and Conditions</p>
-
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -79,6 +82,7 @@ const TermsView = () => {
 
         <button className='modal-close-button'onClick={closeModal}>Close</button>
       </Modal>
+    </div>
     </div>
   );
 };
