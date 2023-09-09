@@ -1,4 +1,5 @@
-const DBmongo = require("../services/users.service")
+const DBmongo = require("../services/users.service");
+const { createImage, createImageDetails } = require("../utils/datagen");
 const images = new DBmongo("NFTMarketPlace", "images");
 
 
@@ -51,12 +52,15 @@ const updateImage = async (req, res) => {
 
 const addNewImage = async (req, res) => {
     // const {uri, description, isSold, title, isInCart} = req.body
+    const generatedImageUrl = await createImage();
+    const generatedImageDetails = await createImageDetails();
+    console.log({ generatedImageUrl }, { generatedImageDetails });
 
     const data = {
-        uri: "https://www.livehome3d.com/assets/img/articles/design-house/how-to-design-a-house.jpg",
-        description: "A golden odldie",
+        uri: `${generatedImageUrl}`,
+        description: `${generatedImageDetails.description}`,
         isSold: true,
-        title: "Paradise",
+        title: `${generatedImageDetails.title}`,
         price: 125,
         category: "Semi Detached",
         isInCart: []
@@ -65,7 +69,6 @@ const addNewImage = async (req, res) => {
     const resp = await images.addNewImageService(data);
 
     res.status(201).send(resp);
-
 }
 
 const deleteImage = async (req, res) => {

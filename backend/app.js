@@ -5,18 +5,11 @@ const cors = require("cors"); //done
 const { verify } = require("./utils/jwt"); //done
 const DBmongo = require("./services/users.service");
 const users = new DBmongo("NFTMarketPlace", "users");
-const dailyConnectionCheck = require("./utils/connection.check");
-// const { OpenAI } = require("openai");
-// const { createImage } = require("./utils/datagen.js");
-
-
+const { createImage, createImageDetails } = require("./utils/datagen.js");
+const { addNewImage } = require("./controllers/images.controller");
 
 // const prompt =
-//   "Generate an image featuring the interior of a modest, newly built apartment's living room, ideal for an NFT card on a virtual real estate NFT marketplace. The central focus should be a comfortable yet budget-friendly sofa, surrounded by simple furnishings and decor. The living room should exude a cozy and approachable atmosphere, showcasing practicality and comfort. Consider elements like basic lighting, affordable decorations, and a color palette that conveys simplicity. Capture the essence of an affordable yet inviting living space, highlighting its value and suitability for budget-conscious buyers.";
-
-// const openai = new OpenAI({
-//   apiKey: process.env.DALLE_API_KEY,
-// });
+//   "Generate an image featuring the interior of a modest, newly built apartment's living room, ideal for an NFT card on a virtual real estate NFT marketplace. The central focus should be a comfortable yet budget-friendly sofa, surrounded by simple furnishings and decor. The living room should exude a cozy and approachable atmosphere, showcasing practicality and comfort. Consider elements like basic lighting, affordable decorations, and a color palette that conveys simplicity. Capture the essence of an affordable yet inviting living space, highlighting its value and suitability for budget-conscious buyers.";   //* old prompt for refrerence - Adam 
 
 app.use(
   cors({
@@ -24,16 +17,24 @@ app.use(
   })
 );
 
-app.use(express.json());
+require("./utils/connection.check");
 
+app.use(express.json());
 
 app.post("/generate-image", async (req, res) => {
   try {
-    const generatedImageUrl = await createImage(prompt); // Use the predefined prompt
+    // const generatedImageUrl = await createImage(); //* holds the image url - Adam
+    // const generatedImageDetails = await createImageDetails(); //* holds the image description and title - Adam
 
-    console.log("Image generated:", generatedImageUrl);
-    // Return the generated image URL to the client
-    res.json({ imageUrl: generatedImageUrl });
+    // const generatedImage = {
+    //   uri: generatedImageUrl,
+    //   description: generatedImageDetails.description,
+    //   title: generatedImageDetails.title,
+    // }
+
+    // addNewImage(generatedImage);
+    addNewImage();
+    res.status(200).send("Image generated successfully");
   } catch (error) {
     console.error("Error generating image:", error);
     res.status(500).json({ error: "Image generation failed." });
@@ -46,7 +47,7 @@ app.use(async (req, res, next) => {
   if (
     (req.method === "POST" && req.url === "/auth/login") ||
     (req.method === "POST" && req.url === "/users")
-    ) {
+  ) {
     return next();
   }
 
@@ -71,10 +72,6 @@ app.use("/auth", require("./routes/auth.route"));
 
 app.get("/test", (req, res) => {
   res.send("Route reached");
-});
-
-app.use(dailyConnectionCheck, (req, res, next) => {
-  next();
 });
 
 const port = process.env.PORT || 3001; // DO NOT CHANGE THIS
