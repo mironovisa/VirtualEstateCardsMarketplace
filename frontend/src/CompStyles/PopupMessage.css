@@ -5,7 +5,7 @@
   max-width: 80%;
   top: 80px;
   right: 50px;
-  background-color: var(--misty-rose);
+  background-color: rgb(250, 247, 211);
   color: var(--rich-black);
   font-size: 18px;
   padding: 20px;
@@ -19,7 +19,9 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   transform-origin: top right;
 }
-
+.error-msg{
+  background-color: yellow !important;
+}
 .popupMessage.active {
   opacity: 1;
 }

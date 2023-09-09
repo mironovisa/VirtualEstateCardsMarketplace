@@ -1,8 +1,10 @@
 import { usersApi } from "helpers/Api";
 import { useState } from "react";
 import { validateInput } from "../Utils/regexValidation";
+import { usePopupMessage } from '../Context/PopupMessageContext';
 
 export const useSignUp = () => {
+  const { showPopupMessage } = usePopupMessage();
   const [signUpData, setSignUpData] = useState({
     firstName: '',
     lastName: '',
@@ -24,12 +26,15 @@ export const useSignUp = () => {
   const [error, setError] = useState([]);
 
   const handleSignUp = () => {
+    console.log(signUpData);
     usersApi.addNewUser(signUpData)
       .then((res) => {
         console.log(res);
+        showPopupMessage(`${signUpData.username} Successfully signed up!`);
       })
       .catch((err) => {
         setError(err.response.data);
+        showPopupMessage(`ERROR: ${err.response.data}`);
       });
   }
 
@@ -45,6 +50,7 @@ export const useSignUp = () => {
     e.preventDefault();
     const isValid = validateInput(signUpData, regexPatterns);
     if (isValid) handleSignUp();
+    else showPopupMessage(`ERROR: Please fill in all the fields correctly!`);
   };
 
   const values = {
