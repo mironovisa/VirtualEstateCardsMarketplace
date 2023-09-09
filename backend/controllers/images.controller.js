@@ -52,23 +52,26 @@ const updateImage = async (req, res) => {
 
 const addNewImage = async (req, res) => {
     // const {uri, description, isSold, title, isInCart} = req.body
-    const generatedImageUrl = await createImage();
-    const generatedImageDetails = await createImageDetails();
-    console.log({ generatedImageUrl }, { generatedImageDetails });
+    try {
+        const generatedImageUrl = await createImage();
+        const generatedImageDetails = await createImageDetails();
+        console.log({ generatedImageUrl }, { generatedImageDetails });
 
-    const data = {
-        uri: `${generatedImageUrl}`,
-        description: `${generatedImageDetails.description}`,
-        isSold: true,
-        title: `${generatedImageDetails.title}`,
-        price: 125,
-        category: "Semi Detached",
-        isInCart: []
+        const data = {
+            uri: `${generatedImageUrl}`,
+            description: `${generatedImageDetails.description}`,
+            isSold: true,
+            title: `${generatedImageDetails.title}`,
+            price: 125,
+            category: "Semi Detached",
+            isInCart: []
+        }
+        const resp = await images.addNewImageService(data);
+        res.status(201).send(resp);
+    } catch (error) {
+        console.error("Error generating image:", error);
+        res.status(500).json({ error: "Image generation failed." });
     }
-
-    const resp = await images.addNewImageService(data);
-
-    res.status(201).send(resp);
 }
 
 const deleteImage = async (req, res) => {

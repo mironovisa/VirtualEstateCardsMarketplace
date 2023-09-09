@@ -5,11 +5,10 @@ const cors = require("cors"); //done
 const { verify } = require("./utils/jwt"); //done
 const DBmongo = require("./services/users.service");
 const users = new DBmongo("NFTMarketPlace", "users");
-const { createImage, createImageDetails } = require("./utils/datagen.js");
 const { addNewImage } = require("./controllers/images.controller");
 
 // const prompt =
-//   "Generate an image featuring the interior of a modest, newly built apartment's living room, ideal for an NFT card on a virtual real estate NFT marketplace. The central focus should be a comfortable yet budget-friendly sofa, surrounded by simple furnishings and decor. The living room should exude a cozy and approachable atmosphere, showcasing practicality and comfort. Consider elements like basic lighting, affordable decorations, and a color palette that conveys simplicity. Capture the essence of an affordable yet inviting living space, highlighting its value and suitability for budget-conscious buyers.";   //* old prompt for refrerence - Adam 
+//   "Generate an image featuring the interior of a modest, newly built apartment's living room, ideal for an NFT card on a virtual real estate NFT marketplace. The central focus should be a comfortable yet budget-friendly sofa, surrounded by simple furnishings and decor. The living room should exude a cozy and approachable atmosphere, showcasing practicality and comfort. Consider elements like basic lighting, affordable decorations, and a color palette that conveys simplicity. Capture the essence of an affordable yet inviting living space, highlighting its value and suitability for budget-conscious buyers.";   //* old prompt for refrerence 
 
 app.use(
   cors({
@@ -17,30 +16,11 @@ app.use(
   })
 );
 
-require("./utils/connection.check");
+require("./utils/dailyUpload");
 
 app.use(express.json());
 
-app.post("/generate-image", async (req, res) => {
-  try {
-    // const generatedImageUrl = await createImage(); //* holds the image url - Adam
-    // const generatedImageDetails = await createImageDetails(); //* holds the image description and title - Adam
-
-    // const generatedImage = {
-    //   uri: generatedImageUrl,
-    //   description: generatedImageDetails.description,
-    //   title: generatedImageDetails.title,
-    // }
-
-    // addNewImage(generatedImage);
-    addNewImage();
-    res.status(200).send("Image generated successfully");
-  } catch (error) {
-    console.error("Error generating image:", error);
-    res.status(500).json({ error: "Image generation failed." });
-  }
-});
-
+app.post("/generate-image", addNewImage);
 
 app.use(async (req, res, next) => {
   console.log("made it here");

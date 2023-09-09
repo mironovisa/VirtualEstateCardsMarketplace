@@ -119,11 +119,11 @@ class DBmongo {
         $pull: { inCart: imageId },
       }
     );
-  
+
     return resp;
   };
 
-  
+
   removeImageCartService = async (userId, imageId) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(imageId) });
