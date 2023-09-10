@@ -67,11 +67,11 @@ const updateUser = async (req, res) => {
 
 const addNewUser = async (req, res) => {
 
-    const { firstName, lastName, username, email, password } = req.body;
+    const { firstName, lastName, username, email, password, isAdmin } = req.body;
 
 
     const data = {
-        firstName, lastName, username, email, password,
+        firstName, lastName, username, email, password, isAdmin
     }
 
     const user = await users.findUserByEmailService(data.email);

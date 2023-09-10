@@ -13,6 +13,7 @@ export const useSignUp = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    isAdmin: false
   });
 
   const regexPatterns = {
@@ -22,8 +23,8 @@ export const useSignUp = () => {
     email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
     password: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
     confirmPassword: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
+    isAdmin: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
   };
-
   const [error, setError] = useState([]);
 
   const handleSignUp = () => {

@@ -1,6 +1,7 @@
 const DBmongo = require("../services/users.service");
 const { createImage, createImageDetails } = require("../utils/datagen");
 const images = new DBmongo("NFTMarketPlace", "images");
+const users = new DBmongo("NFTMarketPlace", "users");
 
 
 const getImageById = async (req, res) => {
@@ -29,7 +30,7 @@ const getAllImages = async (req, res) => {
         filter.category = category;
     }
 
-    const gwtridof = await images.helper(userId, filter)
+    // const help = await users.helper(userId, filter)
 
     const allImages = await images.get(userId, filter)
     res.status(200).send(allImages)
@@ -43,7 +44,8 @@ const updateImage = async (req, res) => {
         description: "A wonderful peice of art",
         isSold: true,
         title: "Image 3",
-        InCart: []
+        InCart: [],
+        price: 115
     }
 
     const resp = await images.updateImageService(imageId, data)
@@ -63,7 +65,7 @@ const addNewImage = async (req, res) => {
             description: `${generatedImageDetails.description}`,
             isSold: true,
             title: `${generatedImageDetails.title}`,
-            price: 125,
+            price: Math.floor(Math.random() * 61) + 100,
             category: "Semi Detached",
             InCart: []
         }
