@@ -6,67 +6,36 @@ const openai = new OpenAI({
   apiKey: process.env.DALLE_API_KEY,
 });
 
-const housingArchitecture = [
-  "Colonial Revival",
-  "Tudor Revival",
-  "Dutch Colonial Revival",
-  "American Craftsman",
-  "Ranch-style House",
-]
-
-const interiorDesign = [
-  "Modern",
-  "Contemporary",
-  "Minimalist",
-  "Industrial",
-  "Scandinavian",
-  "Traditional",
-  "Transitional",
-]
-
-const housingBuild = [
-  "Newly Built",
-  "Recently Built",
-  "Newly Constructed",
-]
-
-const housingType = [
-  "Single Family Home",
-  "Townhouse",
-  "Apartment",
-  "Cottage",
-  "Villa",
-  "Condo",
-  "Duplex",
-  "Mansion"
+const artStyle = [
+  "Cubism",
+  "Surrealism",
+  "Realism",
+  "Abstract Expressionism",
+  "Romanticism",
+  "Pop Art",
+  "Impressionism",
+  "Renaissance",
+  "Fauvism",
+  "Post-Impressionism",
 ]
 
 const createPrompt = async () => {
 
-  const housingArchitecturePrompt = housingArchitecture[Math.floor(Math.random() * housingArchitecture.length)];
-  const interiorDesignPrompt = interiorDesign[Math.floor(Math.random() * interiorDesign.length)];
-  const housingBuildPrompt = housingBuild[Math.floor(Math.random() * housingBuild.length)];
-  const housingTypePrompt = housingType[Math.floor(Math.random() * housingType.length)];
+  const artStylePrompt = artStyle[Math.floor(Math.random() * artStyle.length)];
 
   try {
     const RESPONSE = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{
         "role": "system",
-        "content": `Generate a propmt for a realistic professional photo-like real estate image. The prompt should be a description of a living room in a ${housingTypePrompt}. The prompt should include the following: ${housingArchitecturePrompt} as the style of the house, ${interiorDesignPrompt} as the style of the interior design and ${housingBuildPrompt} as the state of the house. The prompt should be between 6-7 lines
-        make sure that the following details are included:
-        1. Natural lighting that complements the space.
-        2. Realistic furniture placement and decor.
-        3. High-resolution image with sharp details.
-        4. An inviting atmosphere that emphasizes the property's appeal.
-        5. A focus on the most attractive features of the ${housingTypePrompt}.
-        The final image should resemble a professional real estate photograph, suitable for showcasing the property online or in print. Feel free to add any additional details that enhance the realism of the image. Please create this image with careful attention to detail, and ensure it looks like an authentic real estate photo, AND MAKE IT LOOK LIKE AN ACTUAL PHOTO AND NOT AT ALL LIKE A PAINTING!.`
+        "content": `Generate a prompt for a ${artStylePrompt} painting, the painting should be fitting for an NFT market place. The prompt should be 3-5 sentences long.`
       }]
     });
     console.log("Prompt Sent!");
     return RESPONSE.choices[0].message.content;
   } catch (err) {
-    throw err.error.message;
+    console.log("createPrompt error")
+    // throw err.error.message;
   }
 }
 
@@ -83,7 +52,8 @@ const createImage = async () => {
     createImageDetails(imageCloudinaryUrl);
     return imageCloudinaryUrl;
   } catch (err) {
-    throw err;
+    console.log("createImage error")
+    // throw err;
   }
 }
 
@@ -93,13 +63,13 @@ const createImageDetails = async (generatedImage) => {
       model: "gpt-3.5-turbo",
       messages: [{
         "role": "system",
-        "content": `Generate a description and title for the image in this link: ${generatedImage}, The description should be 3-5 sentences long and the title should be 1 line.
-        Reply in JSON format only`
+        "content": `Analyze the provided image in this link ${generatedImage} and generate a detailed description that includes specific elements, colors, and the overall mood of the scene. Additionally, create a concise and fitting title that encapsulates the essence of the image. Ensure that both the description and title are as accurate and representative of the image as possible, take youre time generating these. Reply in JSON format only and name the values "description" and "title" respectively.`
       }]
     });
     return JSON.parse(RESPONSE.choices[0].message.content);
   } catch (err) {
-    throw err;
+    console.log("createImageDetails error")
+    // throw err;
   }
 }
 

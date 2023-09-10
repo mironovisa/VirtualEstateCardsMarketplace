@@ -5,7 +5,7 @@ const users = new DBmongo("NFTMarketPlace", "users");
 
 
 const getImageById = async (req, res) => {
-    imageId = "64f4589da54828bc9f9df846"
+    const imageId = "64f4589da54828bc9f9df846"
     const image = await images.getById(imageId)
     res.status(200).send(image);
 }
@@ -30,11 +30,11 @@ const getAllImages = async (req, res) => {
     }
     if (isSold) {
         if (isSold === "Sold") {
-            filter.isSold = true; 
-        } else{
+            filter.isSold = true;
+        } else {
             filter.isSold = false
         }
-       
+
     }
 
     if (category) {
@@ -83,8 +83,8 @@ const addNewImage = async (req, res) => {
         const resp = await images.addNewImageService(data);
         res.status(201).send(resp);
     } catch (error) {
-        console.error("Error generating image:", error);
-        res.status(500).json({ error: "Image generation failed." });
+        console.error("Error generating image:");
+        // res.status(500).json({ error: "Image generation failed." });
     }
 }
 
