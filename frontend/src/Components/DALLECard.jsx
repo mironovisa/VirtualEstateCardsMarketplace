@@ -26,7 +26,7 @@ const Card = ({ image, isOwnedByUser, isAdminView, handleAddToCart }) => {
         <img src={image.uri} alt={image.title} />
         <h2>{image.title}</h2>
         <p>Price: ${image.price}</p>
-        {image.Sold ? <p className="sold">Sold</p> : <p>Available</p>}
+        {image.isSold ? <p className="sold">Sold</p> : <p>Available</p>}
       </motion.div>
 
       <AnimatePresence>
@@ -55,7 +55,7 @@ const Card = ({ image, isOwnedByUser, isAdminView, handleAddToCart }) => {
                 <button className="download-button">Download</button>
               )}
 
-              {!isAdminView && !isOwnedByUser && !image.Sold && !image.inCart && (
+              {!isAdminView && !isOwnedByUser && !image.isSold && !image.inCart && (
                 <button onClick={handleAddToCart} className="buy-button">Add to Cart</button>
               )}
             </div>

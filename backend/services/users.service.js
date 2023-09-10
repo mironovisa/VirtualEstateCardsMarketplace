@@ -118,6 +118,7 @@ class DBmongo {
 
     for (const imageId of imageIds) {
       const cleanCart = await this.makeImagesEmpty(userId, imageId);
+      const isSold = await this.isSold(imageId)
     }
 
   }
@@ -133,6 +134,20 @@ class DBmongo {
       }
     );
   
+    return resp;
+  };
+
+  isSold = async (userId) => {
+
+    const cols = await run(this.database, this.collection);
+
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(imageId) },
+      {
+        $set: { isSold: true }, // Use $set to update the isSold field to true
+      }
+    );
+
     return resp;
   };
 
