@@ -17,6 +17,8 @@ const getAllImages = async (req, res) => {
     const minPrice = parseFloat(req.query.minPrice);
     const maxPrice = parseFloat(req.query.maxPrice);
     const category = req.query.category;
+    const isSold = req.query.status;
+    console.log(isSold);
 
     // Create a filter object based on the provided parameters
     const filter = {};
@@ -26,6 +28,15 @@ const getAllImages = async (req, res) => {
     if (!isNaN(maxPrice)) {
         filter.price = { ...filter.price, $lte: maxPrice };
     }
+    if (isSold) {
+        if (isSold === "Sold") {
+            filter.isSold = true; 
+        } else{
+            filter.isSold = false
+        }
+       
+    }
+
     if (category) {
         filter.category = category;
     }

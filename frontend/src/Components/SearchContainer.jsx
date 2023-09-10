@@ -36,8 +36,8 @@ const SearchContainer = ({ searchParams, setSearchParams }) => {
           <label>Status:</label>
           <select name="status" onChange={handleInputChange}>
             <option value="">Select</option>
-            <option value="for_rent">sold</option>
-            <option value="for_sale">available</option>
+            <option value="Sold">Sold</option>
+            <option value="Available">Available</option>
           </select>
         </div>
         
