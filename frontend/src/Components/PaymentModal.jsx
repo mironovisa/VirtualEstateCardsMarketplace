@@ -1,8 +1,22 @@
 import React from 'react';
 import '../CompStyles/PaymentModal.css';
+import { usersApi } from 'helpers/Api';
 
-const PaymentModal = ({ isOpen, onClose }) => {
+const PaymentModal = ({ isOpen, onClose, cartItems }) => {
   const handlePayment = () => {
+
+    const arrayOfIds = cartItems.map((object) => object._id);
+
+    console.log(arrayOfIds, 'arrayid');
+
+    usersApi.boughtImage(arrayOfIds)
+    .then((res)=>{
+
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+
     console.log('Payment successful!');
     onClose();
   };

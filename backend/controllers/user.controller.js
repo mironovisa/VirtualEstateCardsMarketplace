@@ -5,7 +5,7 @@ const { generatePasswordService } = require("../services/hash.service")
 
 const getUserById = async (req, res) => {
 
-    const userId = req.headers.userid
+    const userId = req.me
     const user = await users.getById(userId)
     res.status(200).send(user);
 }
@@ -101,11 +101,12 @@ const deleteUser = async (req, res) => {
 const userBoughtImage = async (req, res) => {
     // const {uri, description, isSold, title, isInCart} = req.body
 
-    const userId = "64f4556a595a542ed038888f"
-    const ImageId = "64f4589da54828bc9f9df846"
+    const userId = req.me
+    console.log(req.body, 'reqbody');
+    const ImageId = req.body
 
     const resp = await users.updateUserImagesService(userId, ImageId);
-
+    const resp2 = await images.emptyImages(userId, ImageId);
     res.status(201).send(resp);
 
 }

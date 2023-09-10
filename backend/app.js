@@ -33,6 +33,8 @@ app.use(async (req, res, next) => {
 
   const token = req.headers.accesstoken;
 
+  console.log(token);
+
   const data = verify(token);
 
   if (!data) {

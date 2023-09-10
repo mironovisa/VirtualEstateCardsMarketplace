@@ -62,9 +62,6 @@ export const CartView = ({ state, onChange }) => {
     console.log('Checking out');
     const total = calculateTotal().toFixed(2);
     setShowModal(true);
-    console.log('showModal:', showModal); 
-    console.log('items', cartItems);
-    console.log('total', total);
   };
 
   useEffect(() => {
@@ -110,7 +107,7 @@ export const CartView = ({ state, onChange }) => {
         </div>
       </motion.div>
       {showModal && (
-  <PaymentModal isOpen={showModal} onClose={() => setShowModal(false)} />
+  <PaymentModal isOpen={showModal} cartItems={cartItems} onClose={() => setShowModal(false)} />
 )}
     </>
   );

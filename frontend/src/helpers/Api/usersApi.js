@@ -10,8 +10,8 @@ export const usersApi = {
     return api.send('get', `/users/${itemId}/images`)
   },
 
-  getUserById: async (itemId) => {
-    return api.send('get', `/users/${itemId}`)
+  getUserById: async () => {
+    return api.send('get', `/users/id`)
   },
 
   addNewUser: async (payload) => {
@@ -32,6 +32,10 @@ export const usersApi = {
 
   deleteUser: async (itemId) => {
     return api.send('delete', `/users/${itemId}`)
+  },
+
+  boughtImage: async (payload) => {
+    return api.send('put', `/users/bought`, payload)
   },
 
 }

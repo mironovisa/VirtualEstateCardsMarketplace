@@ -10,28 +10,27 @@ class DBmongo {
   get = async (userId, filter) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.find(filter).toArray();
-    
+
     const updatedItems = resp.map((item) => {
       // Check if 'inCart' exists and if it includes userId
       const isInCart = item.inCart?.includes(userId) || false;
       item.inCart = isInCart;
       return item;
     });
-  
+
     console.log(updatedItems);
     return resp;
   };
-  
+
   helper = async (userId, filter) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.find(filter).toArray();
     const fe = { inCart: { $exists: false } };
 
-// Update documents matching the filter to set 'inCart' as an empty array
-await cols.updateMany(fe, { $set: { inCart: [] } });
+    // Update documents matching the filter to set 'inCart' as an empty array
+    await cols.updateMany(fe, { $set: { inCart: [] } });
     return resp;
   };
-
 
   getById = async (userId) => {
     const cols = await run(this.database, this.collection);
@@ -85,15 +84,70 @@ await cols.updateMany(fe, { $set: { inCart: [] } });
     return resp;
   };
 
-  updateUserImagesService = async (userId, imageId) => {
+  updateUserImagesService = async (userId, imageIds) => {
     const cols = await run(this.database, this.collection);
-    const find = await cols.findOne({ _id: new ObjectId(userId) });
+
+
+    // Ensure imageIds is an array
+    if (!Array.isArray(imageIds)) {
+      throw new Error("imageIds must be an array");
+    }
+
+    const updatePromises = [];
+
+    for (const imageId of imageIds) {
+      const resp = await cols.updateOne(
+        { _id: new ObjectId(userId) },
+        {
+          $addToSet: { imagesOwned: imageId },
+        }
+      );
+
+      updatePromises.push(resp);
+    }
+
+    // Wait for all updates to complete
+    await Promise.all(updatePromises);
+
+    const cleanCart = await this.makeCartEmpty(userId)
+
+    return "All images added to imagesOwned successfully"; // You can return any desired response here
+  };
+
+  emptyImages = async(userId, imageIds) => {
+
+    for (const imageId of imageIds) {
+      const cleanCart = await this.makeImagesEmpty(userId, imageId);
+    }
+
+  }
+
+  makeImagesEmpty = async (userId, imageId) => {
+    const cols = await run(this.database, this.collection);
+  
+    // Use $pull to remove the specified imageId from the inCart array
+    const resp = await cols.updateOne(
+      { _id: new ObjectId(imageId) },
+      {
+        $pull: { inCart: userId },
+      }
+    );
+  
+    return resp;
+  };
+
+  makeCartEmpty = async (userId) => {
+    
+    const cols = await run(this.database, this.collection);
+
+    // Use $set to set the inCart field to an empty array
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
       {
-        $push: { imagesOwned: imageId },
+        $set: { inCart: [] },
       }
     );
+
     return resp;
   };
 
@@ -134,7 +188,6 @@ await cols.updateMany(fe, { $set: { inCart: [] } });
     return resp;
   };
 
-
   removeImageCartService = async (userId, imageId) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(imageId) });
@@ -147,7 +200,6 @@ await cols.updateMany(fe, { $set: { inCart: [] } });
 
     return resp;
   };
-
 
   updateImageService = async (userId, user) => {
     const cols = await run(this.database, this.collection);
@@ -172,6 +224,8 @@ await cols.updateMany(fe, { $set: { inCart: [] } });
     const resp = await cols.deleteOne({ _id: new ObjectId(userId) });
     return resp;
   };
+
+
 }
 
 module.exports = DBmongo;
