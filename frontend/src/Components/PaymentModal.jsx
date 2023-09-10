@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../CompStyles/PaymentModal.css';
 import { usersApi } from 'helpers/Api';
 
 const PaymentModal = ({ isOpen, onClose, cartItems }) => {
+
+  const [isLoading, setIsLoading] = useState(false)
   const handlePayment = () => {
+
+    setIsLoading(true)
 
     const arrayOfIds = cartItems.map((object) => object._id);
 
@@ -11,9 +15,10 @@ const PaymentModal = ({ isOpen, onClose, cartItems }) => {
 
     usersApi.boughtImage(arrayOfIds)
     .then((res)=>{
-
+      setIsLoading(false)
     })
     .catch((err)=>{
+      setIsLoading(false)
       console.log(err);
     })
 

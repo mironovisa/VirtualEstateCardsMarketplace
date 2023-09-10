@@ -25,10 +25,10 @@ class DBmongo {
   helper = async (userId, filter) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.find(filter).toArray();
-    const fe = { inCart: { $exists: false } };
+    const fe = { isSold: { $exists: true } };
 
     // Update documents matching the filter to set 'inCart' as an empty array
-    await cols.updateMany(fe, { $set: { inCart: [] } });
+    await cols.updateMany(fe, { $set: { isSold: false } });
     return resp;
   };
 
@@ -137,7 +137,7 @@ class DBmongo {
     return resp;
   };
 
-  isSold = async (userId) => {
+  isSold = async (imageId) => {
 
     const cols = await run(this.database, this.collection);
 

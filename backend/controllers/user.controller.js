@@ -105,8 +105,12 @@ const userBoughtImage = async (req, res) => {
     console.log(req.body, 'reqbody');
     const ImageId = req.body
 
+
+
     const resp = await users.updateUserImagesService(userId, ImageId);
+    console.log("yellow");
     const resp2 = await images.emptyImages(userId, ImageId);
+    console.log('red');
     res.status(201).send(resp);
 
 }

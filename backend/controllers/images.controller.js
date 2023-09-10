@@ -30,7 +30,7 @@ const getAllImages = async (req, res) => {
         filter.category = category;
     }
 
-    // const help = await users.helper(userId, filter)
+    // const help = await images.helper(userId, filter)
 
     const allImages = await images.get(userId, filter)
     res.status(200).send(allImages)
