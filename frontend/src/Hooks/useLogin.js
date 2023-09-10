@@ -8,6 +8,7 @@ import { usePopupMessage } from '../Context/PopupMessageContext';
 
 export const useLogin = () => {
   const { showPopupMessage } = usePopupMessage();
+  const [isLoading, setIsLoading] = useState(false)
   const { loginUser, loginAdmin } = useContext(authContext);
   const [loginData, setLoginData] = useState({
     email: '',
@@ -23,15 +24,18 @@ export const useLogin = () => {
 
 
   const handleLogin = () => {
+    setIsLoading(true)
     authApi.login(loginData)
       .then((res) => {
         console.log(res);
         loginUser(res.access_token)
         checkIfUserIsAdmin();
         showPopupMessage(`Successfully logged in!`);
+        setIsLoading(false)
       })
       .catch((err) => {
         setError({ msg: err.response.data, error: true });
+        setIsLoading(false)
       });
   }
 
@@ -55,7 +59,7 @@ export const useLogin = () => {
   }
 
   const values = {
-    loginData, setLoginData, handleChange, handleSubmit, error
+    loginData, setLoginData, handleChange, handleSubmit, error, isLoading
   };
 
   return values;

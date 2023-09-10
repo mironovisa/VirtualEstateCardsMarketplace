@@ -41,12 +41,14 @@ export const useProfileUpdate = () => {
     usersApi.updateUser(updatedUserData)
       .then((res) => {
         console.log(res);
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false)
       })
 
-      setIsLoading(false)
+      
   };
 
   const handleSubmit = (e) => {

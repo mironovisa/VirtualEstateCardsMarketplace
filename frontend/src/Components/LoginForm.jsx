@@ -1,10 +1,11 @@
 import React from 'react';
 import '../CompStyles/FormStyle.css';
 import { useLogin } from 'Hooks';
+import LoadingSpinner from './LoadingSpinner';
 
 const Login = ({ showLoginModal }) => {
 
-  const { loginData, handleChange, handleSubmit, error } = useLogin();
+  const { loginData, handleChange, handleSubmit, error, isLoading } = useLogin();
 
   return (
     <div className={showLoginModal ? 'modal-overlay' : 'modal-hidden'}>
@@ -37,6 +38,7 @@ const Login = ({ showLoginModal }) => {
               />
             </div>
             {error && <div className="errors">{error.msg}</div>}
+            {isLoading && <LoadingSpinner></LoadingSpinner>}
             <div className="modal-footer">
               <button type="submit" className="login-btn">
                 Login

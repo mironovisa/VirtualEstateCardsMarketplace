@@ -34,10 +34,12 @@ export const useSignUp = () => {
       .then((res) => {
         console.log(res);
         showPopupMessage(`${signUpData.username} Successfully signed up!`);
+        setIsLoading(false)
       })
       .catch((err) => {
         setError(err.response.data);
         showPopupMessage(`ERROR: ${err.response.data}`);
+        setIsLoading(false)
       });
   }
 
@@ -56,7 +58,6 @@ export const useSignUp = () => {
     if (isValid) handleSignUp();
     else showPopupMessage(`ERROR: Please fill in all the fields correctly!`);
     
-    setIsLoading(false)
   };
 
   const values = {
