@@ -29,6 +29,8 @@ const getAllImages = async (req, res) => {
         filter.category = category;
     }
 
+    const gwtridof = await images.helper(userId, filter)
+
     const allImages = await images.get(userId, filter)
     res.status(200).send(allImages)
 }
@@ -41,7 +43,7 @@ const updateImage = async (req, res) => {
         description: "A wonderful peice of art",
         isSold: true,
         title: "Image 3",
-        isInCart: []
+        InCart: []
     }
 
     const resp = await images.updateImageService(imageId, data)
@@ -51,7 +53,6 @@ const updateImage = async (req, res) => {
 }
 
 const addNewImage = async (req, res) => {
-    // const {uri, description, isSold, title, isInCart} = req.body
     try {
         const generatedImageUrl = await createImage();
         const generatedImageDetails = await createImageDetails();
@@ -64,7 +65,7 @@ const addNewImage = async (req, res) => {
             title: `${generatedImageDetails.title}`,
             price: 125,
             category: "Semi Detached",
-            isInCart: []
+            InCart: []
         }
         const resp = await images.addNewImageService(data);
         res.status(201).send(resp);

@@ -4,7 +4,7 @@ import { useSignUp } from 'Hooks';
 
 const Signup = ({ showSignupModal }) => {
 
-  const { handleChange, handleSubmit, signUpData, error } = useSignUp();
+  const { handleChange, handleSubmit, signUpData, error, isLoading } = useSignUp();
 
   return (
     <div className={showSignupModal ? 'modal-overlay' : 'modal-hidden'}>
@@ -82,6 +82,7 @@ const Signup = ({ showSignupModal }) => {
             </div>
             <div className="modal-footer">
               {error && <div className="error-msg">{error.msg}</div>}
+              {isLoading && <div>loading</div>}
               <button type="submit" className="login-btn">
                 Signup
               </button>

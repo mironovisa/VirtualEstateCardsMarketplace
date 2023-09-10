@@ -113,7 +113,6 @@ const userBoughtImage = async (req, res) => {
 }
 
 const userAddedImageToCart = async (req, res) => {
-    // const {uri, description, isSold, title, isInCart} = req.body
 
     const userId = req.me
     const ImageId = req.body.id

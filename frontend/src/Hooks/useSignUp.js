@@ -5,6 +5,7 @@ import { usePopupMessage } from '../Context/PopupMessageContext';
 
 export const useSignUp = () => {
   const { showPopupMessage } = usePopupMessage();
+  const [isLoading, setIsLoading] = useState(false)
   const [signUpData, setSignUpData] = useState({
     firstName: '',
     lastName: '',
@@ -26,6 +27,7 @@ export const useSignUp = () => {
   const [error, setError] = useState([]);
 
   const handleSignUp = () => {
+
     console.log(signUpData);
     usersApi.addNewUser(signUpData)
       .then((res) => {
@@ -47,14 +49,17 @@ export const useSignUp = () => {
   };
 
   const handleSubmit = (e) => {
+    setIsLoading(true)
     e.preventDefault();
     const isValid = validateInput(signUpData, regexPatterns);
     if (isValid) handleSignUp();
     else showPopupMessage(`ERROR: Please fill in all the fields correctly!`);
+    
+    setIsLoading(false)
   };
 
   const values = {
-    signUpData, setSignUpData, handleSignUp, handleChange, handleSubmit, error
+    signUpData, setSignUpData, handleSignUp, handleChange, handleSubmit, error, isLoading
   }
 
   return values;

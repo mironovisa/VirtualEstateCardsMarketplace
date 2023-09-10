@@ -19,6 +19,16 @@ class DBmongo {
     return resp;
   };
 
+  helper = async (userId, filter) => {
+    const cols = await run(this.database, this.collection);
+    const resp = await cols.find(filter).toArray();
+    const fe = { inCart: { $exists: false } };
+
+// Update documents matching the filter to set 'inCart' as an empty array
+await cols.updateMany(fe, { $set: { inCart: [] } });
+    return resp;
+  };
+
 
   getById = async (userId) => {
     const cols = await run(this.database, this.collection);
