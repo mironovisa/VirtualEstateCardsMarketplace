@@ -17,6 +17,7 @@ const AnimatedTabContent = ({ active, children }) => (
 
 const HomePage = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
+  const [isLoading, setIsLoading] = useState(false)
   const [searchParams, setSearchParams] = useState({
     category: '',
     status: '',
@@ -45,7 +46,7 @@ const HomePage = () => {
           </div>
           <div className='content-list'>
             <AnimatedTabContent active={true}>
-              <CardList searchParams={searchParams} setSearchParams={setSearchParams} />
+              <CardList searchParams={searchParams} setSearchParams={setSearchParams} isLoading={isLoading} setIsLoading={setIsLoading} />
             </AnimatedTabContent>
           </div>
         </div>
