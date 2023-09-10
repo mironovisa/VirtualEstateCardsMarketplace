@@ -21,7 +21,7 @@ const getCardsByUser = async (req , res) => {
 
 
 const getAllUsers = async (req, res) => {
-
+    console.log('here');
     const allUsers = await users.get()
     res.status(200).send(allUsers)
 }
@@ -92,7 +92,8 @@ const addNewUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-    const userId = "64e6fb5ffc3a37f2870ee4ba"
+    const userId = req.params.id
+    console.log(userId);
     await users.deleteUserService(userId)
     res.send("User deleted succesfully")
 }

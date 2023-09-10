@@ -1,43 +1,35 @@
-import React from 'react';
-import UserCard from '../../Components/UserCard';
-import '../../StylesKit/CardList.css'
-
-const sampleUsers = [
-  {
-    id: 1,
-    username: 'User1',
-    imageSrc: 'url-to-user1-image',
-    timeStamp: 'Ranking 1',
-  },
-  {
-    id: 2,
-    username: 'User2',
-    imageSrc: 'url-to-user2-image',
-    timeStamp: 'Ranking 2',
-  },
-  {
-    id: 3,
-    username: 'User3',
-    imageSrc: 'url-to-user2-image',
-    timeStamp: 'Ranking 2',
-  },
-  {
-    id: 4,
-    username: 'User4',
-    imageSrc: 'url-to-user2-image',
-    timeStamp: 'Ranking 2',
-  },
-];
+import React, { useEffect, useState } from "react";
+import UserCard from "../../Components/UserCard";
+import "../../StylesKit/CardList.css";
+import { usersApi } from "helpers/Api";
 
 const AllUsers = () => {
+  const [users, setUsers] = useState([]);
+
+  const getAllUsers = () => {
+    usersApi
+      .getAllUsers()
+      .then((res) => {
+        setUsers(res);
+        console.log(res);
+      })
+      .catch((err) => {});
+  };
+
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
   return (
     <div className="card-list">
-      {sampleUsers.map((user) => (
+      {users.map((user) => (
         <UserCard
-          key={user.id}
+          key={user._id}
+          firstName={user.firstName}
+          lastName={user.lastName}
+          isAdmin={user.isAdmin}
           username={user.username}
-          imageSrc={user.imageSrc}
-          timeStamp={user.timeStamp}
+          id={user._id}
         />
       ))}
     </div>
@@ -45,6 +37,3 @@ const AllUsers = () => {
 };
 
 export default AllUsers;
-
-
-

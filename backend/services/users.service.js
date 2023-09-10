@@ -10,15 +10,18 @@ class DBmongo {
   get = async (userId, filter) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.find(filter).toArray();
+    
     const updatedItems = resp.map((item) => {
-      const isInCart = item.inCart.includes(userId);
+      // Check if 'inCart' exists and if it includes userId
+      const isInCart = item.inCart?.includes(userId) || false;
       item.inCart = isInCart;
       return item;
     });
+  
     console.log(updatedItems);
     return resp;
   };
-
+  
   helper = async (userId, filter) => {
     const cols = await run(this.database, this.collection);
     const resp = await cols.find(filter).toArray();
