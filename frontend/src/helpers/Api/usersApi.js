@@ -6,6 +6,10 @@ export const usersApi = {
     return api.send('get', '/users')
   },
 
+  getAllTransactions: async () => {
+    return api.send('get', '/users/transactions')
+  },
+
   getCardByUserId: async (itemId) => {
     return api.send('get', `/users/${itemId}/images`)
   },

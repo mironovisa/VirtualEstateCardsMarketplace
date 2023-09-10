@@ -1,6 +1,7 @@
 const DBmongo = require("../services/users.service")
 const users = new DBmongo("NFTMarketPlace", "users");
 const images = new DBmongo("NFTMarketPlace", "images");
+const transactions = new DBmongo("NFTMarketPlace", "transactions");
 const { generatePasswordService } = require("../services/hash.service")
 
 const getUserById = async (req, res) => {
@@ -23,6 +24,12 @@ const getCardsByUser = async (req , res) => {
 const getAllUsers = async (req, res) => {
     console.log('here');
     const allUsers = await users.get()
+    res.status(200).send(allUsers)
+}
+
+const getAllTransactions = async (req, res) => {
+    console.log('here');
+    const allUsers = await transactions.get()
     res.status(200).send(allUsers)
 }
 
@@ -102,15 +109,13 @@ const userBoughtImage = async (req, res) => {
     // const {uri, description, isSold, title, isInCart} = req.body
 
     const userId = req.me
-    console.log(req.body, 'reqbody');
     const ImageId = req.body
 
 
 
     const resp = await users.updateUserImagesService(userId, ImageId);
-    console.log("yellow");
     const resp2 = await images.emptyImages(userId, ImageId);
-    console.log('red');
+    const resp3 = await transactions.addNewTransaction(userId, ImageId)
     res.status(201).send(resp);
 
 }
@@ -146,5 +151,6 @@ module.exports = {
     userBoughtImage,
     getCardsByUser,
     userAddedImageToCart,
-    removeFromUserCart
+    removeFromUserCart,
+    getAllTransactions
 }

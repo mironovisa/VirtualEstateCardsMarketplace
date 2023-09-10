@@ -1,46 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Purchases from '../../Components/PurchaseCard'; 
+import { usersApi } from 'helpers/Api';
+
 const PurchasesHistory = () => {
-  const purchasesData = [
-    {
-      //used as example only
-      orderID: '12345',
-      userID: 'user123',
-      imageID: 'image001',
-      timestamp: '2023-08-30 10:00 AM',
-    },
-    {
-      //used as example only
-      orderID: '12345',
-      userID: 'user123',
-      imageID: 'image001',
-      timestamp: '2023-08-30 10:00 AM',
-    },
-    {
-      //used as example only
-      orderID: '12345',
-      userID: 'user123',
-      imageID: 'image001',
-      timestamp: '2023-08-30 10:00 AM',
-    },
-    {
-      //used as example only
-      orderID: '12345',
-      userID: 'user123',
-      imageID: 'image001',
-      timestamp: '2023-08-30 10:00 AM',
-    },
-  ];
+  
+  const [transactions, setTransactions] = useState([])
+
+  const getTransactions = () => {
+      usersApi.getAllTransactions()
+  .then((res)=>{
+    setTransactions(res)
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+  }
+
+
+  useEffect(() => {
+    // Use useEffect to make the API request when the component mounts
+    getTransactions()
+  }, []); 
 
   return (
     <div className="purchases-history">
-      {purchasesData.map((purchase, index) => (
+      {transactions.map((tran, index) => (
         <Purchases
-          key={index}
-          orderID={purchase.orderID}
-          userID={purchase.userID}
-          imageID={purchase.imageID}
-          timestamp={purchase.timestamp}
+          key={tran._id}
+          orderID={tran._id}
+          userID={tran.userId}
+          imageID={tran.imageId}
+          timestamp={tran.createdAt}
         />
       ))}
     </div>

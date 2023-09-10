@@ -84,6 +84,22 @@ class DBmongo {
     return resp;
   };
 
+  
+  addNewTransaction = async (userId, imageIds) => {
+    const cols = await run(this.database, this.collection);
+  
+    for (const imageId of imageIds) {
+      const transactionDocument = {
+        userId: userId,
+        imageId: imageId,
+        createdAt: new Date(),
+      };
+  
+      const result = await cols.insertOne(transactionDocument);
+    }
+  };
+  
+
   updateUserImagesService = async (userId, imageIds) => {
     const cols = await run(this.database, this.collection);
 
