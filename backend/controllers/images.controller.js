@@ -63,7 +63,7 @@ const addNewImage = async (req, res) => {
         const data = {
             uri: `${generatedImageUrl}`,
             description: `${generatedImageDetails.description}`,
-            isSold: true,
+            isSold: false,
             title: `${generatedImageDetails.title}`,
             price: Math.floor(Math.random() * 61) + 100,
             category: "Semi Detached",

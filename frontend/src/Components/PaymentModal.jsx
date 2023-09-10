@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../CompStyles/PaymentModal.css';
 import { usersApi } from 'helpers/Api';
+import LoadingSpinner from './LoadingSpinner';
 
 const PaymentModal = ({ isOpen, onClose, cartItems }) => {
 
@@ -46,6 +47,7 @@ const PaymentModal = ({ isOpen, onClose, cartItems }) => {
             <label htmlFor="cvv">CVV</label>
             <input type="text" id="cvv" placeholder="123" />
           </div>
+          {isLoading && <LoadingSpinner></LoadingSpinner>}
           <button className="pay-button" onClick={handlePayment}>
             Pay with PayPal
           </button>

@@ -27,7 +27,7 @@ export const CartView = ({ state, onChange }) => {
 
   useEffect(() => {
     getAllImages();
-  }, []);
+  }, [cartItems]);
 
   const toggleCart = () => {
     setIsOpen(!isOpen);
