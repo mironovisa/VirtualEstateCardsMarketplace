@@ -4,13 +4,15 @@ import { useState } from "react";
 import { validateInput } from "../Utils/regexValidation";
 
 export const useProfileUpdate = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [updatedUserData, setUpdatedUserData] = useState({
     username: '',
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    isAdmin: false
   });
   const regexPatterns = {
     firstName: /^[A-Za-z]+$/,
@@ -19,6 +21,7 @@ export const useProfileUpdate = () => {
     email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
     password: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
     confirmPassword: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
+    isAdmin: /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]+$/,
   };
 
   const handleChange = (e) => {
@@ -33,6 +36,8 @@ export const useProfileUpdate = () => {
 
   //* import loggedUserID form cookies and pass in the function
   const handleProfileUpdate = () => {
+    setIsLoading(true)
+
     usersApi.updateUser(updatedUserData)
       .then((res) => {
         console.log(res);
@@ -40,6 +45,8 @@ export const useProfileUpdate = () => {
       .catch((err) => {
         console.log(err);
       })
+
+      setIsLoading(false)
   };
 
   const handleSubmit = (e) => {
@@ -49,7 +56,7 @@ export const useProfileUpdate = () => {
   };
 
   const values = {
-    updatedUserData, setUpdatedUserData, handleChange, handleSubmit
+    updatedUserData, setUpdatedUserData, handleChange, handleSubmit, isLoading
   }
 
   return values;

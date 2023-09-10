@@ -65,7 +65,6 @@ await cols.updateMany(fe, { $set: { inCart: [] } });
   updateUserService = async (userId, user) => {
     const cols = await run(this.database, this.collection);
     const find = await cols.findOne({ _id: new ObjectId(userId) });
-    console.log(find, "finddd");
     const resp = await cols.updateOne(
       { _id: new ObjectId(userId) },
       {
@@ -78,7 +77,6 @@ await cols.updateMany(fe, { $set: { inCart: [] } });
   getAllById = async (imageIds) => {
     const cols = await run(this.database, this.collection);
     // Convert each string ID to ObjectId
-    console.log('here2');
     const objectIdArray = imageIds.map((imageId) => new ObjectId(imageId));
     const resp = await cols.find({ _id: { $in: objectIdArray } }).toArray();
     return resp;

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../CompStyles/FormStyle.css';
 import { useSignUp } from 'Hooks';
+import LoadingSpinner from './LoadingSpinner';
 
 const Signup = ({ showSignupModal }) => {
 
@@ -82,7 +83,7 @@ const Signup = ({ showSignupModal }) => {
             </div>
             <div className="modal-footer">
               {error && <div className="error-msg">{error.msg}</div>}
-              {isLoading && <div>loading</div>}
+              {isLoading && <LoadingSpinner></LoadingSpinner>}
               <button type="submit" className="login-btn">
                 Signup
               </button>

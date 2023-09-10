@@ -12,9 +12,7 @@ const getUserById = async (req, res) => {
 
 const getCardsByUser = async (req , res) => {
     const userId = req.me
-    console.log('here', userId);
     const user = await users.getById(userId)
-    console.log(user, 'user');
     const imagesOwned = user.imagesOwned
     const cards = await images.getAllById(imagesOwned)
     res.status(200).send(cards)
@@ -32,7 +30,7 @@ const updateUser = async (req, res) => {
 
     const userId = req.me
 
-    const { firstName, lastName, username, email, password } = req.body
+    const { firstName, lastName, username, email, password, isAdmin } = req.body
 
     const data = {
         firstName: firstName,
@@ -40,6 +38,7 @@ const updateUser = async (req, res) => {
         username: username,
         email: email,
         password: password,
+        isAdmin: false
 
     }
 
@@ -54,15 +53,13 @@ const updateUser = async (req, res) => {
             data.password = hash
             const resp = await users.updateUserService(userId, data)
 
-            res.status(201).send(resp);
+            res.status(201).send("Succesfully Updated User");
         })
 
     } catch (error) {
         return res.status(500).send("Something went wrong")
     }
 
-
-    res.send("success")
 }
 
 const addNewUser = async (req, res) => {

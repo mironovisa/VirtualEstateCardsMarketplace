@@ -4,12 +4,15 @@ import '../../StylesKit/CardList.css';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { imagesApi } from 'helpers/Api/imagesApi';
 import { usersApi } from 'helpers/Api';
+import LoadingSpinner from 'Components/LoadingSpinner';
 
 const CardList = ({ searchParams, setSearchParams }) => {
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading]= useState(false)
   const controls = useAnimation();
 
   const getAllImages = () => {
+    setIsLoading(true)
     imagesApi
       .getAllImages(searchParams)
       .then((res) => {
@@ -18,6 +21,8 @@ const CardList = ({ searchParams, setSearchParams }) => {
       .catch((err) => {
         console.log(err);
       });
+
+      setIsLoading(false)
   };
 
   useEffect(() => {
@@ -39,6 +44,7 @@ const CardList = ({ searchParams, setSearchParams }) => {
   return (
     <div className="card-list">
       <AnimatePresence>
+      {isLoading ? <LoadingSpinner></LoadingSpinner> : null}
         {images.map((image) => (
           <motion.div
             key={image._id}

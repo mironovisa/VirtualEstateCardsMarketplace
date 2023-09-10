@@ -1,9 +1,10 @@
 import React from 'react';
 import '../CompStyles/UpdateUserCont.css';
 import { useProfileUpdate } from 'Hooks';
+import LoadingSpinner from './LoadingSpinner';
 
 const UpdateUserForm = () => {
-  const { updatedUserData, handleChange, handleSubmit } = useProfileUpdate();
+  const { updatedUserData, handleChange, handleSubmit, isLoading } = useProfileUpdate();
 
   return (
     <div className='update-user-form-container'>
@@ -81,6 +82,7 @@ const UpdateUserForm = () => {
             required
           />
         </div>
+        {isLoading ? <LoadingSpinner></LoadingSpinner> : null}
         <button type="submit">Update</button>
       </form>
     </div>
