@@ -4,10 +4,11 @@ const { signupSchema } = require("../schema/signup.schema")
 const { validateSchema } = require('../schema/validate');
 
 
-const { removeFromUserCart, getAllTransactions, addNewUser, userAddedImageToCart, getCardsByUser, getUserById, getAllUsers, updateUser, deleteUser, userBoughtImage } = require("../controllers/user.controller");
+const { removeFromUserCart, getMyTransactions, getAllTransactions, addNewUser, userAddedImageToCart, getCardsByUser, getUserById, getAllUsers, updateUser, deleteUser, userBoughtImage } = require("../controllers/user.controller");
 
 route.get('/', getAllUsers);
 route.get('/transactions', getAllTransactions)
+route.get('/transactions/my', getMyTransactions)
 route.get('/id', getUserById);
 route.get('/:id/images', getCardsByUser)
 route.post('/', validateSchema(signupSchema), addNewUser);

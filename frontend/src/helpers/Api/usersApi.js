@@ -10,6 +10,10 @@ export const usersApi = {
     return api.send('get', '/users/transactions')
   },
 
+  getMyTransactions: async () => {
+    return api.send('get', '/users/transactions/my')
+  },
+
   getCardByUserId: async (itemId) => {
     return api.send('get', `/users/${itemId}/images`)
   },

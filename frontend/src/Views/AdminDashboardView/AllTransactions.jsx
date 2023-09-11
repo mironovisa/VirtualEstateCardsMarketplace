@@ -32,7 +32,8 @@ const PurchasesHistory = () => {
           userID={tran.userId}
           imageID={tran.imageId}
           timestamp={tran.createdAt}
-          otherDetails={tran.imageDetails}
+          uri={tran.imageDetails.uri}
+          title={tran.imageDetails.title}
 
         />
       ))}

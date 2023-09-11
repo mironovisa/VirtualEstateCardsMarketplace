@@ -11,13 +11,20 @@ const getUserById = async (req, res) => {
     res.status(200).send(user);
 }
 
-const getCardsByUser = async (req , res) => {
-    const userId = req.me
-    const user = await users.getById(userId)
-    const imagesOwned = user.imagesOwned
-    const cards = await images.getAllById(imagesOwned)
-    res.status(200).send(cards)
-}
+const getCardsByUser = async (req, res) => {
+    const userId = req.me;
+    const user = await users.getById(userId);
+
+    if (!user || !user.imagesOwned) {
+        return res.status(200).send([]); // Return an empty array or handle this case as needed
+    }
+
+    const imagesOwned = user.imagesOwned;
+    const cards = await images.getAllById(imagesOwned);
+
+    res.status(200).send(cards);
+};
+
 
 
 
@@ -34,15 +41,48 @@ const getAllTransactions = async (req, res) => {
     const transactionsWithDetails = await Promise.all(
         allUsers.map(async (item) => {
             const image = item.imageId;
-            const details = await images.getById(image);
+            console.log(image);
+
+            // Check if image is null, and set details accordingly
+            let details = null;
+            if (image) {
+                details = await images.getById(image);
+            }
+
             return {
                 ...item,
-                imageDetails: details, // You can name it whatever you want
+                imageDetails: details,
             };
         })
     );
-    console.log(transactionsWithDetails);
+
     res.status(200).send(transactionsWithDetails)
+}
+
+const getMyTransactions = async (req, res) => {
+    const userId = req.me
+    const allUsers = await transactions.get()
+
+    const transactionsWithDetails = await Promise.all(
+        allUsers.map(async (item) => {
+            const image = item.imageId;
+            console.log(image);
+
+            // Check if image is null, and set details accordingly
+            let details = null;
+            if (image) {
+                details = await images.getById(image);
+            }
+
+            return {
+                ...item,
+                imageDetails: details,
+            };
+        })
+    );
+    const filteredTransactions = transactionsWithDetails.filter((item) => item.userId === userId )
+    console.log(filteredTransactions, 'filterede');
+    res.status(200).send(filteredTransactions)
 }
 
 const updateUser = async (req, res) => {
@@ -164,5 +204,6 @@ module.exports = {
     getCardsByUser,
     userAddedImageToCart,
     removeFromUserCart,
-    getAllTransactions
+    getAllTransactions,
+    getMyTransactions
 }
