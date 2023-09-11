@@ -16,7 +16,8 @@
   font-size: 30px;
   margin: 20px;
   width: 350px;
-  height: 400px;
+  min-height: 400px;
+  max-height: 550px;;
   transition: transform 0.2s;
   cursor: pointer;
 }
@@ -151,7 +152,8 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin: 10px;
         width: 150px;
-        height: 200px;
+        min-height: 200px;
+        max-height: 250px;
       }
       
       .card img {

@@ -41,7 +41,7 @@ const Card = ({ image, isOwnedByUser, isAdminView, handleAddToCart }) => {
               <span className="close-modal" onClick={closeModal}>
                 &times;
               </span>
-              <img src={image.uri} alt={image.title} />
+              <img className='modal-image' src={image.uri} alt={image.title} />
               <h2>{image.title}</h2>
               <p>{image.description}</p>
               <p>Category: {image.category}</p>

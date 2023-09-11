@@ -65,10 +65,15 @@
   padding: 10px;
   background-color: var(--naples-yellow-2);
   color: var(--rich-black);
+  border: solid 1.5px var(--davys-gray);
   border: none;
   cursor: pointer;
 }
 
+.side-icon{
+  width: 30px;
+  height: 30px;
+}
 
 
 @media (max-width: 1050px) and (min-width: 700px) {
