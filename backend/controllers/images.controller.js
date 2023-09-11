@@ -18,7 +18,7 @@ const getAllImages = async (req, res) => {
     const maxPrice = parseFloat(req.query.maxPrice);
     const category = req.query.category;
     const isSold = req.query.status;
-    
+
 
     // Create a filter object based on the provided parameters
     const filter = {};
@@ -67,17 +67,16 @@ const updateImage = async (req, res) => {
 
 const addNewImage = async (req, res) => {
     try {
-        const generatedImageUrl = await createImage();
+        const generatedImage = await createImage();
         const generatedImageDetails = await createImageDetails();
-        
 
         const data = {
-            uri: `${generatedImageUrl}`,
+            uri: `${generatedImage.uri}`,
             description: `${generatedImageDetails.description}`,
             isSold: false,
             title: `${generatedImageDetails.title}`,
             price: Math.floor(Math.random() * 61) + 100,
-            category: "House",
+            category: `${generatedImage.style}`,
             InCart: []
         }
         const resp = await images.addNewImageService(data);

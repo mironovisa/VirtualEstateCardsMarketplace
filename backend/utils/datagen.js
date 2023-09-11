@@ -31,17 +31,20 @@ const createPrompt = async () => {
         "content": `Generate a prompt for a ${artStylePrompt} painting, the painting should be fitting for an NFT market place. The prompt should be 3-5 sentences long.`
       }]
     });
-    
-    return RESPONSE.choices[0].message.content;
+    const generatedPrompt = {
+      prompt: RESPONSE.choices[0].message.content,
+      style: artStylePrompt
+    }
+    return generatedPrompt;
   } catch (err) {
-    
+
     // throw err.error.message;
   }
 }
 
 const createImage = async () => {
-  const prompt = await createPrompt();
-  
+  const generatedPrompt = await createPrompt();
+  const prompt = generatedPrompt.prompt;
   try {
     const RESPONSE = await openai.images.generate({
       prompt,
@@ -50,9 +53,13 @@ const createImage = async () => {
     });
     const imageCloudinaryUrl = await getCloudinaryUrl(RESPONSE.data[0].url);
     createImageDetails(imageCloudinaryUrl);
-    return imageCloudinaryUrl;
+    const generatedImage = {
+      uri: imageCloudinaryUrl,
+      style: generatedPrompt.style
+    }
+    return generatedImage;
   } catch (err) {
-    
+
     // throw err;
   }
 }
@@ -68,7 +75,6 @@ const createImageDetails = async (generatedImage) => {
     });
     return JSON.parse(RESPONSE.choices[0].message.content);
   } catch (err) {
-    
     // throw err;
   }
 }

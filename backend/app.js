@@ -23,7 +23,7 @@ app.use(express.json());
 app.post("/generate-image", addNewImage);
 
 app.use(async (req, res, next) => {
-  
+
   if (
     (req.method === "POST" && req.url === "/auth/login") ||
     (req.method === "POST" && req.url === "/users")
@@ -33,7 +33,7 @@ app.use(async (req, res, next) => {
 
   const token = req.headers.accesstoken;
 
-  
+
 
   const data = verify(token);
 
@@ -41,7 +41,7 @@ app.use(async (req, res, next) => {
     return res.status(401).send("user not allowed");
   }
 
-  
+
   req.me = data.id
 
   next();
@@ -59,5 +59,5 @@ app.get("/test", (req, res) => {
 const port = process.env.PORT || 3001; // DO NOT CHANGE THIS
 
 app.listen(port, () => {
-  
+  console.log("Connected to port: ", port);
 });

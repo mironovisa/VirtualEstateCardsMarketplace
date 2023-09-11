@@ -25,11 +25,16 @@ const SearchContainer = ({ searchParams, setSearchParams }) => {
           <label>Category:</label>
           <select name="category" onChange={handleInputChange}>
             <option value="">Select</option>
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-            <option value="Building">Building</option>
-            <option value="Store">Store</option>
-            <option value="Parking_space">Parking Space</option>
+            <option value="Cubism">Cubism</option>
+            <option value="Surrealism">Surrealism</option>
+            <option value="Realism">Realism</option>
+            <option value="Abstract Expressionism">Abstract Expressionism</option>
+            <option value="Romanticism">Romanticism</option>
+            <option value="Pop_Art">Pop Art</option>
+            <option value="Impressionism">Impressionism</option>
+            <option value="Renaissance">Renaissance</option>
+            <option value="Fauvism">Fauvism</option>
+            <option value="Post-Impressionism">Post-Impressionism</option>
           </select>
         </div>
         <div>
