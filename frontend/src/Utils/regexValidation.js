@@ -10,7 +10,7 @@ const checkIfMatchingPattern = (fieldName, fieldValue, regexPatterns) => {
     // Object.keys(data).forEach((key) => {
     //   const isValid = checkIfMatchingPattern(key, data[key]);
     //   if (!isValid) {
-    //     console.log("Incorrect " + key + " field");
+    //     
     //   }
     // });
     return isValid;

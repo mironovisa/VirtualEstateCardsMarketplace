@@ -12,7 +12,7 @@ const PaymentModal = ({ isOpen, onClose, cartItems }) => {
 
     const arrayOfIds = cartItems.map((object) => object._id);
 
-    console.log(arrayOfIds, 'arrayid');
+    
 
     usersApi.boughtImage(arrayOfIds)
     .then((res)=>{
@@ -20,10 +20,10 @@ const PaymentModal = ({ isOpen, onClose, cartItems }) => {
     })
     .catch((err)=>{
       setIsLoading(false)
-      console.log(err);
+      
     })
 
-    console.log('Payment successful!');
+    
     onClose();
   };
 

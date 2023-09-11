@@ -18,7 +18,7 @@ class DBmongo {
       return item;
     });
 
-    console.log(updatedItems);
+    
     return resp;
   };
 

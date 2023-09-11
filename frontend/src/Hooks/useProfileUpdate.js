@@ -32,7 +32,7 @@ export const useProfileUpdate = () => {
     }));
   };
 
-  console.log(updatedUserData);
+  
 
   //* import loggedUserID form cookies and pass in the function
   const handleProfileUpdate = () => {
@@ -40,11 +40,11 @@ export const useProfileUpdate = () => {
 
     usersApi.updateUser(updatedUserData)
       .then((res) => {
-        console.log(res);
+        
         setIsLoading(false)
       })
       .catch((err) => {
-        console.log(err);
+        
         setIsLoading(false)
       })
 

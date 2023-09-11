@@ -14,7 +14,7 @@ const SearchContainer = ({ searchParams, setSearchParams }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(searchParams);
+    
   };
 
   return (

@@ -29,10 +29,10 @@ export const useSignUp = () => {
 
   const handleSignUp = () => {
 
-    console.log(signUpData);
+    
     usersApi.addNewUser(signUpData)
       .then((res) => {
-        console.log(res);
+        
         showPopupMessage(`${signUpData.username} Successfully signed up!`);
         setIsLoading(false)
       })

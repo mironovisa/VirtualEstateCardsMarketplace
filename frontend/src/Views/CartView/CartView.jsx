@@ -21,7 +21,7 @@ export const CartView = ({ state, onChange }) => {
         setCartItems(filteredItems);
       })
       .catch((err) => {
-        console.log(err);
+        
       });
   };
 
@@ -49,7 +49,7 @@ export const CartView = ({ state, onChange }) => {
         getAllImages();
       })
       .catch((err) => {
-        console.log(err);
+        
       });
 
     setCartItems((prevCartItems) => {
@@ -59,7 +59,7 @@ export const CartView = ({ state, onChange }) => {
   };
 
   const handleCheckout = () => {
-    console.log('Checking out');
+    
     const total = calculateTotal().toFixed(2);
     setShowModal(true);
     getAllImages()

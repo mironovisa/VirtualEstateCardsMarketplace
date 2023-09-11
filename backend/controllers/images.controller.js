@@ -18,7 +18,7 @@ const getAllImages = async (req, res) => {
     const maxPrice = parseFloat(req.query.maxPrice);
     const category = req.query.category;
     const isSold = req.query.status;
-    console.log(isSold);
+    
 
     // Create a filter object based on the provided parameters
     const filter = {};
@@ -69,7 +69,7 @@ const addNewImage = async (req, res) => {
     try {
         const generatedImageUrl = await createImage();
         const generatedImageDetails = await createImageDetails();
-        console.log({ generatedImageUrl }, { generatedImageDetails });
+        
 
         const data = {
             uri: `${generatedImageUrl}`,

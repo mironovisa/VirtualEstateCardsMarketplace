@@ -2,18 +2,24 @@ import Purchases from '../../Components/PurchaseCard';
 import React, { useState, useEffect } from 'react';
 import { usersApi } from 'helpers/Api';
 import '../../CompStyles/DALLECard.css';
+import LoadingSpinner from 'Components/LoadingSpinner';
 
 const PurchasesHistory = () => {
+
+  const [isLoading, setIsLoading]= useState(false)
   
   const [myTransactions, setMyTransactions] = useState([])
 
   const getTransactions = () => {
+    setIsLoading(true)
       usersApi.getMyTransactions()
   .then((res)=>{
     setMyTransactions(res)
+    setIsLoading(false)
   })
   .catch((err)=>{
-    console.log(err);
+    setIsLoading(false)
+    
   })
   }
 
@@ -25,6 +31,7 @@ const PurchasesHistory = () => {
 
   return (
 <div className="purchases-history">
+{isLoading ? <LoadingSpinner></LoadingSpinner> : null}
   {myTransactions.length === 0
     ? "You don't own any Transactions"
     : myTransactions.map((tran, index) => (

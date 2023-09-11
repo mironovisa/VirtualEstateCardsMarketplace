@@ -29,19 +29,19 @@ const getCardsByUser = async (req, res) => {
 
 
 const getAllUsers = async (req, res) => {
-    console.log('here');
+    
     const allUsers = await users.get()
     res.status(200).send(allUsers)
 }
 
 const getAllTransactions = async (req, res) => {
-    console.log('here');
+    
     const allUsers = await transactions.get()
-    console.log(allUsers);
+    
     const transactionsWithDetails = await Promise.all(
         allUsers.map(async (item) => {
             const image = item.imageId;
-            console.log(image);
+            
 
             // Check if image is null, and set details accordingly
             let details = null;
@@ -66,7 +66,7 @@ const getMyTransactions = async (req, res) => {
     const transactionsWithDetails = await Promise.all(
         allUsers.map(async (item) => {
             const image = item.imageId;
-            console.log(image);
+            
 
             // Check if image is null, and set details accordingly
             let details = null;
@@ -81,7 +81,7 @@ const getMyTransactions = async (req, res) => {
         })
     );
     const filteredTransactions = transactionsWithDetails.filter((item) => item.userId === userId )
-    console.log(filteredTransactions, 'filterede');
+    
     res.status(200).send(filteredTransactions)
 }
 
@@ -145,14 +145,14 @@ const addNewUser = async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error);
+        
         return res.status(500).send("Something went wrong")
     }
 }
 
 const deleteUser = async (req, res) => {
     const userId = req.params.id
-    console.log(userId);
+    
     await users.deleteUserService(userId)
     res.send("User deleted succesfully")
 }

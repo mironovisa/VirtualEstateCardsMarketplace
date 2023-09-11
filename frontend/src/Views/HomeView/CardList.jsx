@@ -26,7 +26,7 @@ const CardList = ({
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        
 
         setIsLoading(false);
       });
@@ -44,7 +44,7 @@ const CardList = ({
         getAllImages();
       })
       .catch((err) => {
-        console.log(err);
+        
       });
   };
 

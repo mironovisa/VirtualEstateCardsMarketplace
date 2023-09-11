@@ -31,17 +31,17 @@ const createPrompt = async () => {
         "content": `Generate a prompt for a ${artStylePrompt} painting, the painting should be fitting for an NFT market place. The prompt should be 3-5 sentences long.`
       }]
     });
-    console.log("Prompt Sent!");
+    
     return RESPONSE.choices[0].message.content;
   } catch (err) {
-    console.log("createPrompt error")
+    
     // throw err.error.message;
   }
 }
 
 const createImage = async () => {
   const prompt = await createPrompt();
-  console.log("Prompt: ", prompt)
+  
   try {
     const RESPONSE = await openai.images.generate({
       prompt,
@@ -52,7 +52,7 @@ const createImage = async () => {
     createImageDetails(imageCloudinaryUrl);
     return imageCloudinaryUrl;
   } catch (err) {
-    console.log("createImage error")
+    
     // throw err;
   }
 }
@@ -68,7 +68,7 @@ const createImageDetails = async (generatedImage) => {
     });
     return JSON.parse(RESPONSE.choices[0].message.content);
   } catch (err) {
-    console.log("createImageDetails error")
+    
     // throw err;
   }
 }

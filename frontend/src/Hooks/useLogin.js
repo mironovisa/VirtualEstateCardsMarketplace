@@ -27,7 +27,7 @@ export const useLogin = () => {
     setIsLoading(true)
     authApi.login(loginData)
       .then((res) => {
-        console.log(res);
+        
         loginUser(res.access_token)
         checkIfUserIsAdmin();
         showPopupMessage(`Successfully logged in!`);

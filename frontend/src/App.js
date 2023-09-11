@@ -21,7 +21,7 @@ function App() {
     const [cart, setCart] = useState(false);
     const location = useLocation();
 
-    console.log('isLoggedIn:', isLoggedIn);
+    
 
     const handleCart = () => {
         setCart(true);

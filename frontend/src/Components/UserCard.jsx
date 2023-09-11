@@ -7,10 +7,10 @@ const UserCard = ({ username, imageSrc, timeStamp, firstName, lastName, isAdmin,
   const handleUserDelete = (id) => {
     usersApi.deleteUser(id)
     .then((res)=>{
-      console.log('user deleted succesfully');
+      
     })
     .catch((err)=>{
-      console.log(err);
+      
     })
   }
   return (
