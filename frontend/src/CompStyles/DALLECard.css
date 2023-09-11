@@ -4,6 +4,12 @@
   font-size: 24px;
 }
 
+.cardRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .card {
   display: flex;
   flex-direction: column;

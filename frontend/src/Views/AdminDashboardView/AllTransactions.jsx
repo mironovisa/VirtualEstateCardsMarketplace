@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Purchases from '../../Components/PurchaseCard'; 
 import { usersApi } from 'helpers/Api';
+import '../../CompStyles/DALLECard.css';
 
 const PurchasesHistory = () => {
   
@@ -23,7 +24,7 @@ const PurchasesHistory = () => {
   }, []); 
 
   return (
-    <div className="purchases-history">
+    <div className="cardRow">
       {transactions.map((tran, index) => (
         <Purchases
           key={tran._id}
@@ -31,6 +32,8 @@ const PurchasesHistory = () => {
           userID={tran.userId}
           imageID={tran.imageId}
           timestamp={tran.createdAt}
+          otherDetails={tran.imageDetails}
+
         />
       ))}
     </div>

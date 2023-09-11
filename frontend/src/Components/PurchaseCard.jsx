@@ -1,18 +1,19 @@
 import React from 'react';
 import '../CompStyles/PurchaseCard.css'
+import '../CompStyles/DALLECard.css';
 
-const Purchases = ({ orderID, userID, imageID, timestamp }) => {
+const Purchases = ({ orderID, userID, imageID, timestamp, otherDetails }) => {
   return (
-    <div className="purchases-card">
-      <div className='p-img'>Image ID (Purchased image): {imageID}</div>
-      <div className='p-right'>
-        <div className='p-top-right'>
-          <p className='p-order'>Order ID: {orderID}</p>
-          <p className='p-user'>User ID: {userID}</p>
-        </div>
-        <div className='p-bottom-right'>
-          <p className='p-time'>timestamp: {timestamp}</p>
-        </div>
+    <div className="card-container">
+      <div className="card"
+        initial={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <img src={otherDetails.uri} alt={otherDetails.title} />
+        <h2>Order ID: {orderID}</h2>
+        <p>User Id: {userID}</p>
+        {timestamp ? <p className="sold">Transaction Date: {timestamp}</p>:null}
       </div>
     </div>
   );

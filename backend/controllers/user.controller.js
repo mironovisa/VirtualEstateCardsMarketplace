@@ -30,7 +30,19 @@ const getAllUsers = async (req, res) => {
 const getAllTransactions = async (req, res) => {
     console.log('here');
     const allUsers = await transactions.get()
-    res.status(200).send(allUsers)
+    console.log(allUsers);
+    const transactionsWithDetails = await Promise.all(
+        allUsers.map(async (item) => {
+            const image = item.imageId;
+            const details = await images.getById(image);
+            return {
+                ...item,
+                imageDetails: details, // You can name it whatever you want
+            };
+        })
+    );
+    console.log(transactionsWithDetails);
+    res.status(200).send(transactionsWithDetails)
 }
 
 const updateUser = async (req, res) => {
