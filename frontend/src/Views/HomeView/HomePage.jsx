@@ -36,7 +36,9 @@ const HomePage = () => {
       <div className="sb-layout__sidebar">
         <SearchNavBar searchParams={searchParams} setSearchParams={setSearchParams} />
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-          {sidebarExpanded ? 'Collapse Sidebar' : 'Expand Sidebar'}
+          {sidebarExpanded ? <img className='side-icon' src={require('../../Icons/left-sign.png')} alt='About'></img> 
+          : 
+          <img className='side-icon' src={require('../../Icons/right-sign.png')} alt='About'></img>}
         </button>
       </div>
       <main className="sb-layout__content">

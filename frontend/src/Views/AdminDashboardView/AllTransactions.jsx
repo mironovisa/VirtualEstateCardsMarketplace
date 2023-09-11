@@ -29,7 +29,7 @@ const PurchasesHistory = () => {
   }, []); 
 
   return (
-    <div className="cardRow">
+    <div className="purchases-history">
       {isLoading ? <LoadingSpinner></LoadingSpinner> : null}
       {transactions.map((tran, index) => (
         <Purchases

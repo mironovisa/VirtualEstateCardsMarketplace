@@ -2,8 +2,10 @@ import { getUserFromCookie } from '../helpers/cookieManager';
 import { usersApi } from "helpers/Api";
 import { useState } from "react";
 import { validateInput } from "../Utils/regexValidation";
+import { usePopupMessage } from '../Context/PopupMessageContext';
 
 export const useProfileUpdate = () => {
+  const { showPopupMessage } = usePopupMessage();
   const [isLoading, setIsLoading] = useState(false)
   const [updatedUserData, setUpdatedUserData] = useState({
     username: '',
@@ -40,11 +42,11 @@ export const useProfileUpdate = () => {
 
     usersApi.updateUser(updatedUserData)
       .then((res) => {
-        
+        showPopupMessage(`You've Successfully updated your profile!`);
         setIsLoading(false)
       })
       .catch((err) => {
-        
+        showPopupMessage(`Error updating profile`);
         setIsLoading(false)
       })
 

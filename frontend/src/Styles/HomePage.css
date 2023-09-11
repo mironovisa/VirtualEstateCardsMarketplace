@@ -69,6 +69,10 @@
   cursor: pointer;
 }
 
+.side-icon{
+  width: 30px;
+  height: 30px;
+}
 
 
 @media (max-width: 1050px) and (min-width: 700px) {

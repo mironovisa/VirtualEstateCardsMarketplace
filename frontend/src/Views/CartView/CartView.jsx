@@ -5,6 +5,8 @@ import { imagesApi } from 'helpers/Api/imagesApi';
 import { usersApi } from 'helpers/Api';
 import { motion, useAnimation } from 'framer-motion';
 import PaymentModal from '../../Components/PaymentModal';
+import { usePopupMessage } from '../../Context/PopupMessageContext';
+
 
 export const CartView = ({ state, onChange }) => {
   const [images, setImages] = useState([]);
@@ -12,6 +14,7 @@ export const CartView = ({ state, onChange }) => {
   const [isOpen, setIsOpen] = useState(state);
   const [showModal, setShowModal] = useState(false); 
   const controls = useAnimation(); 
+  const { showPopupMessage } = usePopupMessage();
 
   const getAllImages = () => {
     imagesApi
@@ -47,9 +50,10 @@ export const CartView = ({ state, onChange }) => {
       .removeUserCart(payload)
       .then((res) => {
         getAllImages();
+        showPopupMessage(`Image Successfully removed from cart.`);
       })
       .catch((err) => {
-        
+        showPopupMessage(`Image couldn't be removed from cart.`);
       });
 
     setCartItems((prevCartItems) => {

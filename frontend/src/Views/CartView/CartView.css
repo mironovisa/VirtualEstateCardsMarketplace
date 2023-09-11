@@ -61,6 +61,7 @@
     list-style-type: none;
     margin-top: 20px;
     font-family:var(--default);
+    max-width: 300px;
 }
 
 
@@ -139,6 +140,7 @@
       
       .cart-items {
         padding: 35px 17px 35px 17px;
+        max-width: 250px;
     }
     
     .cart-item-title{
@@ -173,7 +175,7 @@
     }
     
     .cart {
-        max-width: 3100px;
+        max-width: 310px;
         min-width: 28px;
       }
       
@@ -195,6 +197,7 @@
       .cart-items {
         padding: 30px 15px 30px 15px;
         margin-top: 15px;
+        max-width: 280px;
     }
     
     

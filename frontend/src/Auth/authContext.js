@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { getUserFromCookie, getAdminFromCookie, setUserCookie, clearUserCookie } from '../helpers/cookieManager';
 import { useNavigate } from "react-router-dom";
 
+
 export const authContext = createContext({});
 
 const Provider = authContext.Provider;

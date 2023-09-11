@@ -85,12 +85,13 @@
   /*purchases history*/
   .purchases-history {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
   }
+
 
   /*profile-update*/
   .profile-update{

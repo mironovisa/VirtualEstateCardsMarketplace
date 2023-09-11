@@ -16,9 +16,6 @@ export const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
-    
-
     setEmail('');
     setContent('');
   };
