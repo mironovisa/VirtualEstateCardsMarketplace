@@ -14,6 +14,7 @@ const PurchasesHistory = () => {
       usersApi.getAllTransactions()
   .then((res)=>{
     setTransactions(res)
+    console.log(res);
     setIsLoading(false)
   })
   .catch((err)=>{
@@ -38,8 +39,8 @@ const PurchasesHistory = () => {
           userID={tran.userId}
           imageID={tran.imageId}
           timestamp={tran.createdAt}
-          uri={tran.imageDetails.uri}
-          title={tran.imageDetails.title}
+          uri={tran.imageDetails ? tran.imageDetails.uri : null}
+          title={tran.imageDetails ? tran.imageDetails.title : null}
 
         />
       ))}
